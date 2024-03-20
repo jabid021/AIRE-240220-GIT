@@ -3,11 +3,23 @@ package model;
 public class Stagiaire extends Personne {
 
 	private int age;
+	private String filiere;
 
-	public Stagiaire(String prenom, String nom, int age,String civilite) {
+	public Stagiaire(String prenom, String nom, int age,String civilite,String filiere) {
 		super(prenom, nom,civilite);
 		this.age = age;
+		this.filiere = filiere;
 	}
+
+	
+	public String getFiliere() {
+		return filiere;
+	}
+
+	public void setFiliere(String filiere) {
+		this.filiere = filiere;
+	}
+
 
 	public int getAge() {
 		return age;
@@ -17,11 +29,15 @@ public class Stagiaire extends Personne {
 		this.age = age;
 	}
 
+
 	@Override
 	public String toString() {
-		return "Stagiaire [prenom=" + prenom + ", nom=" + nom + ", civilite=" + civilite + ", age=" + age + "]";
+		return "Stagiaire [age=" + age + ", filiere=" + filiere + ", prenom=" + prenom + ", nom=" + nom + ", civilite="
+				+ civilite + "]";
 	}
 
+
 	
+
 	
 }
