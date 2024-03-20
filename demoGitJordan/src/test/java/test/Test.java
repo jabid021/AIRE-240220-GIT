@@ -6,7 +6,7 @@ import model.Stagiaire;
 public class Test {
 
 	public static void main(String[] args) {
-		Personne p1 = new Stagiaire("Jordan","Abid",30);
+		Personne p1 = new Stagiaire("Jordan","Abid",30,"AIRE");
 		System.out.println(p1);
 	}
 
