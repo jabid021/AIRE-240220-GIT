@@ -4,12 +4,13 @@ public abstract class Personne {
 
 	protected String prenom;
 	protected String nom;
-	
+	protected String civilite;
 
 
-	public Personne(String prenom, String nom) {
+	public Personne(String prenom, String nom,String civilite) {
 		this.prenom = prenom;
 		this.nom = nom;
+		this.civilite=civilite;
 	}
 
 	public String getPrenom() {
@@ -29,10 +30,15 @@ public abstract class Personne {
 		this.nom = nom;
 	}
 
-	@Override
-	public String toString() {
-		return "Personne [prenom=" + prenom + ", nom=" + nom + "]";
+	
+	public String getCivilite() {
+		return civilite;
 	}
 
+	public void setCivilite(String civilite) {
+		this.civilite = civilite;
+	}
+
+	
 	
 }

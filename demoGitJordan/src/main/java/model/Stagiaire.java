@@ -4,8 +4,8 @@ public class Stagiaire extends Personne {
 
 	private int age;
 
-	public Stagiaire(String prenom, String nom, int age) {
-		super(prenom, nom);
+	public Stagiaire(String prenom, String nom, int age,String civilite) {
+		super(prenom, nom,civilite);
 		this.age = age;
 	}
 
@@ -19,8 +19,9 @@ public class Stagiaire extends Personne {
 
 	@Override
 	public String toString() {
-		return "Stagiaire [age=" + age + ", prenom=" + prenom + ", nom=" + nom + "]";
+		return "Stagiaire [prenom=" + prenom + ", nom=" + nom + ", civilite=" + civilite + ", age=" + age + "]";
 	}
+
 	
 	
 }
