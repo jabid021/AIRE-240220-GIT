@@ -19,18 +19,21 @@ public class Test {
 		Adresse  adresse1 = new Adresse("6","rue rougemont","75009","Paris");
 		Adresse  adresse2 = new Adresse("1","rue de chez moi","00001","ma ville");
 		
-		Personne personne1 = new Client("Abid","Jordan",adresse2,30,LocalDate.parse("1993-05-01"));
-		Personne personne2 = new Fournisseur("Abid","Charly",adresse1,"AJC Ingenierie");
+		Client client1 = new Client("Abid","Jordan",adresse2,30,LocalDate.parse("1993-05-01"));
+		Fournisseur fournisseur1 = new Fournisseur("Abid","Charly",adresse1,"AJC Ingenierie");
 		
-		Produit produit1 = new Produit("Formation SQL",1200);
-		Produit produit2 = new Produit("Formation Algo",1049.99805616);
+		Produit produit1 = new Produit("Formation SQL",1200,fournisseur1);
+		Produit produit2 = new Produit("Formation Algo",1049.99,fournisseur1);
+		
+		client1.getAchats().add(produit1);
+		client1.getAchats().add(produit2);
 		
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("contextJPA");
 		EntityManager em = emf.createEntityManager();
 		
 		em.getTransaction().begin();
-			em.persist(personne1);
-			em.persist(personne2);
+			em.persist(client1);
+			em.persist(fournisseur1);
 			em.persist(produit1);
 			em.persist(produit2);
 		em.getTransaction().commit();
