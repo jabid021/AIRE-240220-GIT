@@ -1,5 +1,8 @@
 package poudlard.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Embedded;
@@ -9,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -30,6 +34,9 @@ public abstract class Sorcier {
 	@Embedded
 	protected Stats statistiques;
 	
+	
+	@ManyToMany
+	protected List<Sort> grimoire = new ArrayList();
 	
 	
 	
@@ -80,6 +87,19 @@ public abstract class Sorcier {
 	public void setStatistiques(Stats statistiques) {
 		this.statistiques = statistiques;
 	}
+
+
+
+	public List<Sort> getGrimoire() {
+		return grimoire;
+	}
+
+
+
+	public void setGrimoire(List<Sort> grimoire) {
+		this.grimoire = grimoire;
+	}
+	
 	
 	
 	

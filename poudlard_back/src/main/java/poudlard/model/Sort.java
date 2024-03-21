@@ -1,4 +1,4 @@
-package eshop.model;
+package poudlard.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,62 +8,42 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="product")
-public class Produit {
+@Table(name="spell")
+public class Sort {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	@Column(name="label",nullable = false,length = 30)
+	
+	@Column(length = 30,nullable = false)
 	private String libelle;
-	@Column(name="price",columnDefinition = "DOUBLE(6,2)", nullable = false)
-	private double prix;
 	
-	
-	public Produit() {}
+	public Sort() {}
 
-
-	public Produit(String libelle, double prix) {
+	public Sort(String libelle) {
 		this.libelle = libelle;
-		this.prix = prix;
 	}
-
 
 	public Integer getId() {
 		return id;
 	}
 
-
 	public void setId(Integer id) {
 		this.id = id;
 	}
-
 
 	public String getLibelle() {
 		return libelle;
 	}
 
-
 	public void setLibelle(String libelle) {
 		this.libelle = libelle;
 	}
 
-
-	public double getPrix() {
-		return prix;
-	}
-
-
-	public void setPrix(double prix) {
-		this.prix = prix;
-	}
-
-
 	@Override
 	public String toString() {
-		return "Produit [id=" + id + ", libelle=" + libelle + ", prix=" + prix + "]";
+		return "Sort [id=" + id + ", libelle=" + libelle + "]";
 	}
-	
 	
 	
 }

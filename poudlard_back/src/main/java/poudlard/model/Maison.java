@@ -7,6 +7,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity // Permet de preciser à JPA qu'on veut une table maison (OBLIGATOIRE)
@@ -27,14 +28,23 @@ public class Maison {
 	@Enumerated(EnumType.STRING)
 	@Column(name="totem",nullable = false, columnDefinition = "ENUM('Serpent','Aigle','Blaireau','Gryphon')")
 	private Mascotte mascotte;
+
+
 	
+	@OneToOne //Pour gerer les liens entre 2 classes, il faut preciser leur cardinalité.  One/Many 
+		   //X =>Relation inverse, un professeur peut etre prof principal dans combien de maison à la fois ?
+				//Si 0 ou une seule => One
+				//Sinon Many
+		   //Y => Si c'est une liste  => Many sinon c'est One
+	private Professeur professeurPrincipal; 
 	
 	//Constructeur vide pour les select de JPA (OBLIGATOIRE)
 	public Maison() {}
 	
-	public Maison(String nom,Mascotte mascotte) {
+	public Maison(String nom,Mascotte mascotte,Professeur professeurPrincipal) {
 		this.nom = nom;
 		this.mascotte=mascotte;
+		this.professeurPrincipal=professeurPrincipal;
 		this.score=0;
 	}
 
@@ -71,11 +81,23 @@ public class Maison {
 		this.mascotte = mascotte;
 	}
 
-	@Override
-	public String toString() {
-		return "Maison [id=" + id + ", nom=" + nom + ", score=" + score + ", mascotte=" + mascotte + "]";
+	
+	
+	public Professeur getProfesseurPrincipal() {
+		return professeurPrincipal;
 	}
 
+	public void setProfesseurPrincipal(Professeur professeurPrincipal) {
+		this.professeurPrincipal = professeurPrincipal;
+	}
+
+	@Override
+	public String toString() {
+		return "Maison [id=" + id + ", nom=" + nom + ", score=" + score + ", mascotte=" + mascotte
+				+ ", professeurPrincipal=" + professeurPrincipal + "]";
+	}
+
+	
 	
 	
 	
