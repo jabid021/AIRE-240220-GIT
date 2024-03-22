@@ -20,8 +20,8 @@ public class Client extends Personne {
 	@Column(name="date_naissance")
 	private LocalDate dateNaissance;
 	
-	@OneToMany
-	@JoinTable(name="achats",joinColumns = @JoinColumn(name="acheteur"),inverseJoinColumns = @JoinColumn(name="achat"))
+	@OneToMany(mappedBy = "client" )
+	//@JoinTable(name="achats",joinColumns = @JoinColumn(name="acheteur"),inverseJoinColumns = @JoinColumn(name="achat"))
 	private List<Achat> achats = new ArrayList();
 	
 	public Client() {}

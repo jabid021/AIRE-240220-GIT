@@ -1,5 +1,7 @@
 package eshop.model;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -18,12 +21,15 @@ public class Produit {
 	private Integer id;
 	@Column(name="label",nullable = false,length = 30)
 	private String libelle;
-	@Column(name="price",columnDefinition = "DOUBLE(6,2)", nullable = false)
+	@Column(name="price",columnDefinition = "DOUBLE(6,2) default 0", nullable = false)
 	private double prix;
 	
 	@ManyToOne
 	@JoinColumn(name="vendeur",nullable = false)
 	private Fournisseur fournisseur;
+	
+	@OneToMany(mappedBy = "produit")
+	private List<Achat> ventes;
 	
 	public Produit() {}
 

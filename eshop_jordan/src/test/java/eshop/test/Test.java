@@ -36,14 +36,14 @@ public class Test {
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("contextJPA");
 		EntityManager em = emf.createEntityManager();
 		
-		em.getTransaction().begin();
+		/*em.getTransaction().begin();
 			em.persist(client1);
 			em.persist(fournisseur1);
 			em.persist(produit1);
 			em.persist(produit2);
 			em.persist(achat1);
 			em.persist(achat2);
-		em.getTransaction().commit();
+		em.getTransaction().commit();*/
 		
 		em.close();
 		emf.close();
