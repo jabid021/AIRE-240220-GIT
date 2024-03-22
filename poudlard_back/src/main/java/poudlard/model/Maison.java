@@ -7,6 +7,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -36,6 +37,7 @@ public class Maison {
 				//Si 0 ou une seule => One
 				//Sinon Many
 		   //Y => Si c'est une liste  => Many sinon c'est One
+	@JoinColumn(name="professeur_principal",nullable = false,unique = true)
 	private Professeur professeurPrincipal; 
 	
 	//Constructeur vide pour les select de JPA (OBLIGATOIRE)

@@ -2,6 +2,7 @@ package poudlard.model;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
@@ -11,6 +12,7 @@ public class Eleve extends Sorcier {
 	private int annee;
 	
 	@ManyToOne
+	@JoinColumn(name="residence_eleve")
 	private Maison maison;
 	
 	
