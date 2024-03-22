@@ -13,8 +13,12 @@ public class Professeur extends Sorcier{
 	@Column(length = 20)
 	private String matiere;
 	
-	@OneToOne
-	@JoinColumn(name="responsable_maison")
+	@OneToOne(mappedBy = "professeurPrincipal" ) 
+	//mappedBy indique à JPA qu'il n'a pas besoin de creer de colonne de jointure / table de jointure 
+	//pour gérer cette relation
+	//le lien se fait deja dans l'autre table !
+	//mappedBy="professeurPrincipal" => professeurPrincipal indique que dans la classe Maison, le lien
+	//vers le professeur principal se fait via l'attribut "private Professeur professeurPrincipal
 	private Maison maisonDontJeSuisPrincipal;
 	
 	

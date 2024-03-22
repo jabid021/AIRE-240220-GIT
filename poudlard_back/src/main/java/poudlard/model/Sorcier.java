@@ -38,8 +38,8 @@ public abstract class Sorcier {
 	protected Stats statistiques;
 	
 	
-	@OneToMany
-	@JoinTable
+	@OneToMany(mappedBy = "sorcier")
+	/*@JoinTable
 	(
 			name="apprentissages", //Change le nom de la table de jointure
 			//Cette table de jointure possede deux colonnes id, celui d'un sorcier + celui d'un sort
@@ -52,7 +52,7 @@ public abstract class Sorcier {
 			uniqueConstraints = @UniqueConstraint(columnNames = { "apprentissage","sorcier" })
 			
 			
-	)
+	)*/
 	protected List<Apprentissage> grimoire = new ArrayList();
 	
 	

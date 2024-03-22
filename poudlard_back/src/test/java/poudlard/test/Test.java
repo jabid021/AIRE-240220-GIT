@@ -29,10 +29,10 @@ public abstract class Test {
 		Maison m4 = new Maison("Serdaigle",Mascotte.Aigle,p2);
 		
 		
-		p1.setMaisonDontJeSuisPrincipal(m2);
-		p2.setMaisonDontJeSuisPrincipal(m4);
-		p3.setMaisonDontJeSuisPrincipal(m3);
-		p4.setMaisonDontJeSuisPrincipal(m1);
+	//	p1.setMaisonDontJeSuisPrincipal(m2);
+	//	p2.setMaisonDontJeSuisPrincipal(m4);
+	//	p3.setMaisonDontJeSuisPrincipal(m3);
+	//	p4.setMaisonDontJeSuisPrincipal(m1);
 		
 
 		
@@ -58,14 +58,14 @@ public abstract class Test {
 		Apprentissage apprentissage5 = new Apprentissage(p1, sort2);
 		Apprentissage apprentissage6 = new Apprentissage(p1, sort4);
 		
-		e1.getGrimoire().add(apprentissage1);
+		/*e1.getGrimoire().add(apprentissage1);
 		e1.getGrimoire().add(apprentissage2);
 		e1.getGrimoire().add(apprentissage3);
 		
 		p1.getGrimoire().add(apprentissage4);
 		p1.getGrimoire().add(apprentissage5);
 		p1.getGrimoire().add(apprentissage6);
-		
+		*/
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("contextJPA");
 		
 		EntityManager em = emf.createEntityManager();
