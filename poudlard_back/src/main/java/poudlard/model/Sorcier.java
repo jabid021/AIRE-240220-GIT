@@ -14,7 +14,7 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
@@ -38,22 +38,22 @@ public abstract class Sorcier {
 	protected Stats statistiques;
 	
 	
-	@ManyToMany
+	@OneToMany
 	@JoinTable
 	(
-			name="apprentissage", //Change le nom de la table de jointure
+			name="apprentissages", //Change le nom de la table de jointure
 			//Cette table de jointure possede deux colonnes id, celui d'un sorcier + celui d'un sort
 			//Le lien en Java se faisant dans la classe Sorcier, l'id sorcier est l'id "principal"
 			//L'id sort est l'id "inverse" / "l'autre"
 			//joinColumns => l'id principal (a gauche dans la table)
 			//inverseJoinColumn => l'id secondaire (a droite dans la table)
 			joinColumns = @JoinColumn(name="sorcier"),
-			inverseJoinColumns = @JoinColumn(name="sort"),
-			uniqueConstraints = @UniqueConstraint(columnNames = { "sort","sorcier" })
+			inverseJoinColumns = @JoinColumn(name="apprentissage"),
+			uniqueConstraints = @UniqueConstraint(columnNames = { "apprentissage","sorcier" })
 			
 			
 	)
-	protected List<Sort> grimoire = new ArrayList();
+	protected List<Apprentissage> grimoire = new ArrayList();
 	
 	
 	
@@ -107,13 +107,13 @@ public abstract class Sorcier {
 
 
 
-	public List<Sort> getGrimoire() {
+	public List<Apprentissage> getGrimoire() {
 		return grimoire;
 	}
 
 
 
-	public void setGrimoire(List<Sort> grimoire) {
+	public void setGrimoire(List<Apprentissage> grimoire) {
 		this.grimoire = grimoire;
 	}
 	

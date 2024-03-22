@@ -4,6 +4,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+import poudlard.model.Apprentissage;
 import poudlard.model.Eleve;
 import poudlard.model.Maison;
 import poudlard.model.Mascotte;
@@ -27,6 +28,15 @@ public abstract class Test {
 		Maison m3 = new Maison("Poufsouffle",Mascotte.Blaireau,p3);
 		Maison m4 = new Maison("Serdaigle",Mascotte.Aigle,p2);
 		
+		
+		p1.setMaisonDontJeSuisPrincipal(m2);
+		p2.setMaisonDontJeSuisPrincipal(m4);
+		p3.setMaisonDontJeSuisPrincipal(m3);
+		p4.setMaisonDontJeSuisPrincipal(m1);
+		
+
+		
+		
 		Sorcier e1 = new Eleve("Potter","Harry", new Stats(1,2),1,m1);
 		Sorcier e2 = new Eleve("Granger","Hermione", new Stats(2,2),1,null);
 		Sorcier e3 = new Eleve("Malefoy","Drago", new Stats(0,0),1,m2);
@@ -40,15 +50,21 @@ public abstract class Test {
 		Sort sort4 = new Sort("Avada Kedavra");
 		
 		
-		e1.getGrimoire().add(sort1);
-		e1.getGrimoire().add(sort2);
-		e1.getGrimoire().add(sort3);
+		Apprentissage apprentissage1 = new Apprentissage(e1, sort1);
+		Apprentissage apprentissage2 = new Apprentissage(e1, sort2);
+		Apprentissage apprentissage3 = new Apprentissage(e1, sort3);
 		
+		Apprentissage apprentissage4 = new Apprentissage(p1, sort1);
+		Apprentissage apprentissage5 = new Apprentissage(p1, sort2);
+		Apprentissage apprentissage6 = new Apprentissage(p1, sort4);
 		
+		e1.getGrimoire().add(apprentissage1);
+		e1.getGrimoire().add(apprentissage2);
+		e1.getGrimoire().add(apprentissage3);
 		
-		p1.getGrimoire().add(sort1);
-		p1.getGrimoire().add(sort2);
-		p1.getGrimoire().add(sort4);
+		p1.getGrimoire().add(apprentissage4);
+		p1.getGrimoire().add(apprentissage5);
+		p1.getGrimoire().add(apprentissage6);
 		
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("contextJPA");
 		
@@ -57,10 +73,20 @@ public abstract class Test {
 			em.getTransaction().begin();
 
 
+			
 				em.persist(sort1);
 				em.persist(sort2);
 				em.persist(sort3);
 				em.persist(sort4);
+
+				em.persist(apprentissage1);
+				em.persist(apprentissage2);
+				em.persist(apprentissage3);
+				em.persist(apprentissage4);
+				em.persist(apprentissage5);
+				em.persist(apprentissage6);
+				
+				
 				
 				em.persist(p1);
 				em.persist(p2);

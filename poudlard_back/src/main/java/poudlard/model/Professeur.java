@@ -3,6 +3,8 @@ package poudlard.model;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
 @Entity
 @DiscriminatorValue("teacher")
@@ -10,6 +12,11 @@ public class Professeur extends Sorcier{
 
 	@Column(length = 20)
 	private String matiere;
+	
+	@OneToOne
+	@JoinColumn(name="responsable_maison")
+	private Maison maisonDontJeSuisPrincipal;
+	
 	
 	public Professeur() {}
 
@@ -33,6 +40,20 @@ public class Professeur extends Sorcier{
 
 	public void setMatiere(String matiere) {
 		this.matiere = matiere;
+	}
+
+
+
+
+	public Maison getMaisonDontJeSuisPrincipal() {
+		return maisonDontJeSuisPrincipal;
+	}
+
+
+
+
+	public void setMaisonDontJeSuisPrincipal(Maison maisonDontJeSuisPrincipal) {
+		this.maisonDontJeSuisPrincipal = maisonDontJeSuisPrincipal;
 	}
 
 
