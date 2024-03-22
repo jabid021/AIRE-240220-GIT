@@ -12,11 +12,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 @Entity
-@Table(name="wizard")
+@Table(name="wizard",uniqueConstraints = @UniqueConstraint(columnNames = {"nom","prenom"}))
 
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 //En mode heritage SingleTable, JPA va creer une colonne DTYPE, @DiscrimnatorColum pour changer son nom 
@@ -36,6 +39,20 @@ public abstract class Sorcier {
 	
 	
 	@ManyToMany
+	@JoinTable
+	(
+			name="apprentissage", //Change le nom de la table de jointure
+			//Cette table de jointure possede deux colonnes id, celui d'un sorcier + celui d'un sort
+			//Le lien en Java se faisant dans la classe Sorcier, l'id sorcier est l'id "principal"
+			//L'id sort est l'id "inverse" / "l'autre"
+			//joinColumns => l'id principal (a gauche dans la table)
+			//inverseJoinColumn => l'id secondaire (a droite dans la table)
+			joinColumns = @JoinColumn(name="sorcier"),
+			inverseJoinColumns = @JoinColumn(name="sort"),
+			uniqueConstraints = @UniqueConstraint(columnNames = { "sort","sorcier" })
+			
+			
+	)
 	protected List<Sort> grimoire = new ArrayList();
 	
 	
