@@ -20,7 +20,7 @@ import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
 @Entity
-@Table(name="wizard",uniqueConstraints = @UniqueConstraint(columnNames = {"nom","prenom"}))
+@Table(name="wizard",uniqueConstraints = @UniqueConstraint(columnNames = {"lastname","prenom"}))
 
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 //En mode heritage SingleTable, JPA va creer une colonne DTYPE, @DiscrimnatorColum pour changer son nom 
@@ -30,7 +30,7 @@ public abstract class Sorcier {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	protected Integer id;
-	@Column(columnDefinition = "VARCHAR(30)")
+	@Column(name="lastname", columnDefinition = "VARCHAR(30)")
 	protected String nom;
 	@Column(length = 30)
 	protected String prenom;
