@@ -2,6 +2,9 @@ package eshop.test;
 
 import java.util.List;
 
+import eshop.context.Singleton;
+import eshop.dao.IDAOPersonne;
+import eshop.dao.IDAOProduit;
 import eshop.model.Adresse;
 import eshop.model.Fournisseur;
 import eshop.model.Produit;
@@ -19,11 +22,13 @@ public class TestDAO {
 		
 		Fournisseur fournisseur = new Fournisseur("Doe","John",adresse,"societe");
 		
+		fournisseur = (Fournisseur) daoPersonne.save(fournisseur);
+		
 		Produit produit = new Produit("Cahier",50.50,fournisseur);
 		
-		daoProduit.save(produit);
+		produit = daoProduit.save(produit);
 		
-		fournisseur = daoPersonne.save(fournisseur);
+		
 		
 		
 		
@@ -33,9 +38,11 @@ public class TestDAO {
 		}
 		
 		
+		daoProduit.delete(produit);
 		daoPersonne.delete(fournisseur);
 		
 
+		System.out.println(daoPersonne.findAllFournisseur());
 		for(Fournisseur f : daoPersonne.findAllFournisseur()) 
 		{
 			System.out.println(f);
@@ -47,7 +54,7 @@ public class TestDAO {
 		String recherche = "Cahier";
 		
 		System.out.println("Liste des produit dont le nom est : "+recherche);
-		List<Produit> resultat = daoProduit.findAllByLib(recherche);
+		List<Produit> resultat = daoProduit.findByLib(recherche);
 		if(resultat.isEmpty()) {System.out.println("Aucun produit ne porte ce nom !");}
 		for(Produit p : resultat) 
 		{
