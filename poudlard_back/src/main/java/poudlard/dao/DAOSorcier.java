@@ -5,9 +5,10 @@ import java.util.List;
 import javax.persistence.EntityManager;
 
 import poudlard.context.Singleton;
+import poudlard.model.Professeur;
 import poudlard.model.Sorcier;
 
-public class DAOSorcier implements IDAO<Sorcier,Integer> {
+public class DAOSorcier implements IDAOSorcier {
 
 	@Override
 	public Sorcier findById(Integer id) {
@@ -57,6 +58,14 @@ public class DAOSorcier implements IDAO<Sorcier,Integer> {
 		em.remove(sorcier);
 		em.getTransaction().commit();
 		em.close();
+	}
+
+	@Override
+	public List<Professeur> findAllProfesseur() {
+		EntityManager em = Singleton.getInstance().getEmf().createEntityManager();
+		List<Professeur> professeurs = em.createQuery("from Professeur").getResultList();
+		em.close();
+		return professeurs;
 	}
 
 }
