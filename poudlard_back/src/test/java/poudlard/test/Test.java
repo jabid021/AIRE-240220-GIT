@@ -91,17 +91,17 @@ public class Test {
 		
 		Professeur copie = em.merge(p1);
 		
-		//em.persist(v1);
-		//em.persist(avion);
+		/*em.persist(v1);
+		em.persist(avion);
 
-		//em.persist(simba);
-		//em.persist(dumbo);
-		//em.persist(babar);
-
+		em.persist(simba);
+		em.persist(dumbo);
+		em.persist(babar);
+		*/
 		
-		em.merge(sort2);
-		em.merge(sort3);
-		em.merge(sort4);
+		em.persist(sort2);
+		em.persist(sort3);
+		em.persist(sort4);
 
 		em.persist(apprentissage1);
 		em.persist(apprentissage2);
