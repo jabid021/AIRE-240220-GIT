@@ -9,7 +9,7 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 
-@Entity
+//@Entity
 @Table(name="animals")
 @Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Animal {

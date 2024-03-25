@@ -5,7 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
-@Entity
+//@Entity
 @Table(name="lio")
 @PrimaryKeyJoinColumn(name="id_lion")
 public class Lion extends Animal {

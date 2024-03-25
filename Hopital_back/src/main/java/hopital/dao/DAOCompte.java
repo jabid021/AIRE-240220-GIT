@@ -11,7 +11,7 @@ import hopital.model.Compte;
 import hopital.model.Medecin;
 import hopital.model.Secretaire;
 
-public class DAOCompte implements IDAO<Compte,Integer>{
+public class DAOCompte implements IDAOCompte{
 
 	@Override
 	public Compte findById(Integer id) {
@@ -101,7 +101,7 @@ public class DAOCompte implements IDAO<Compte,Integer>{
 	}
 
 	@Override
-	public void update(Compte compte) {
+	public Compte update(Compte compte) {
 		try(
 				Connection conn  = DriverManager.getConnection(urlBdd,loginBdd,passwordBdd);
 				PreparedStatement ps = conn.prepareStatement("UPDATE compte set login=?,password=?,type_compte=? where id=?)");
@@ -131,6 +131,7 @@ public class DAOCompte implements IDAO<Compte,Integer>{
 		{
 			e.printStackTrace();
 		}
+		return null;
 	}
 
 	@Override

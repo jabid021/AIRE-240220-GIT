@@ -10,9 +10,9 @@ import java.util.List;
 import java.util.Scanner;
 
 import hopital.context.Singleton;
-import hopital.dao.DAOCompte;
-import hopital.dao.DAOPatient;
-import hopital.dao.DAOVisite;
+import hopital.dao.IDAOCompte;
+import hopital.dao.IDAOPatient;
+import hopital.dao.IDAOVisite;
 import hopital.model.Compte;
 import hopital.model.Medecin;
 import hopital.model.Patient;
@@ -21,9 +21,9 @@ import hopital.model.Visite;
 
 public class App {
 
-	static DAOCompte daoCompte = Singleton.getInstance().getDaoCompte();
-	static DAOVisite daoVisite = Singleton.getInstance().getDaoVisite();
-	static DAOPatient daoPatient = Singleton.getInstance().getDaoPatient();
+	static IDAOCompte daoCompte = Singleton.getInstance().getDaoCompte();
+	static IDAOVisite daoVisite = Singleton.getInstance().getDaoVisite();
+	static IDAOPatient daoPatient = Singleton.getInstance().getDaoPatient();
 
 	static LinkedList<Patient> fileAttente = new LinkedList();
 	static Compte connected=null ;

@@ -3,7 +3,7 @@ package poudlard.model.heritage;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
-@Entity	
+//@Entity	
 @Table(name="car")
 public class Voiture extends Vehicule {
 

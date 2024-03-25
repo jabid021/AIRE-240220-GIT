@@ -3,7 +3,7 @@ package poudlard.model.heritage;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
-@Entity
+//@Entity
 @Table(name="eleph")
 public class Elephant extends Animal{
 	

@@ -9,7 +9,7 @@ import java.util.List;
 
 import hopital.model.Patient;
 
-public class DAOPatient implements IDAO<Patient,Integer> {
+public class DAOPatient implements IDAOPatient {
 
 	@Override
 	public Patient findById(Integer id) {
@@ -84,14 +84,14 @@ public class DAOPatient implements IDAO<Patient,Integer> {
 	}
 
 	@Override
-	public void update(Patient patient) {
+	public Patient update(Patient patient) {
 		try(
 				Connection conn  = DriverManager.getConnection(urlBdd,loginBdd,passwordBdd);
 				PreparedStatement ps = conn.prepareStatement("UPDATE patient set nom=?,prenom=? where id=?");
 				) 
 		{
 			Class.forName("com.mysql.jdbc.Driver");
-			
+
 			ps.setString(1, patient.getNom());
 			ps.setString(2, patient.getPrenom());
 			ps.setInt(3, patient.getId());
@@ -103,6 +103,7 @@ public class DAOPatient implements IDAO<Patient,Integer> {
 		{
 			e.printStackTrace();
 		}
+		return null;
 	}
 
 	@Override
@@ -123,5 +124,7 @@ public class DAOPatient implements IDAO<Patient,Integer> {
 			e.printStackTrace();
 		}
 	}
+
+
 
 }

@@ -15,12 +15,12 @@ import hopital.model.Patient;
 import hopital.model.Visite;
 
 
-public class DAOVisite implements IDAO<Visite,Integer> {
+public class DAOVisite implements IDAOVisite {
 
 	@Override
 	public Visite findById(Integer id) {
-		DAOCompte daoCompte = Singleton.getInstance().getDaoCompte();
-		DAOPatient daoPatient = Singleton.getInstance().getDaoPatient();
+		IDAOCompte daoCompte = Singleton.getInstance().getDaoCompte();
+		IDAOPatient daoPatient = Singleton.getInstance().getDaoPatient();
 		
 		Visite visite=null;
 		try(
@@ -49,8 +49,8 @@ public class DAOVisite implements IDAO<Visite,Integer> {
 
 	@Override
 	public List<Visite> findAll() {
-		DAOCompte daoCompte = Singleton.getInstance().getDaoCompte();
-		DAOPatient daoPatient = Singleton.getInstance().getDaoPatient();
+		IDAOCompte daoCompte = Singleton.getInstance().getDaoCompte();
+		IDAOPatient daoPatient = Singleton.getInstance().getDaoPatient();
 		
 		List<Visite> visites = new ArrayList();
 		Visite visite=null;
@@ -110,7 +110,7 @@ public class DAOVisite implements IDAO<Visite,Integer> {
 	}
 
 	@Override
-	public void update(Visite visite) {
+	public Visite update(Visite visite) {
 		try(
 				Connection conn  = DriverManager.getConnection(urlBdd,loginBdd,passwordBdd);
 				PreparedStatement ps = conn.prepareStatement("update visite set id_patient=?,id_medecin=?,salle=?,prix=?,date_visite=? where numero=?");
@@ -131,6 +131,7 @@ public class DAOVisite implements IDAO<Visite,Integer> {
 		{
 			e.printStackTrace();
 		}
+		return null;
 	}
 
 	@Override
@@ -153,8 +154,8 @@ public class DAOVisite implements IDAO<Visite,Integer> {
 	}
 
 	public List<Visite> findAllByPatient(Integer id) {
-		DAOCompte daoCompte = Singleton.getInstance().getDaoCompte();
-		DAOPatient daoPatient = Singleton.getInstance().getDaoPatient();
+		IDAOCompte daoCompte = Singleton.getInstance().getDaoCompte();
+		IDAOPatient daoPatient = Singleton.getInstance().getDaoPatient();
 		
 		List<Visite> visites = new ArrayList();
 		Visite visite=null;

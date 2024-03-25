@@ -2,16 +2,36 @@ package hopital.model;
 
 import java.time.LocalDate;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="visite")
 public class Visite {
 
-	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="numero")
 	private Integer id;
+	
+	@ManyToOne
+	@JoinColumn(name="id_patient")
 	private Patient patient;
+	@ManyToOne
+	@JoinColumn(name="id_medecin")
 	private Medecin medecin;
 	private int salle;
 	private double prix;
+	@Column(name="date_visite",nullable = false)
 	private LocalDate dateVisite;
 	
+	public Visite() {}
 	
 	public Visite(Integer id, Patient patient, Medecin medecin, int salle, double prix, LocalDate dateVisite) {
 		this.id = id;
