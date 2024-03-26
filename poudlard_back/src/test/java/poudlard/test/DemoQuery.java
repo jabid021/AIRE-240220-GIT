@@ -1,5 +1,6 @@
 package poudlard.test;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -28,6 +29,7 @@ public class DemoQuery {
 			//Si la query trouve un resultat, le retourne
 			//Si la query trouve PLUSIEURS resultats, => Exception
 			//Si la query ne trouve rien => Exception
+		
 		List<Sorcier> sorciers = em.createQuery("from Sorcier").getResultList();
 		
 		List<Professeur> professeurs = em.createQuery("from Professeur").getResultList();

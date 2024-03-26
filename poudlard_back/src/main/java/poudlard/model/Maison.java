@@ -13,6 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Min;
 
 @Entity // Permet de preciser à JPA qu'on veut une table maison (OBLIGATOIRE)
 @Table(name="house") //Permet de changer le nom de cette table, maison => house
@@ -27,6 +28,7 @@ public class Maison {
 	private String nom;
 	
 	@Column(name="points",nullable = false,columnDefinition = "int(4)")
+	@Min(10)
 	private int score;
 	
 	@Enumerated(EnumType.STRING)

@@ -7,17 +7,17 @@ import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
+import javax.persistence.Version;
+import javax.validation.constraints.Size;
+
 
 @Entity
 @Table(name="wizard",uniqueConstraints = @UniqueConstraint(columnNames = {"lastname","prenom"}))
@@ -32,11 +32,16 @@ public abstract class Sorcier {
 	protected Integer id;
 	@Column(name="lastname", columnDefinition = "VARCHAR(30)")
 	protected String nom;
-	@Column(length = 30)
+	@Column(length = 9)
+	
+	@Size(min=2,max = 9)
 	protected String prenom;
 	
 	@Embedded
 	protected Stats statistiques;
+	
+	@Version
+	protected int version;
 	
 	
 	@OneToMany(mappedBy = "sorcier")
@@ -110,6 +115,18 @@ public abstract class Sorcier {
 
 	public List<Apprentissage> getGrimoire() {
 		return grimoire;
+	}
+
+
+
+	public int getVersion() {
+		return version;
+	}
+
+
+
+	public void setVersion(int version) {
+		this.version = version;
 	}
 
 

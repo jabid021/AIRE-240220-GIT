@@ -3,6 +3,7 @@ package eshop.dao;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 
 import eshop.context.Singleton;
 import eshop.model.Client;
@@ -79,14 +80,18 @@ public class DAOPersonne implements IDAOPersonne {
 
 	@Override
 	public Client findByIdWithAchats(Integer idClient) {
-		// TODO Auto-generated method stub
-		return null;
+		EntityManager em = Singleton.getInstance().getEmf().createEntityManager();
+		Query requete = em.createQuery("SELECT c from Client c LEFT JOIN FETCH  c.achats  where  c.id=:id");
+		requete.setParameter("id", idClient);
+		Client client = (Client) requete.getSingleResult();
+		return client;
 	}
 
 	@Override
 	public Fournisseur findByIdWithStock(Integer idFournisseur) {
-		// TODO Auto-generated method stub
-		return null;
+		EntityManager em = Singleton.getInstance().getEmf().createEntityManager();
+		Fournisseur fournisseur = (Fournisseur) em.createQuery("SELECT f from Fournisseur f LEFT JOIN FETCH f.stock where f.id=:id").setParameter("id", idFournisseur).getSingleResult();
+		return fournisseur;
 	}
 
 

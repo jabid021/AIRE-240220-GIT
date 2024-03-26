@@ -4,11 +4,12 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import javax.validation.Valid;
 
 import poudlard.context.Singleton;
 import poudlard.model.Maison;
 
-public class DAOMaison implements IDAO<Maison,Integer> {
+public class DAOMaison implements IDAOMaison {
 
 	@Override
 	public Maison findById(Integer id) {

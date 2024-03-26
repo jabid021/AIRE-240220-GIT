@@ -7,7 +7,7 @@ import javax.persistence.EntityManager;
 import poudlard.context.Singleton;
 import poudlard.model.Sort;
 
-public class DAOSort implements IDAO<Sort,Integer> {
+public class DAOSort implements IDAOSort {
 
 	@Override
 	public Sort findById(Integer id) {

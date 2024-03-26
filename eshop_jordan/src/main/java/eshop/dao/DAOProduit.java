@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 
 import eshop.context.Singleton;
+import eshop.model.Fournisseur;
 import eshop.model.Produit;
 
 public class DAOProduit implements IDAOProduit {
@@ -69,8 +70,9 @@ public class DAOProduit implements IDAOProduit {
 
 	@Override
 	public Produit findByIdWithVentes(Integer idProduit) {
-		// TODO Auto-generated method stub
-		return null;
+		EntityManager em = Singleton.getInstance().getEmf().createEntityManager();
+		Produit produit = (Produit) em.createQuery("SELECT p from Produit p LEFT JOIN FETCH p.ventes where p.id=:id").setParameter("id", idProduit).getSingleResult();
+		return produit;
 	}
 
 	
