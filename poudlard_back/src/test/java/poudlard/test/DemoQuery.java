@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 import poudlard.context.Singleton;
+import poudlard.model.Eleve;
 import poudlard.model.Maison;
 import poudlard.model.Professeur;
 import poudlard.model.Sorcier;
@@ -82,7 +83,28 @@ public class DemoQuery {
 		}
 		
 		
+		
+		
+		System.out.println("------------Select en bdd une maison via son id avec TOUS ses eleves------------------");
+		
+		Query requete4 = em.createQuery("SELECT m from Maison m LEFT JOIN FETCH  m.residents  where m.id=:id");
+		requete4.setParameter("id", 4);
+		Maison maisonBdd = (Maison) requete4.getSingleResult();
+		
 		em.close();
+		
+		
+		
+		
+		System.out.println("Dans la maison : "+maisonBdd.getNom()+" il y a "+maisonBdd.getResidents().size()+" eleves");
+		System.out.println("Voici les residents : ");
+		for(Eleve e : maisonBdd.getResidents()) 
+		{
+			System.out.println(e);
+		}
+		
+		
+	
 		Singleton.getInstance().getEmf().close();
 
 	}

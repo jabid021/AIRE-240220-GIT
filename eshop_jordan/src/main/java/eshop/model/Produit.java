@@ -81,6 +81,17 @@ public class Produit {
 		this.fournisseur = fournisseur;
 	}
 
+	
+
+	public List<Achat> getVentes() {
+		return ventes;
+	}
+
+
+	public void setVentes(List<Achat> ventes) {
+		this.ventes = ventes;
+	}
+
 
 	@Override
 	public String toString() {

@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+import eshop.context.Singleton;
 import eshop.model.Achat;
 import eshop.model.Adresse;
 import eshop.model.Client;
@@ -20,6 +21,7 @@ public class Test {
 		Adresse  adresse2 = new Adresse("1","rue de chez moi","00001","ma ville");
 		
 		Client client1 = new Client("Abid","Jordan",adresse2,30,LocalDate.parse("1993-05-01"));
+		Client client2 = new Client("Doe","John",adresse2,30,LocalDate.parse("1993-05-01"));
 		Fournisseur fournisseur1 = new Fournisseur("Abid","Charly",adresse1,"AJC Ingenierie");
 		
 		Produit produit1 = new Produit("Formation SQL",1200,fournisseur1);
@@ -30,23 +32,27 @@ public class Test {
 		Achat achat2 = new Achat(client1,produit1,2);
 		
 		
-		client1.getAchats().add(achat1);
-		client1.getAchats().add(achat2);
+		//client1.getAchats().add(achat1);
+		//client1.getAchats().add(achat2);
 		
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("contextJPA");
+		/*EntityManagerFactory emf = Singleton.getInstance().getEmf();
 		EntityManager em = emf.createEntityManager();
 		
-		/*em.getTransaction().begin();
+		em.getTransaction().begin();
 			em.persist(client1);
+			em.persist(client2);
 			em.persist(fournisseur1);
 			em.persist(produit1);
 			em.persist(produit2);
 			em.persist(achat1);
 			em.persist(achat2);
-		em.getTransaction().commit();*/
+		em.getTransaction().commit();
 		
 		em.close();
-		emf.close();
+		
+		
+		System.out.println(Singleton.getInstance().getDaoProduit().findById(1));
+		emf.close();*/
 		
 	}
 
