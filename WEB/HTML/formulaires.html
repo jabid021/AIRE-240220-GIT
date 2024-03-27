@@ -20,19 +20,21 @@ Choix à cocher => case (checkbox 0-*) / rond (radio , 1 seul choix)
 </fieldset>
 
 
-<form>
+<form action="pageCible.html" method="POST">
 
+
+<input name="id" type="hidden" value="12" >
   <fieldset>
     <legend>Bloc 1</legend>
     <table>
       <tr>
-        <td><label for="input-login">Login *</label> </td><td><input   id="input-login"required value="med1" placeholder="Saisir votre login" type="text"></td>
+        <td><label for="input-login">Login *</label> </td><td><input minlength="3" maxlength="10" name="login" id="input-login" required value="med1" placeholder="Saisir votre login" type="text"></td>
       </tr>
       <tr>
-        <td>Password  * </td><td><input placeholder="Saisir votre password" type="password"></td>
+        <td>Password  * </td><td><input name="password" placeholder="Saisir votre password" type="password"></td>
       </tr>
       <tr>
-        <td>Mail </td><td> <input placeholder="Saisir votre email" type="email"></td>
+        <td>Mail </td><td> <input  placeholder="Saisir votre email" type="email"></td>
       </tr>
 
       <tr>
@@ -43,8 +45,14 @@ Choix à cocher => case (checkbox 0-*) / rond (radio , 1 seul choix)
         <td>Naissance  </td><td><input type="date"></td>
       </tr>
       <tr>
-        <td>Dans quelle classe ? </td><td><input placeholder="Quelle promo ?" type="number"></td>
+        <td>Dans quelle classe ? </td><td><input min="0" max="7" placeholder="Quelle promo ?" type="number"></td>
       </tr>
+
+
+      <tr>
+        <td>Votre salaire ? </td><td><input placeholder="saisir salaire ?" min=0 step="0.01" type="number"></td>
+      </tr>
+
 
     </table>
   </fieldset>
@@ -118,6 +126,11 @@ Choix à cocher => case (checkbox 0-*) / rond (radio , 1 seul choix)
         </td>
       </tr>
 
+      <tr>
+        <td>CV</td><td>
+          <input type="file">
+        </td>
+      </tr>
 
 
       <tr>
@@ -130,7 +143,22 @@ Choix à cocher => case (checkbox 0-*) / rond (radio , 1 seul choix)
 
       <tr>
         <td>Commentaire</td><td>
-          <textarea required maxlength="5" minlength="3" placeholder="Saisir votre commentaire" rows="5" cols="80">Ancien message</textarea>
+          <textarea autofocus required maxlength="5" minlength="3" placeholder="Saisir votre commentaire" rows="5" cols="80">Ancien message</textarea>
+        </td>
+      </tr>
+
+      <tr>
+        <td>Votre notre sur 10</td>
+        <td>
+          <input name="note" min="0" max="10" type="range" id="note">
+          <input type="text" value="5" id="valNote">
+        </td>
+      </tr>
+
+      <tr>
+        <td>Couleur de fond</td>
+        <td>
+          <input type="color">
         </td>
       </tr>
 
@@ -141,3 +169,13 @@ Choix à cocher => case (checkbox 0-*) / rond (radio , 1 seul choix)
 
   </fieldset>
 </form>
+
+
+
+
+<script>
+  note.onchange = function()
+  {
+    valNote.value=note.value;
+  }
+</script>
