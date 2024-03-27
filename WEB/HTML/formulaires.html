@@ -12,83 +12,132 @@ Choix à cocher => case (checkbox 0-*) / rond (radio , 1 seul choix)
 
 -->
 <h1>Inscription d'une personne</h1>
+
+<fieldset>
+  <legend>Ceci est un parag !</legend>
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+</fieldset>
+
+
 <form>
-  <table >
-    <tr>
-      <td>Login * </td><td><input required value="med1" placeholder="Saisir votre login" type="text"></td>
-    </tr>
-    <tr>
-      <td>Password  * </td><td><input placeholder="Saisir votre password" type="password"></td>
-    </tr>
-    <tr>
-      <td>Mail </td><td> <input placeholder="Saisir votre email" type="email"></td>
-    </tr>
 
-    <tr>
-      <td>Votre site </td><td> <input placeholder="Saisir votre site" type="url"></td>
-    </tr>
+  <fieldset>
+    <legend>Bloc 1</legend>
+    <table>
+      <tr>
+        <td><label for="input-login">Login *</label> </td><td><input   id="input-login"required value="med1" placeholder="Saisir votre login" type="text"></td>
+      </tr>
+      <tr>
+        <td>Password  * </td><td><input placeholder="Saisir votre password" type="password"></td>
+      </tr>
+      <tr>
+        <td>Mail </td><td> <input placeholder="Saisir votre email" type="email"></td>
+      </tr>
 
-    <tr>
-      <td>Naissance  </td><td><input type="date"></td>
-    </tr>
-    <tr>
-      <td>Dans quelle classe ? </td><td><input placeholder="Quelle promo ?" type="number"></td>
-    </tr>
-    <tr>
-      <td>Heure du rdv </td><td><input type="time"></td>
-    </tr>
+      <tr>
+        <td>Votre site </td><td> <input placeholder="Saisir votre site" type="url"></td>
+      </tr>
 
-    <tr>
-      <td>Semain du rdv </td><td><input type="week"></td>
-    </tr>
-    <tr>
-      <td>Choisir votre os </td><td>
-        <select>
-          <option>Windows</option>
-          <option>Linux</option>
-          <option>MacOs</option>
-        </select>
-      </td>
-    </tr>
+      <tr>
+        <td>Naissance  </td><td><input type="date"></td>
+      </tr>
+      <tr>
+        <td>Dans quelle classe ? </td><td><input placeholder="Quelle promo ?" type="number"></td>
+      </tr>
 
-    <tr>
-      <td>Choisir votre os </td><td>
-        <select>
-          <optgroup label="MSDOS">
+    </table>
+  </fieldset>
+  <fieldset>
+    <legend>Bloc 2</legend>
+    <table>
+      <tr>
+        <td>Heure du rdv </td><td><input type="time"></td>
+      </tr>
+
+      <tr>
+        <td>Semain du rdv </td><td><input type="week"></td>
+      </tr>
+      <tr>
+        <td>Choisir votre os </td><td>
+          <select>
             <option>Windows</option>
-          </optgroup>
-          <optgroup label="UNIX">
             <option>Linux</option>
             <option>MacOs</option>
-          </optgroup>
-        </select>
-      </td>
-    </tr>
+          </select>
+        </td>
+      </tr>
 
-    <tr>
-      <td>Choisir vos os </td><td>
-        <select  multiple>
-          <optgroup label="MSDOS">
-            <option>Windows</option>
-          </optgroup>
-          <optgroup label="UNIX">
-            <option disabled>Linux</option>
-            <option>MacOs</option>
-          </optgroup>
-        </select>
-      </td>
-    </tr>
+      <tr>
+        <td>Choisir votre os </td><td>
+          <select>
+            <optgroup label="MSDOS">
+              <option>Windows</option>
+            </optgroup>
+            <optgroup label="UNIX">
+              <option selected >Linux</option>
+              <option>MacOs</option>
+            </optgroup>
+          </select>
+        </td>
+      </tr>
 
-    <tr>
-      <td>Votre / vos OS : </td><td>
-        Windows <input type="checkbox">
-        Linux <input type="checkbox">
-        MacOS <input type="checkbox">
-      </td>
-    </tr>
+      <tr>
+        <td>Choisir vos os </td><td>
+          <select  multiple>
+            <optgroup label="MSDOS">
+              <option>Windows</option>
+            </optgroup>
+            <optgroup label="UNIX">
+              <option disabled>Linux</option>
+              <option>MacOs</option>
+            </optgroup>
+          </select>
+        </td>
+      </tr>
+    </table>
+  </fieldset>
+  <fieldset>
+    <legend>Bloc 3</legend>
+    <table>
 
-    <tr><td align="right" colspan="2"><input style="width:100%" type="button" value="C'est un button (il ne fait rien)"></td></tr>
-    <tr><td align="right" colspan="2"><input style="width:100%" type="submit" value="Modifier"></td></tr>
-    <tr><td align="right" colspan="2"><input style="width:100%" type="reset" value="Refresh Formulaire"></td></tr>
-  </table>
+      <tr>
+        <td>Votre / vos OS : </td><td>
+          <label for="windows-os">Windows</label> <input checked id="windows-os" type="checkbox">
+          <label for="linux-os">Linux</label> <input id="linux-os" type="checkbox">
+          <label for="mac-os">MacOS</label> <input  id="mac-os" type="checkbox">
+        </td>
+      </tr>
+
+
+      <tr>
+        <td>Civilite</td><td>
+          <label for="civ-homme">Homme</label> <input id="civ-homme" type="radio" name="civilite">
+          <label for="civ-femme">Femme</label> <input id="civ-femme" type="radio" name="civilite">
+          <label for="civ-nb">NB</label> <input checked id="civ-nb" type="radio" name="civilite">
+        </td>
+      </tr>
+
+
+
+      <tr>
+        <td>Civilite</td><td>
+          <label for="civ-homme">Homme</label> <input id="civ-homme" type="radio" name="civilite">
+          <label for="civ-femme">Femme</label> <input id="civ-femme" type="radio" name="civilite">
+          <label for="civ-nb">NB</label> <input checked id="civ-nb" type="radio" name="civilite">
+        </td>
+      </tr>
+
+      <tr>
+        <td>Commentaire</td><td>
+          <textarea required maxlength="5" minlength="3" placeholder="Saisir votre commentaire" rows="5" cols="80">Ancien message</textarea>
+        </td>
+      </tr>
+
+      <tr><td align="right" colspan="2"><input style="width:100%" type="button" value="C'est un button (il ne fait rien)"></td></tr>
+      <tr><td align="right" colspan="2"><input style="width:100%" type="submit" value="Modifier"></td></tr>
+      <tr><td align="right" colspan="2"><input style="width:100%" type="reset" value="Refresh Formulaire"></td></tr>
+    </table>
+
+  </fieldset>
 </form>
