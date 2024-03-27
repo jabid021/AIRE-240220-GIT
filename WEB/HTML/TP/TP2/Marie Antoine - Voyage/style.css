@@ -1,0 +1,56 @@
+body {
+    font-family: sans-serif;
+    color: black;
+    margin: 0;
+}
+
+tr {
+    font-size: 30px;
+    text-shadow: 1px 2px 0px rgba(0,0,0,0.2);
+    padding: 100px;
+}
+
+#section1 , header img{
+    object-fit: fill;
+    max-height : auto;
+    width : auto;
+    background-position:top center;
+}
+
+#section2 table{
+    border: 3px rgb(224,184,150) solid;
+    background: rgb(9,11,11);
+    background: radial-gradient(circle, rgba(9,11,11,0.9886039886039886) 1%, rgba(223,146,71,1) 28%, rgba(147,123,83,1) 99%);
+
+    /*background: rgb(224,184,150);
+    background: radial-gradient(circle, rgba(224,184,150,1) 26%, rgba(218,187,159,1) 52%, rgba(2,0,36,1) 92%);
+*/
+    /*background: rgb(9,11,11);
+    background: linear-gradient(90deg, rgba(9,11,11,0.9886039886039886) 0%, rgba(218,199,159,1) 81%, rgba(147,123,83,1) 99%);
+*/
+    /*background: rgb(224,184,150);
+    background: radial-gradient(circle, rgba(224,184,150,1) 12%, rgba(162,137,114,1) 55%, rgba(218,187,159,1) 74%);
+*/
+}
+
+#section3 table{
+
+    background-color: #FBAB7E;
+    background-image: linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%);
+
+}
+
+img {
+    /*border: 50px darkgreen solid;*/
+    border-radius: 10px 30px 0px 90px;
+}
+
+h1 {
+    color: white;
+    text-align: center;
+}
+
+footer{
+  display: flex;
+  justify-content: center;
+}
