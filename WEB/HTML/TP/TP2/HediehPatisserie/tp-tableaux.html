@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      /* Arrière-plan*/
+      body {
+          background-color: #F4EFE7;
+      }
+
+      .container {
+        display: flex;
+        justify-content: center; /* Centre horizontalement les éléments */
+        align-items: center; /* Centre verticalement les éléments */
+      }
+
+      /* le logo */
+      .container .logo {
+          margin-right: 40px; /* Ajoute un espace entre le logo et le titre */
+      }
+
+      .container img {
+        width: 150px; /* Largeur de l'image */
+        height: auto; /* Hauteur automatique pour conserver les proportions */
+      }
+
+      /* Titre centré à 2 cm du haut de la page */
+      .container h1 {
+          text-align: center;
+          font-size: 60px;
+          font-family: Arial, sans-serif;
+          color: #D4AF37;
+      }
+
+      /* Tableau sans bordure apparente */
+      table {
+          //border-color:#D4AF37;
+          font-size: 20px;
+          font-family: Arial, sans-serif;
+          border-collapse: collapse;
+      }
+
+      /* Ajoutez un espacement aux cellules */
+      table th, table td {
+          padding: 25px; 
+      }
+
+      /* Pied de page */
+      .footer {
+          text-align: center;
+          font-size: 20px;
+          color: #D4AF37;
+          padding: 20px;
+      }
+
+      .footer a {
+          color: #D4AF37;
+          text-decoration: none;
+      }
+
+      /* Style pour les photos dans la colonne "Photos" */
+      td img {
+          width: 100%; /* Photos de même taille */
+          height: auto;
+      }
+    </style>
+
+    <title>Meilleurs Pâtisserie</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="logo">
+          <img src="logo.jpg" alt="Logo de la patisserie">
+      </div>
+      <h1>Vos Gourmandises</h1>
+    </div>
+<br>
+
+<table width = "80%" align="center" border>
+
+    <tr align="center">
+      <th>Nom</th>
+      <th>Photos</th>
+      <th>Nombre de part</th>
+      <th>Prix</th>
+      <th>Description</th>
+    </tr>
+
+    <tr align="center">
+      <td>Trois chocolat</td>
+      <td><img src="troisChocolats.jpg" alt="Gâteau 3 chocolats"></td>
+      <td>6/8</td>
+      <td>23€</td>
+      <td>Il se compose de biscuit joconde, trio de mousses au chocolat blanc, lait et noir.</td>
+    </tr>
+
+    <tr align="center">
+      <td>Fraisier</td>
+      <td><img src="fraisier.jpg" alt="Fraisier"></td>
+      <td>6/8</td>
+      <td>27€</td>
+      <td> Il est composé traditionnellement d'une génoise, une crème mousseline, des fraises et une fine abaisse de pâte d'amande pour la finition.</td>
+    </tr>
+
+    <tr align="center">
+      <td >Macaron</td>
+      <td><img src="macarons.jpg" alt="Macarons"></td>
+      <td>12 pièces</td>
+      <td>20€</td>
+      <td>Une coque moelleuse, des garnitures élaborés avec des matières premières rigoureusement sélectionnées et un doux parfum d'amande.</td>
+    </tr>
+
+    <tr align="center">
+      <td>Tarte citron meringuée</td>
+      <td><img src="tarteCitron.jpg" alt="Tarte citron meringuée"></td>
+      <td>6/8</td>
+      <td>17€</td>
+      <td>Pâte sucrée garnie d'un confit de citron, d'une crème au citron, surmontée d'une onctueuse meringue italienne et de zestes de citron jaune et vert.</td>
+    </tr>
+</table>
+
+<footer class="footer">
+    Votre Pâtisserie | 12 rue des Tulipes,
+    <a href="https://www.google.fr/maps/place/77420+Champs-sur-Marne/@48.8485341,2.5765882,13.63z/data=!4m6!3m5!1s0x47e60fd503aa9f6b:0x40b82c3688c60d0!8m2!3d48.852775!4d2.602651!16zL20vMDluMHpm?entry=ttu" target="_blank">Champs-sur-Marne</a>
+</footer>
+</body>
+</html>
