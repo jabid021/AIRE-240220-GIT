@@ -1,0 +1,94 @@
+<!--
+
+champ de texte (input) => text, number, password, file*, caché*, email,url, date, time, week, tel (affiche uniquement les chiffres et + sur un tel (au lieu du clavier azerty))
+Button => submit / reset  / button
+
+
+Liste deroulante => select
+
+Curseur => range (C'est NUL)
+Zone de texte => textearea
+Choix à cocher => case (checkbox 0-*) / rond (radio , 1 seul choix)
+
+-->
+<h1>Inscription d'une personne</h1>
+<form>
+  <table >
+    <tr>
+      <td>Login * </td><td><input required value="med1" placeholder="Saisir votre login" type="text"></td>
+    </tr>
+    <tr>
+      <td>Password  * </td><td><input placeholder="Saisir votre password" type="password"></td>
+    </tr>
+    <tr>
+      <td>Mail </td><td> <input placeholder="Saisir votre email" type="email"></td>
+    </tr>
+
+    <tr>
+      <td>Votre site </td><td> <input placeholder="Saisir votre site" type="url"></td>
+    </tr>
+
+    <tr>
+      <td>Naissance  </td><td><input type="date"></td>
+    </tr>
+    <tr>
+      <td>Dans quelle classe ? </td><td><input placeholder="Quelle promo ?" type="number"></td>
+    </tr>
+    <tr>
+      <td>Heure du rdv </td><td><input type="time"></td>
+    </tr>
+
+    <tr>
+      <td>Semain du rdv </td><td><input type="week"></td>
+    </tr>
+    <tr>
+      <td>Choisir votre os </td><td>
+        <select>
+          <option>Windows</option>
+          <option>Linux</option>
+          <option>MacOs</option>
+        </select>
+      </td>
+    </tr>
+
+    <tr>
+      <td>Choisir votre os </td><td>
+        <select>
+          <optgroup label="MSDOS">
+            <option>Windows</option>
+          </optgroup>
+          <optgroup label="UNIX">
+            <option>Linux</option>
+            <option>MacOs</option>
+          </optgroup>
+        </select>
+      </td>
+    </tr>
+
+    <tr>
+      <td>Choisir vos os </td><td>
+        <select  multiple>
+          <optgroup label="MSDOS">
+            <option>Windows</option>
+          </optgroup>
+          <optgroup label="UNIX">
+            <option disabled>Linux</option>
+            <option>MacOs</option>
+          </optgroup>
+        </select>
+      </td>
+    </tr>
+
+    <tr>
+      <td>Votre / vos OS : </td><td>
+        Windows <input type="checkbox">
+        Linux <input type="checkbox">
+        MacOS <input type="checkbox">
+      </td>
+    </tr>
+
+    <tr><td align="right" colspan="2"><input style="width:100%" type="button" value="C'est un button (il ne fait rien)"></td></tr>
+    <tr><td align="right" colspan="2"><input style="width:100%" type="submit" value="Modifier"></td></tr>
+    <tr><td align="right" colspan="2"><input style="width:100%" type="reset" value="Refresh Formulaire"></td></tr>
+  </table>
+</form>
