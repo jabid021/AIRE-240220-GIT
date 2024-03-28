@@ -70,7 +70,12 @@
   table td img {
     width: 100%; /* Photos de même taille */
     height: auto;
-    transition: transform 0.3s ease; /* Ajoute une transition fluide lors du survol */
+
+  }
+
+  table td img:hover{
+    transform: scale(1.2); /* Agrandit l'image de 1.2 fois lors du survol */
+    transition: transform 0.4s ease; /* Ajoute une transition fluide lors du survol */
   }
 
   /* Pied de page */
