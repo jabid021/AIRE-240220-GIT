@@ -10,6 +10,10 @@ Curseur => range (C'est NUL)
 Zone de texte => textearea
 Choix à cocher => case (checkbox 0-*) / rond (radio , 1 seul choix)
 
+
+
+
+
 -->
 <h1>Inscription d'une personne</h1>
 
@@ -21,7 +25,10 @@ Choix à cocher => case (checkbox 0-*) / rond (radio , 1 seul choix)
 
 
 <form action="pageCible.html" method="POST">
-
+  <!--
+  méthode GET : paramètres passent dans l'url (www.blabla.fr/contact.html?argum1=blabla&login=blabla&etc)
+  méthode POST : les paramètres n'apparaissent pas dans l'url (transmission via le serveur)
+  -->
 
 <input name="id" type="hidden" value="12" >
   <fieldset>
@@ -31,7 +38,7 @@ Choix à cocher => case (checkbox 0-*) / rond (radio , 1 seul choix)
         <td><label for="input-login">Login *</label> </td><td><input minlength="3" maxlength="10" name="login" id="input-login" required value="med1" placeholder="Saisir votre login" type="text"></td>
       </tr>
       <tr>
-        <td>Password  * </td><td><input name="password" placeholder="Saisir votre password" type="password"></td>
+        <td>Password  * </td><td><input name="password" pattern="[A-z0-9!#@$]{4,8}" placeholder="Saisir votre password" type="password"></td>
       </tr>
       <tr>
         <td>Mail </td><td> <input  placeholder="Saisir votre email" type="email"></td>
@@ -42,10 +49,10 @@ Choix à cocher => case (checkbox 0-*) / rond (radio , 1 seul choix)
       </tr>
 
       <tr>
-        <td>Naissance  </td><td><input type="date"></td>
+        <td>Naissance  </td><td><input type="date" min="2024-03-25" value="2024-03-25" step="7"></td>
       </tr>
       <tr>
-        <td>Dans quelle classe ? </td><td><input min="0" max="7" placeholder="Quelle promo ?" type="number"></td>
+        <td>Dans quelle classe ? </td><td><input min="0" max="7" step="2" placeholder="Quelle promo ?" type="number"></td>
       </tr>
 
 
@@ -60,11 +67,11 @@ Choix à cocher => case (checkbox 0-*) / rond (radio , 1 seul choix)
     <legend>Bloc 2</legend>
     <table>
       <tr>
-        <td>Heure du rdv </td><td><input type="time"></td>
+        <td>Heure du rdv </td><td><input type="time" min="09:30" max="17:30" step="900"></td>
       </tr>
 
       <tr>
-        <td>Semain du rdv </td><td><input type="week"></td>
+        <td>Semain du rdv </td><td><input type="week" step="2"></td>
       </tr>
       <tr>
         <td>Choisir votre os </td><td>
