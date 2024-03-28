@@ -43,7 +43,7 @@
 
   /* Styles pour le carrousel */
   .carousel {
-    max-width: 600px; /* Largeur maximale du carrousel */
+    max-width: 650px; /* Largeur maximale du carrousel */
     margin: 20px auto;
   }
 
@@ -51,6 +51,33 @@
     max-width: 100%;
     height: auto;
   }
+
+  /* Style pour video et emplacement caroussel*/
+  .container {
+    display: flex;
+    justify-content: space-between; 
+    padding: 20px;
+} 
+
+.video {
+    width: 48%;
+    flex-basis: 48%; /* Pour que les vidéos prennent environ la moitié de la largeur */
+    margin: 40px;
+    text-align: center;  
+    
+}
+
+.video h2 {
+    color: #D4AF37;
+    margin-bottom: 30px;
+}
+
+video {
+    width: 55%;
+    height: auto;
+  
+}
+
 
   /* Styles pour le tableau */
   table {
@@ -90,6 +117,7 @@
     color: #D4AF37;
     text-decoration: none;
   }
+
   </style>
 
 
@@ -98,7 +126,7 @@
   <!-- En-tête -->
   <header>
     <div class="logo">
-      <img src="logo.jpg" alt="Logo de la patisserie">
+      <img src="./assets/images/logo.jpg" alt="Logo de la patisserie">
     </div>
     <h1>Vos Gourmandises</h1>
     <div class="menu">
@@ -108,15 +136,27 @@
     </div>
   </header>
 
+  <div class="container"> 
+  
+    <!-- video -->
+    <div class="video">
+      <h2>Pour Paques venez me déguster !</h2>
+      <video controls>
+          <source src="./assets/videos/oeuf.mp4" type="video/mp4">         
+      </video>
+  </div>
+
+
   <!-- Carrousel -->
   <div class="carousel">
-    <img src="troisChocolats.jpg" alt="Gâteau 3 chocolats">
-    <img src="fraisier.jpg" alt="Fraisier">
-    <img src="macarons.jpg" alt="Macarons">
-    <img src="tarteCitron.jpg" alt="Tarte citron meringuée">
+    <img src="./assets/images/troisChocolats.jpg" alt="Gâteau 3 chocolats">
+    <img src="./assets/images/fraisier.jpg" alt="Fraisier">
+    <img src="./assets/images/macarons.jpg" alt="Macarons">
+    <img src="./assets/images/tarteCitron.jpg" alt="Tarte citron meringuée">
   </div>
+</div>
   <br>
-
+  
   <!-- Tableau des produits -->
   <table>
     <tr>
@@ -130,7 +170,7 @@
     <tr>
       <td>Trois chocolat</td>
       <td>
-          <img src="troisChocolats.jpg" alt="Gâteau 3 chocolats">
+          <img src="./assets/images/troisChocolats.jpg" alt="Gâteau 3 chocolats">
       </td>
       <td>6/8</td>
       <td>23€</td>
@@ -140,7 +180,7 @@
     <tr>
       <td>Fraisier</td>
       <td>
-          <img src="fraisier.jpg" alt="Fraisier">
+          <img src="./assets/images/fraisier.jpg" alt="Fraisier">
       </td>
       <td>6/8</td>
       <td>27€</td>
@@ -149,7 +189,7 @@
 
     <tr>
       <td >Macaron</td>
-      <td><img src="macarons.jpg" alt="Macarons"></td>
+      <td><img src="./assets/images/macarons.jpg" alt="Macarons"></td>
       <td>12 pièces</td>
       <td>20€</td>
       <td>Une coque moelleuse, des garnitures élaborés avec des matières premières rigoureusement sélectionnées et un doux parfum d'amande.</td>
@@ -157,7 +197,7 @@
 
     <tr>
       <td>Tarte citron meringuée</td>
-      <td><img src="tarteCitron.jpg" alt="Tarte citron meringuée"></td>
+      <td><img src="./assets/images/tarteCitron.jpg" alt="Tarte citron meringuée"></td>
       <td>6/8</td>
       <td>17€</td>
       <td>Pâte sucrée garnie d'un confit de citron, d'une crème au citron, surmontée d'une onctueuse meringue italienne et de zestes de citron jaune et vert.</td>
@@ -167,7 +207,7 @@
   <!-- Pied de page -->
   <footer>
     Votre Pâtisserie | 12 rue des Tulipes,
-    <a href="https://www.google.fr/maps/place/77420+Champs-sur-Marne/@48.8485341,2.5765882,13.63z/data=!4m6!3m5!1s0x47e60fd503aa9f6b:0x40b82c3688c60d0!8m2!3d48.852775!4d2.602651!16zL20vMDluMHpm?entry=ttu" target="_blank">Champs-sur-Marne</a>
+    <a href="https://www.google.fr/maps/place/77420+Champs-sur-Marne/@48.8485341,2.5765882,13.63z/data=!4m6!3m5!1s0x47e60fd503aa9f6b:0x40b82c3688c60d0!8m2!3d48.852775!4d2.602651!16zL20vMDluMHpm?entry=ttu" target="_blank">Champs-sur-Marne</a>    
   </footer>
 
   <!-- Scripts pour le carrousel -->
@@ -181,7 +221,7 @@
       arrows: false,
       dots: true
     });
-  });
+  }); 
   </script>
 
 </body>
