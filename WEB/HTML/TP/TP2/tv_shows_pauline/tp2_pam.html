@@ -1,19 +1,27 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" data-bs-theme="dark">
 <head>
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="utf-8" />
+    <title>TV Shows</title>
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📽️</text></svg>">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bungee+Inline&family=Imbue:opsz,wght@10..100,100..900&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="text-center bs-info-rgb">
+<h1 class="bungee-inline-regular">Top 5 TV Shows</h1>
+<h5 class="bungee-inline-regular">100% Fair</h2>
+<h5 class="bungee-inline-regular">100% Accurate</h2>
 
-<h1 align="center">Top 5 TV Shows</h1>
-<br>
-<br>
-<hr/>
-<h2 align="center">100% Fair</h2>
-<h2 align="center">100% Accurate</h2>
-<br>
+<script>
+$(function() {
+  $('[data-toggle="tooltip"]').tooltip();});
+</script>
 
-<table align="center" border rules="rows">
+<table align="center" class="table table-hover w-100 align-middle">
     <thead>
         <th>Poster</th>
         <th>Name</th>
@@ -22,109 +30,114 @@
         <th>Year</th>
         <th>Country</th>
         <th>Trailer</th>
-        <!-- <th>Synopsis</th> -->
     </thead>
-
     <tbody>
         <tr>
-            <td><img height="250" src="assets/forallmankind.jpg" alt="Poster For All Mankind"></td>
-            <td><b>For All Mankind</b></td>
+            <td><img height="200" src="assets/forallmankind.jpg" alt="Poster For All Mankind"></td>
+            <td><p><b>For All Mankind</b></p>
+                <button type="button" data-bs-custom-class="custom-tooltip" class="btn btn-secondary" data-toggle="tooltip" data-placement="bottom" title="In an alternative version of 1969, the Soviet Union beats the United States to the Moon, and the space race continues on for decades with still grander challenges and goals.">
+                    Synopsis
+                </button>
+            </td>
             <td>
-                <ul>
-                    <li>Drama</li>
-                    <li>Sci-Fi</li>
+                <ul class="list-group">
+                    <li class="list-group-item list-group-item-dark">Drama</li>
+                    <li class="list-group-item list-group-item-dark">Sci-Fi</li>
                 </ul>
             </td>
-            <td>2019-</td>
             <td><a href="https://www.imdb.com/title/tt7772588/">8.1</a></td>
+            <td>2019-</td>
             <td>USA</td>
-            <td><iframe height="200" src="https://www.youtube.com/embed/HZS9M52Bd_w?si=bI6hQ9Mk2txP67dG" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></td>
+            <td><iframe height="180" src="https://www.youtube.com/embed/HZS9M52Bd_w?si=bI6hQ9Mk2txP67dG" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></td>
         </tr>
+    
         <tr>
-            <td colspan="7"><p class="showsyn">Synopsis</p><p>In an alternative version of 1969, the Soviet Union beats the United States to the Moon, and the space race continues on for decades with still grander challenges and goals.</p></td>
-        </tr>
-        <tr>
-            <td><img height="250" src="assets/theamericans.jpg" alt="Poster The Americans"></td>
-            <td><b>The Americans</b></td>
+            <td><img height="200" src="assets/theamericans.jpg" alt="Poster The Americans"></td>
+            <td><p><b>The Americans</b></p>
+                <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="bottom" title="At the height of the Cold War, two Russian agents pose as the average American couple, complete with family.">
+                    Synopsis
+                </button>
+            </td>
             <td>
-                <ul>
-                    <li>Crime</li>
-                    <li>Drama</li>
-                    <li>Mystery</li>
-                    <li>Thriller</li>
+                <ul class="list-group">
+                    <li class="list-group-item list-group-item-dark">Crime</li>
+                    <li class="list-group-item list-group-item-dark">Drama</li>
+                    <li class="list-group-item list-group-item-dark">Mystery</li>
+                    <li class="list-group-item list-group-item-dark">Thriller</li>
                 </ul>
             </td>
             <td><a href="https://www.imdb.com/title/tt2149175/">8.4</a></td>
             <td>2013-2018</td>
             <td>USA</td>
-            <td><iframe height="200" src="https://www.youtube.com/embed/kOu8jazlA9k?si=PZKT1WLj2fOAE_FO" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></td>
+            <td><iframe height="180" src="https://www.youtube.com/embed/kOu8jazlA9k?si=PZKT1WLj2fOAE_FO" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></td>
         </tr>
+    
         <tr>
-            <td colspan="7"><p class="showsyn">Synopsis</p><p>At the height of the Cold War, two Russian agents pose as the average American couple, complete with family.</p></td>
-        </tr>
-        <tr>
-            <td><img height="250" src="assets/marrymyhusband.jpg" alt="Poster Marry My Husband"></td>
-            <td><b>Marry My Husband</b></td>
+            <td><img height="200" src="assets/marrymyhusband.jpg" alt="Poster Marry My Husband"></td>
+            <td><p><b>Marry My Husband</b></p>
+                <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="bottom" title="A story about Ji-won who after being killed by her husband who had an affair with her best friend, goes back 10 years in the past and has a chance to change her fate.">
+                    Synopsis
+                </button>            
+            </td>
             <td>
-                <ul>
-                    <li>Comedy</li>
-                    <li>Drama</li>
-                    <li>Fantasy</li>
-                    <li>Romance</li>
+                <ul class="list-group">
+                    <li class="list-group-item list-group-item-dark">Comedy</li>
+                    <li class="list-group-item list-group-item-dark">Drama</li>
+                    <li class="list-group-item list-group-item-dark">Fantasy</li>
+                    <li class="list-group-item list-group-item-dark">Romance</li>
                 </ul>
             </td>
             <td><a href="https://www.imdb.com/title/tt26628595/">7.9</a></td>
             <td>2024</td>
             <td>South Korea</td>
-            <td><iframe height="200" src="https://www.youtube.com/embed/lfJGSxXf9Xg?si=0NpqMALpGMV2R6sv" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></td>
+            <td><iframe height="180" src="https://www.youtube.com/embed/lfJGSxXf9Xg?si=0NpqMALpGMV2R6sv" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></td>
         </tr>
+
         <tr>
-            <td colspan="7"><p class="showsyn">Synopsis</p><p>A story about Ji-won who after being killed by her husband who had an affair with her best friend, goes back 10 years in the past and has a chance to change her fate.</p></td>
-        </tr>
-        <tr>
-            <td><img height="250" src="assets/theitcrowd.jpg" alt="Poster The IT Crowd"></td>
-            <td><b>The IT Crowd</b></td>
+            <td><img height="200" src="assets/theitcrowd.jpg" alt="Poster The IT Crowd"></td>
+            <td><p><b>The IT Crowd</b></p>
+                <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="bottom" title="The comedic misadventures of Roy, Moss and their grifting supervisor Jen, a rag-tag team of IT support workers at a large corporation headed by a hotheaded yuppie.">
+                    Synopsis
+                </button>   
+            </td>
             <td>
-                <ul>
-                    <li>Comedy</li>
+                <ul class="list-group">
+                    <li class="list-group-item list-group-item-dark">Comedy</li>
                 </ul>
             </td>
             <td><a href="https://www.imdb.com/title/tt0487831/">8.5</a></td>
             <td>2006-2013</td>
             <td>United Kingdom</td>
-            <td><iframe height="200" src="https://www.youtube.com/embed/MwwTfkXk7U0?si=T7I2VTLZfQ-S9XsO" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></td>
+            <td><iframe height="180" src="https://www.youtube.com/embed/MwwTfkXk7U0?si=T7I2VTLZfQ-S9XsO" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></td>
         </tr>
+
         <tr>
-            <td colspan="7"><p class="showsyn">Synopsis</p><p>The comedic misadventures of Roy, Moss and their grifting supervisor Jen, a rag-tag team of IT support workers at a large corporation headed by a hotheaded yuppie.</p></td>
-        </tr>
-        <tr>
-            <td><img height="250" src="assets/attackontitan.jpg" alt="Poster Attack on Titan"></td>
-            <td><b>Attack on Titan</b></td>
+            <td><img height="200" src="assets/attackontitan.jpg" alt="Poster Attack on Titan"></td>
+            <td><p><b>Attack on Titan</b></p>
+                <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="bottom" title="After his hometown is destroyed and is traumatized, young Eren Jaeger vows to cleanse the earth of the giant humanoid Titans that have brought humanity to the brink of extinction.">
+                    Synopsis
+                </button>   
+            </td>
             <td>
-                <ul>
-                    <li>Animation</li>
-                    <li>Action</li>
-                    <li>Aventure</li>
-                    <li>Drama</li>
-                    <li>Fantasy</li>
-                    <li>Horror</li>
+                <ul class="list-group">
+                    <li class="list-group-item list-group-item-dark">Animation</li>
+                    <li class="list-group-item list-group-item-dark">Action</li>
+                    <li class="list-group-item list-group-item-dark">Aventure</li>
+                    <li class="list-group-item list-group-item-dark">Drama</li>
+                    <li class="list-group-item list-group-item-dark">Fantasy</li>
+                    <li class="list-group-item list-group-item-dark">Horror</li>
                 </ul>
             </td>
             <td><a href="https://www.imdb.com/title/tt2560140/">9.1</a></td>
             <td>2013-2023</td>
             <td>Japan</td>
-            <td><iframe height="200" src="https://www.youtube.com/embed/MGRm4IzK1SQ?si=ibjTo3u73JAgeuRp" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></td>
-        </tr>
-        <tr>
-            <td colspan="7"><p class="showsyn">Synopsis</p><p>After his hometown is destroyed and is traumatized, young Eren Jaeger vows to cleanse the earth of the giant humanoid Titans that have brought humanity to the brink of extinction.</p></td>
+            <td><iframe height="180" src="https://www.youtube.com/embed/MGRm4IzK1SQ?si=ibjTo3u73JAgeuRp" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></td>
         </tr>
     </tbody>
 </table>
-<br>
-<br>
-<hr/>
-<h2 align="center">Free Cat Tweet</h2>
-<br>
+
+<h2 class="bungee-inline-regular">Free Cat Tweet</h2>
+
 <blockquote align="center" class="twitter-tweet"><p lang="und" dir="ltr">:3 <a href="https://t.co/lKv3DXbfLW">pic.twitter.com/lKv3DXbfLW</a></p>&mdash; No Context Cats (@nocontextscats) <a href="https://twitter.com/nocontextscats/status/1772915211457999317?ref_src=twsrc%5Etfw">March 27, 2024</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
 
 </body>
