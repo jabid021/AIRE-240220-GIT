@@ -1,0 +1,73 @@
+/*visibility:hidden;*/
+
+#container
+{
+  display:flex;
+  flex-wrap:wrap;
+}
+
+
+/* CSS mobile*/
+@media(max-width:768px)
+{
+  #navPc
+  {
+    display:none;
+  }
+
+  #navTel
+  {
+  text-align:center;
+  }
+
+  #container
+  {
+    background-color:lightblue;
+  }
+
+
+  p
+  {
+    width:50%;
+  }
+
+
+}
+
+/*CSS Tablette */
+@media(min-width:768px) and (max-width:992px)
+{
+  #navTel
+  {
+    display:none;
+  }
+
+  #container
+  {
+    background-color:orange;
+  }
+  p
+  {
+    width:calc(100%/3);
+  }
+}
+
+/*CSS PC */
+@media(min-width:992px)
+{
+  #navTel
+  {
+    display:none;
+  }
+
+  #container
+  {
+    background-color:salmon;
+  }
+
+  p
+  {
+    width:25%;
+  }
+
+}

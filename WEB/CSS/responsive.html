@@ -1,129 +1,39 @@
+
+<link rel="stylesheet" href="responsive.css">
 <!--
-enfant direct =>x > y (toutes les balises y directement / au 1er niveau  dans une balise x )
-descendants =>  x y (toutes les balises y qui se trouvent dans une balise x)
-suivantes => x + y (la balise y suivant une balise x)
+
+Sur PC, on veut 4 paragraphes par ligne, afficher navPc, masquer navTel
+Sur tablette, on veut 3 paragraphes par ligne,afficher navPc, masquer navTel
+Sur tel on veut 2 paragraphes par ligne, afficher navTel, masquer navPc
+
 -->
 
 
+<nav id="navTel">
+<a href="">Lien1Tel</a>
+<a href="">Lien2Tel</a>
+<a href="">Lien3Tel</a>
+</nav>
 
 
 
+<nav id="navPc">
+<a href="">Lien1</a>
+<a href="">Lien2</a>
+<a href="">Lien3</a>
+</nav>
 
-<style>
-
-#demoPointeur{
-  background-color:grey;
-}
-
-#demoPointeur div
-{
-  font-size:25px;
-  color:red;
-
-}
-
-#demoPointeur > div
-{
-    border:solid red 2px;
-}
-
-#demoPointeur>div>div
-{
-text-align:center;
-}
-#demoPointeur>div>div>a
-{
-  font-weight:bold;
-}
-
-#demoPointeur + div
-{
-  background-color:yellow;
-}
-#demoPointeur + div + div
-{
-  background-color:orange;
-}
-
-
-#exemple p:nth-of-type(3)
-{
-  font-size:25px;
-}
-
-#exemple p:nth-of-type(3n)
-{
-  font-weight:bold;
-}
-
-/*#exemple p:nth-of-type(1)*/
-#exemple p:first-of-type
-{
-  color:blue;
-}
-
-
-#exemple p:last-of-type
-{
-  color:yellow;
-}
-
-
-
-#exemple p:nth-of-type(odd)
-{
-  border : solid black 1px;
-}
-
-#exemple p:nth-child(odd)
-{
-  background-color:salmon;
-}
-
-
-#demoPseudoClasses:first-line
-{
-  font-family:fantasy;
-}
-
-
-#demoPseudoClasses:first-letter
-{
-  text-transform:uppercase;
-  font-size:70px;
-}
-
-</style>
-
-<div> AVANT </div>
-
-<div id="demoPointeur">
-  <div>Enfant direct 1</div>
-  <div>Enfant direct 2</div>
-  <div>Enfant direct 3</div>
-  <div>
-    <div>+Enfant  4-A<a href="">lien</a></div>
-    <div>+Enfant  4-B</div>
-  </div>
-  <div>Enfant direct 5</div>
-</div>
-
-<div> APRES 1</div>
-<div> APRES 2</div>
-
-
-
-
-<br><br><hr>
-
-<div id="exemple">
-  <h1>Liste des paragraphes</h1>
+<div id="container">
   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-  <p id="demoPseudoClasses">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-  <h1>Suite des paragraphes</h1>
   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
