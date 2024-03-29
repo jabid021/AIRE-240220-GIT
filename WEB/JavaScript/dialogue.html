@@ -1,0 +1,37 @@
+<meta charset="utf-8">
+<!--
+JavaScript => JS
+
+EcmaScript => Algo
+DOM => Document Object Model => balise body et son content
+BOM => Browser object model => modifier le navigateur
+-->
+
+
+
+<script charset="utf-8">
+
+
+
+alert("Ceci est une alerte");
+
+var login = prompt("c'est un prompt");
+
+alert("Votre login est :"+login);
+
+/*avec les `` (magic quotes), plus besoin de concat text et variable, il faut juste encadrer les variables par ${x} */
+alert(`Votre login est ${login}`);
+
+if(confirm("Etes vous ok ?"))
+{
+  alert("C'est oui !");
+}
+else
+{
+  alert("C'est non !");
+}
+
+console.log("Ceci est un test " +login);
+
+
+</script>
