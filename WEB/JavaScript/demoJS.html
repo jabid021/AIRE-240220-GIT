@@ -1,0 +1,138 @@
+<script charset="utf-8">
+
+/*var nb = "12"; // var => static en java, disponible dans l'ensemble du script
+const pi = 3.14159; // const => final en java, impossible de modifier la value
+//let i => scope limite de la variable i, uniquement dans le bloc ou on declare i
+var age = 30;
+var phrase;
+//nb++;
+console.log(nb);
+
+console.log("Dans 1 an, votre age : "+(nb+1)); //Sans les (), nb + 1 => 121 (concat au lieu du calcul)
+console.log(`Dans 1 an, votre age : ${nb+1}`);
+
+//== pour verifier uniquement le contenu de la variable,  === pour verifier aussi son type
+//avec ===  "12" n'est pas egal à 12
+//avec ==  "12" est egal à 12
+
+if(nb===12)
+{
+  console.log("nb vaut 12");
+}
+else
+{
+  console.log("probleme...")
+}
+
+
+if(age > 18)
+{
+  console.log("majeur");
+}
+else if(age==18){}
+else
+{
+  console.log("mineur");
+}
+
+switch(nb)
+{
+  case 12 : console.log("case 12");break;
+  default : console.log("c'est pas 12");break;
+}
+
+
+
+console.log((age>=18)?"Majeur":"Mineur");
+
+for(let i=1;i<=10;i++)
+{
+  if(i%2==0)
+  {
+    console.log("note - "+i);
+  }
+
+}
+
+age = prompt("Saisir votre age");
+age=parseInt(age)+1;
+
+console.log("Dans un an, votre age est : "+age);
+
+nb=0;
+do
+{
+  console.log(`tour ${nb}`);
+  nb++;
+}while(nb<=10);
+
+
+console.log(Math.PI);
+
+
+phrase = demoFonction(12);
+console.log(phrase);
+
+
+function demoFonction(x)
+{
+  console.log(x);
+
+  return "ca marche";
+}*/
+
+
+//var notes = new Array(10);
+//var notes = [15,true,"Toto",9];
+var notes = [10,15,20,8];
+var classroom= ["Jordan","John","Toto"];
+
+
+//classroom[classroom.length] = "Jane";
+classroom.push("Jane"); // push ajoute à la fin du tableau
+//classroom.pop(); // Retire le dernier element du tableau
+//classroom.shift(); // Retire le 1er element du tableau
+classroom.unshift("Titi"); //Ajoute au debut du tableau
+
+
+classroom.sort();
+classroom.reverse();
+
+
+console.log(classroom);
+
+
+
+for(indice in classroom)
+{
+  console.log(indice + "- "+classroom[indice]);
+}
+
+for(personne of classroom)
+{
+  console.log(personne);
+}
+
+
+//Reste a voir => Object, Tri d'un tableau numerique
+
+
+
+
+
+
+/*
+notes[0]= 12;
+notes[40] = 10;
+console.log(notes.length);
+notes.length=2;
+*/
+
+
+
+
+
+
+console.log(notes);
+
+</script>;

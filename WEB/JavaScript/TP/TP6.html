@@ -1,0 +1,28 @@
+<!--
+
+
+Vous devez faire une page html avec une balise script pour réaliser les actions suivantes avec les boites de dialogues (alert/prompt/confirm/console.log) :
+1) Demander la confirmation pour un changement de mot de passe ? (Si non, passer au point 4)
+2) S'il dit oui, Saisir le nouveau mdp
+3) PUIS Afficher "Mot de passe changé (toto)"
+ 4) Afficher dans la console => "Mot de passe changé (toto)" ou "Mot de passe non changé" si changement de mdp refusé
+ -->
+
+<script charset="utf-8">
+
+var password;
+
+if(confirm("Changer le mot de passe ?"))
+{
+  password = prompt("Saisir votre nouveau password");
+  alert(`Mot de passe changé (${password})`);
+  console.log(`Mot de passe changé (${password})`);
+
+}
+else
+{
+  console.log("mot de passe non changé");
+}
+
+
+</script>
