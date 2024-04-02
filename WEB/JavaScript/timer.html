@@ -1,0 +1,67 @@
+<h1 id="message">Ce message s'autodetruira dans 5 secondes....</h1>
+
+
+<p id="sapin">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+
+<input type="button" id="disarm" value="Desamorcer">
+
+<script>
+
+
+disarm.onclick=desamorcer;
+var seconde=5;
+var couleur="red";
+//le timeout lancera la fonction exploser() dans 5seconde
+//Pour stop le traitement, il faut faire un clearTimeout
+var decompte = setTimeout(exploser,5000);
+
+//lance toutes les 1 seconde la fonction majText
+var monInterval = setInterval(majText,1000);
+
+setInterval(couleurSapin,500);
+
+
+function couleurSapin()
+{
+  if(couleur=="red")
+  {
+    couleur="green";
+
+  }else
+  {
+      couleur="red";
+  }
+
+  sapin.style.color=couleur;
+}
+
+
+
+
+function majText()
+{
+  seconde--;
+  message.innerHTML="Ce message s'autodetruira dans "+seconde+" secondes....";
+}
+
+function desamorcer()
+{
+    message.style.color="green";
+    clearTimeout(decompte);
+    clearInterval(monInterval);
+}
+
+
+function exploser()
+{
+  message.innerHTML="BOUM !";
+  message.style.color="red";
+  disarm.disabled=true;
+  clearInterval(monInterval);
+
+}
+
+
+
+</script>
