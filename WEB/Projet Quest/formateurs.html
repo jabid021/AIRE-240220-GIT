@@ -15,17 +15,18 @@ Saisie formulaire : email(email),password(password),nom (text),prenom(text), tar
 </head>
 <title>Formateurs</title>
 <body>
-    <table class="table-auto w-full align-middle text-left">
-        <thead class="odd:bg-green-100 even:bg-green-50 text-green-950 text-transform:uppercase font-semibold">
-            <td>Id</td>
-            <td>Email</td>
-            <td>Password</td>
-            <td>Nom</td>
-            <td>Prénom</td>
-            <td>Tarif Journalier</td>
-            <td>Actions</td>
+    <div class="container mx-auto px-2° py-10">
+    <table class="table-auto w-full align-middle text-left font-light border-collapse">
+        <thead class="even:bg-green-100 odd:bg-green-50 text-green-950 text-transform:uppercase font-semibold">
+            <td class="py-4">Id</td>
+            <td class="py-4">Email</td>
+            <td class="py-4">Password</td>
+            <td class="py-4">Nom</td>
+            <td class="py-4">Prénom</td>
+            <td class="py-4">Tarif Journalier</td>
+            <td class="py-4">Actions</td>
         </thead>
-        <tr class="odd:bg-green-100 even:bg-green-50 text-green-950">
+        <tr class="even:bg-green-100 odd:bg-green-50 text-green-950">
             <td>1</td>
             <td>jordanabid@gmail.com</td>
             <td>password</td>
@@ -33,11 +34,11 @@ Saisie formulaire : email(email),password(password),nom (text),prenom(text), tar
             <td>Jordan</td>
             <td>350.00€</td>
             <td>
-                <button class="rounded border-2 text-green-900 bg-green-300 border-emerald-950 size-auto">Modifier</button>
-                <button class="rounded border-2 text-green-900 bg-green-300	border-emerald-950 size-auto">Supprimer</button>
+                <button class="rounded shadow text-orange-900 bg-orange-200 hover:bg-orange-300 font-semibold py-4 px-4">Modifier</button>
+                <button class="rounded shadow text-red-900 bg-red-200 hover:bg-red-300 font-semibold py-4 px-4">Supprimer</button>
             </td>
         </tr>
-        <tr class="odd:bg-green-100 even:bg-green-50 text-green-950">
+        <tr class="even:bg-green-100 odd:bg-green-50 text-green-950">
             <td>2</td>
             <td>jardonibad@gmail.com</td>
             <td>drowssap</td>
@@ -45,10 +46,11 @@ Saisie formulaire : email(email),password(password),nom (text),prenom(text), tar
             <td>Jardon</td>
             <td>530.00€</td>
             <td>
-                <button class="rounded border-2 text-green-900 bg-green-300 border-emerald-950 size-auto">Modifier</button>
-                <button class="rounded border-2 text-green-900 bg-green-300	border-emerald-950 size-auto">Supprimer</button>
+                <button class="rounded shadow text-orange-900 bg-orange-200 hover:bg-orange-300 font-semibold py-4 px-4">Modifier</button>
+                <button class="rounded shadow text-red-900 bg-red-200 hover:bg-red-300 font-semibold py-4 px-4">Supprimer</button>
             </td>
         </tr>
     </table>
+    </div>
 </body>
 </html>
