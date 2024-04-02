@@ -84,8 +84,9 @@ function demoFonction(x)
 
 //var notes = new Array(10);
 //var notes = [15,true,"Toto",9];
-var notes = [10,15,20,8];
-var classroom= ["Jordan","John","Toto"];
+var notes = [10,15,20,8,2,12,7];
+var classroom= ["AZERTYUIP","Jordan","John","Toto","A"];
+
 
 
 //classroom[classroom.length] = "Jane";
@@ -94,11 +95,69 @@ classroom.push("Jane"); // push ajoute à la fin du tableau
 //classroom.shift(); // Retire le 1er element du tableau
 classroom.unshift("Titi"); //Ajoute au debut du tableau
 
+//classroom.sort(triNbLettre);
+//notes.sort(triCroissantNb);
 
-classroom.sort();
-classroom.reverse();
+
+//classroom.reverse();
 
 
+
+var personne = new Object();
+personne.nom = "Abid";
+personne.prenom="Jordan";
+personne.age = 30;
+
+console.log(personne);
+
+
+var personne2 = {
+  nom: "Abid",
+  prenom : "Jordan",
+  age: 30
+};
+
+var personne3= {
+  "nom": "Doe",
+  "prenom" : "John",
+  "age": 42,
+  "ordinateur":1
+};
+
+console.log(personne2);
+
+
+var choix = prompt("Quelle info chercher ?")
+console.log("votre prenom est : "+personne3.prenom);
+console.log("votre prenom est : "+personne3["prenom"]);
+
+console.log("votre resultat "+personne3[choix]);
+
+
+
+var zoom = [personne,personne2,personne3,{
+  "nom": "Doe",
+  "prenom" : "Jane",
+  "age": 42,
+  "ordinateur":2
+}];
+
+
+for(p of zoom)
+{
+  console.log(p.age);
+}
+
+function triCroissantNb(contentDroite,contentGauche)
+{
+  return contentDroite-contentGauche;
+}
+
+function triNbLettre(content1,content2)
+{
+  return content1.length-content2.length;
+}
+/*
 console.log(classroom);
 
 
@@ -112,7 +171,7 @@ for(personne of classroom)
 {
   console.log(personne);
 }
-
+*/
 
 //Reste a voir => Object, Tri d'un tableau numerique
 
@@ -133,6 +192,5 @@ notes.length=2;
 
 
 
-console.log(notes);
 
 </script>;
