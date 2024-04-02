@@ -7,49 +7,59 @@ ligne tableau :  1 | jordanabid@gmail.com | password | Abid | Jordan | 350.00€
 Saisie formulaire : email(email),password(password),nom (text),prenom(text), tarif (number)
 
  -->
- <html>
+<html>
 <head>
 <link href="./output.css" rel="stylesheet">
 
 <meta charset="utf-8">
 </head>
 <title>Formateurs</title>
-<body>
-    <div class="container mx-auto px-2° py-10">
-    <table class="table-auto w-full align-middle text-left font-light border-collapse">
-        <thead class="even:bg-green-100 odd:bg-green-50 text-green-950 text-transform:uppercase font-semibold">
-            <td class="py-4">Id</td>
-            <td class="py-4">Email</td>
-            <td class="py-4">Password</td>
-            <td class="py-4">Nom</td>
-            <td class="py-4">Prénom</td>
-            <td class="py-4">Tarif Journalier</td>
-            <td class="py-4">Actions</td>
+<body class="bg-lime-50">
+    <div class="container mx-auto shadow-md w-11/12 my-8">
+    <table class="table-fixed w-full align-middle justify-start text-left font-light border-collapse divide-y-2 rounded">
+        <thead class="bg-green-100 text-green-950 font-semibold">
+            <td class="py-4 px-4 w-1/12">Id</td>
+            <td class="py-4 w-2/12">Email</td>
+            <td class="py-4 w-2/12">Password</td>
+            <td class="py-4 w-1/12">Nom</td>
+            <td class="py-4 w-1/12">Prénom</td>
+            <td class="py-4 w-2/12">Tarif Journalier</td>
+            <td class="py-4 w-3/12">Actions</td>
         </thead>
-        <tr class="even:bg-green-100 odd:bg-green-50 text-green-950">
-            <td>1</td>
-            <td>jordanabid@gmail.com</td>
-            <td>password</td>
-            <td>Abid</td>
-            <td>Jordan</td>
-            <td>350.00€</td>
-            <td>
-                <button class="rounded shadow text-orange-900 bg-orange-200 hover:bg-orange-300 font-semibold py-4 px-4">Modifier</button>
-                <button class="rounded shadow text-red-900 bg-red-200 hover:bg-red-300 font-semibold py-4 px-4">Supprimer</button>
+        <tr class="even:bg-green-100 odd:bg-green-50 text-green-950 hover:bg-green-200">
+            <td class="py-2 px-4">1</td>
+            <td class="py-2">jordanabid@gmail.com</td>
+            <td class="py-2">password</td>
+            <td class="py-2">Abid</td>
+            <td class="py-2">Jordan</td>
+            <td class="py-2">350.00€</td>
+            <td class="py-2">
+                <button type="submit" class="rounded shadow text-orange-900 bg-orange-200 hover:bg-orange-300 font-semibold py-4 px-4">Modifier</button>
+                <button type="submit" class="rounded shadow text-red-900 bg-red-200 hover:bg-red-300 font-semibold py-4 px-4">Supprimer</button>
             </td>
         </tr>
-        <tr class="even:bg-green-100 odd:bg-green-50 text-green-950">
-            <td>2</td>
-            <td>jardonibad@gmail.com</td>
-            <td>drowssap</td>
-            <td>Ibad</td>
-            <td>Jardon</td>
-            <td>530.00€</td>
-            <td>
-                <button class="rounded shadow text-orange-900 bg-orange-200 hover:bg-orange-300 font-semibold py-4 px-4">Modifier</button>
-                <button class="rounded shadow text-red-900 bg-red-200 hover:bg-red-300 font-semibold py-4 px-4">Supprimer</button>
+        <tr class="even:bg-green-100 odd:bg-green-50 text-green-950 hover:bg-green-200">
+            <td class="py-2 px-4">2</td>
+            <td class="py-2">jardonibad@gmail.com</td>
+            <td class="py-2">drowssap</td>
+            <td class="py-2">Ibad</td>
+            <td class="py-2">Jardon</td>
+            <td class="py-2">530.00€</td>
+            <td class="py-2">
+                <button type="submit" class="rounded shadow text-orange-900 bg-orange-200 hover:bg-orange-300 font-semibold py-4 px-4">Modifier</button>
+                <button type="submit" class="rounded shadow text-red-900 bg-red-200 hover:bg-red-300 font-semibold py-4 px-4">Supprimer</button>
             </td>
         </tr>
+        <tr class="text-green-950 bg-blue-100">
+            <td class="py-2"></td>
+            <td class="py-2"><input class="py-1 w-11/12" type="email" name="formateur-email" id="email" placeholder="jardonibad@gmail.com"></td>
+            <td class="py-2"><input class="py-1 w-11/12" type="password" name="formateur-pwd" id="password" placeholder="drowssap"></td>
+            <td class="py-2"><input class="py-1 w-11/12" type="text" name="formateur-nom" id="name" placeholder="Ibad"></td>
+            <td class="py-2"><input class="py-1 w-11/12" type="text" name="formateur-prenom" id="firstname" placeholder="Jardon"></td>
+            <td class="py-2"><input class="py-1 w-11/12" type="number" name="formateur-tarif" id="rate" placeholder="530.00€" step="1"></td>
+            <td class="py-2"><button type="submit" class="rounded justify-self-center shadow text-blue-900 bg-blue-200 hover:bg-blue-300 font-semibold py-4 px-4">Ajouter</button></td>
+        </tr>
+    </table>
     </table>
     </div>
 </body>
