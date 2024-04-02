@@ -6,10 +6,154 @@ ligne tableau :  1 | Algo avec Java
 
 Saisie formulaire : libelle(text)
 
- -->
+-->
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Matieres</title>
 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"> -->
+
+  <!-- Banniere navbar par bootstrap -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+</head>
+<body>
+
+  body {
+    padding-top: 70px; /* Pour éviter que la barre de navigation ne chevauche le contenu */
+  }
+
+  .search-bar input {
+    border-radius: 0; /* Supprimer les coins arrondis de l'input */
+  }
+
+  /* Style pour centrer le tableau */
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+
+  table {
+    border-collapse: collapse;
+    width: 80%;
+    background-color: #f2f2f2;
+  }
+
+  th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+  }
+
+  th {
+    font-weight: bold;
+  }
+
+  tr:nth-child(even) {
+    background-color: #e6e6e6;
+  }
+
+  .action-buttons {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  h3 {
+    text-align: center;
+  }
+
+  form {
+    text-align: center;
+  }
+
+  @media (max-width: 991.98px) {
+    .navbar-nav {
+      flex-direction: column; /* Afficher les éléments de la barre de navigation en colonne */
+    }
+  }
+
+</style>
+
+<!-- Bannière de ma page-->
+<nav class="navbar navbar-expand-lg navbar-dark bg-info fixed-top">
+  <a class="navbar-brand" href="#">Quest</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Accueil</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Ajouter une matière</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Supprimer une matière</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Modifier une matière</a>
+      </li>
+      <li class="nav-item search-bar">
+        <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="search" placeholder="Rechercher une matière" aria-label="Search">
+          <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Rechercher</button>
+        </form>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Tableau d'affichage des matières-->
+<div class="container">
+  <h3>Liste des matières</h3>
+  <table>
+    <tr>
+      <th>id</th>
+      <th>libelle</th>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>Java Objet</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Java Avance</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Base de données</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>Actions</td>
+      <td class="action-buttons">
+        <button>Modifier</button>
+        <button>Supprimer</button>
+      </td>
+    </tr>
+  </table>
+  <br>
+  <!-- Affichage de la saisie de matière-->
+  <h3>Ajouter une nouvelle Matière</h3>
+  <form>
+    <label for="libelle">Libellé de la Matière :</label>
+    <input type="text" id="libelle" name="libelle">
+    <button type="submit">Ajouter</button>
+  </form>
+</div>
+
+<!-- script -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
-<meta charset="utf-8">
-<title>Matieres</title>
+</body>
+</html>
