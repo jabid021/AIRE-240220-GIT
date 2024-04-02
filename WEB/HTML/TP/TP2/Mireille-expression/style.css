@@ -1,1 +1,52 @@
+body{
+    th{
+        background-color: bisque;
+        .text:hover;
+        color:red;
+        box-shadow: 0.5;
+    }
+    td{
+        background-color: burlywood;
+       .text:hover;
+        color:red;
+        box-shadow: 0.5;
+    }
 
+    images img{
+        display: flex;
+        width: 200%;
+        height: 200%;
+        border-radius: 50% solid black;
+        justify-content: center;
+        align-items: center;
+    }
+
+
+    img{
+        display: flex;
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        justify-content: center;
+        align-items: center;
+        border: 2px  solid palevioletred;
+
+    }
+
+      images, #img{
+        display: flex;
+        border-radius: 1px solid ;
+        justify-content: center;
+        align-items: center;
+        justify-content: space-around;
+
+    }
+
+    .tab{
+        
+        justify-content: flex-start;
+        flex-wrap: wrap;
+    }
+
+
+}
