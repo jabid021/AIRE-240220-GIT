@@ -1,0 +1,162 @@
+<style>
+
+#idParag>div>ul>li
+{
+
+}
+
+.nouvelleClass
+{
+  background-color:green;
+}
+</style>
+<title>Titre de l'onglet</title>
+
+<h1 class="demoPointeur">Titre de la page</h1>
+
+<p class="demoPointeur">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+
+<h2>Sous titre</h2>
+
+<div id="idParag" isImportant="yes yes"   >
+  <div>
+    <ul>
+      <li>Item 1</li><li>Item 1</li><li>Item 1</li>
+    </ul>
+  </div>
+  Lorem ipsum dolor sit amet, <b>consectetur</b> adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+
+<h2>Sous titre</h2>
+
+
+<br>
+
+
+<input type="text" id="inputLogin" value="Jordan" placeholder="Saisir login"><br>
+<input type="checkbox" checked id="inputValidate"> C'est validé ?
+<select id="demoSelect">
+  <optgroup label="MSDOS">
+    <option>Windows</option>
+  </optgroup>
+  <optgroup label="UNIX">
+    <option >Linux</option>
+    <option>MacOs</option>
+  </optgroup>
+</select>
+
+<script>
+
+console.log(document.title);
+document.title="LE DOM";
+
+setInterval(remplacerTitre,1000);
+
+
+function remplacerTitre()
+{
+  if(document.title=="LE DOM")
+  {
+    document.title="(1) Nouveau message";
+  }
+  else
+  {
+    document.title="LE DOM";
+  }
+}
+
+/*
+EN JS, on peut pointer une balise sur son id de deux facons : document.getElementById("x").style / x.style
+Attention ne surtout pas avoir d'autres elements sur la page avec le meme nom (variable, fonction, dans le html)
+
+*/
+var elementParag = document.getElementById("idParag");
+idParag.style.color="cyan";
+//var choix = prompt("Quelle prop changer sur le paragraphe ?");
+
+
+elementParag.style.color="red";
+elementParag.style.border="solid red 3px";
+elementParag.style.fontSize="40px";
+// NE MARCHERA PAS CAR IL N'EXISTE PAS DE Prop "choix" en CSS
+//elementParag.style.choix
+//elementParag.style.setProperty(choix,"Arial");
+//elementParag.style.setProperty("background-color","lightgrey");
+
+
+
+console.log(elementParag.innerHTML);
+
+//var saisieUser= prompt("Saisir du content pour l'afficher à l'ecran");
+
+//elementParag.innerHTML=saisieUser;
+//elementParag.innerHTML+="Vide <ul><li>Item1</li><li>Item2</li></ul>";
+
+console.log(elementParag.innerText);
+//elementParag.innerText= "<ul><li>item</li></ul>";
+
+//Avant sur firefox, innerText devait etre replace par textContent
+//elementParag.textContent ="text";
+
+//getAttribute => return la value de cet attribut
+//setAttribute => modifier un attribut existant, soit l'ajoute
+//removeAttribute => Retire l'attribut
+console.log(elementParag.getAttribute("isImportant"));
+elementParag.setAttribute("isImportant2","no");
+elementParag.removeAttribute("isImportant2");
+
+
+
+inputLogin.setAttribute("disabled","disabled");
+inputLogin.removeAttribute("disabled");
+inputValidate.removeAttribute("checked");
+
+
+inputLogin.disabled=true; //equivalent de setAttribute
+inputLogin.disabled=false; //equivalent de removeAttribute
+inputValidate.checked=true;
+inputLogin.required=true;
+
+idParag.classList.add("nouvelleClass");
+idParag.classList.remove("nouvelleClass");
+
+console.log(inputLogin.value);
+inputLogin.value="John";
+
+
+console.log(demoSelect.value);
+
+demoSelect.value="Windows";
+
+
+
+
+var balises = document.getElementsByClassName("demoPointeur");
+for(b of balises)
+{
+  b.style.color="red";
+}
+
+var balises2 = document.getElementsByTagName("h2");
+
+for(b of balises2)
+{
+  b.style.color="blue";
+}
+
+//Permet de pointer un element avec les selecteurs CSS
+document.querySelector("#idParag>div>ul>li").style.color="blue"; //Ne va modifier que le 1ER li
+var balises3 =document.querySelectorAll("#idParag>div>ul>li");
+console.log(balises3);
+
+
+for(b of document.querySelectorAll("#idParag>div>ul>li"))
+{
+  b.style.color="green"; //Va modifier TOUTES les balises li de #idParag
+}
+
+
+//getElementsByTagName("#idParag>div>ul>li");
+
+
+</script>

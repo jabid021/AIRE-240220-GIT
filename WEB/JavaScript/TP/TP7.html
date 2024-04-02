@@ -1,0 +1,35 @@
+<script charset="uf-8">
+
+
+  var pays1 = {"nom":"France","capitale":"Paris"};
+  var pays2 = {"nom":"Angleterre","capitale":"Londres"};
+  var pays3 = {"nom":"Espagne","capitale":"Madrid"};
+  var pays4 = {"nom":"Italie","capitale":"Rome"};
+  var tabPays = [pays1,pays2,pays3,pays4,{"nom":"Algerie","capitale":"Alger"}];
+  var reponse;
+  var score=0;
+
+  for(indice in tabPays)
+  {
+    pays=tabPays[indice];
+    reponse = prompt("Question "+(parseInt(indice)+1)+" / "+tabPays.length+" - Quelle est la capitale du pays suivant : "+pays.nom);
+    if(pays.capitale==reponse)
+    {
+      alert("Bravo, c'est la bonne réponse !");
+      score++;
+    }
+    else
+    {
+      alert("Mauvaise réponse, c'etait : "+pays.capitale);
+    }
+  }
+  alert(`Fin du jeu, votre score est ${score}/${tabPays.length}`);
+  console.log(`Fin du jeu, votre score est ${score}/${tabPays.length}`);
+
+
+
+
+
+
+
+</script>
