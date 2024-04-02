@@ -19,4 +19,36 @@
 
 <script>
 
+var typeElement = prompt("Quel type d'element changer ? (id / class / tag )");
+var prop = "color";
+var valueProp = prompt("Quelle value pour la prop suivante : "+prop);
+
+if(typeElement=="id")
+{
+  var balise = document.getElementById("paragPrinci");
+//  balise.style.color=valueProp;
+  balise.style.setProperty(prop,valueProp);
+}
+else if(typeElement=="class")
+{
+  var balises = document.getElementsByClassName("secondaire");
+  for(b of balises)
+  {
+    b.style.setProperty(prop,valueProp);
+  }
+}
+else if(typeElement=="tag")
+{
+  var balises = document.getElementsByTagName("p");
+  for(b of balises)
+  {
+    b.style.setProperty(prop,valueProp);
+  }
+}
+else
+{
+  alert("Ce type d'element n'existe pas");
+}
+
+
 </script>

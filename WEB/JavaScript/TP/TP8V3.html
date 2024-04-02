@@ -1,0 +1,123 @@
+
+<meta charset="utf-8">
+
+<body style="background-color: lightyellow;">
+
+  <p id="paragPrinci" class="secondaire">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+  <p class="secondaire">Parag secondaire</p>
+
+  <p>Parag milieu</p>
+
+  <h3 class="secondaire">Titre secondaire</h3>
+
+  <p class="secondaire">Parag secondaire</p>
+  <p>Parag fin</p>
+
+
+
+  <select id="selectElement">
+    <option>id</option>
+    <option>class</option>
+    <option>tag</option>
+  </select>
+
+  <input id="inputNom" type="text" placeholder="Saisir le nom de l'element">
+  <input id="inputProp"  type="text" placeholder="Saisir la prop">
+  <input id="inputValue"  type="text" placeholder="Saisir la value">
+  <input id="btnValidate" type="button" value="Valider le changement">
+
+</body>
+
+<script>
+
+
+
+btnValidate.onclick = changement;
+
+var typeElement;
+var nomElement;
+var prop;
+var valueProp;
+
+
+function changement()
+{
+ typeElement = selectElement.value;
+  nomElement= inputNom.value;
+  prop = inputProp.value;
+  valueProp=inputValue.value;
+
+
+      if(typeElement=="id")
+      {
+        var balise = document.getElementById(nomElement);
+        balise.style.setProperty(prop,valueProp);
+      }
+      else if(typeElement=="class")
+      {
+        var balises = document.getElementsByClassName(nomElement);
+        for(b of balises)
+        {
+          b.style.setProperty(prop,valueProp);
+        }
+      }
+      else if(typeElement=="tag")
+      {
+        var balises = document.getElementsByTagName(nomElement);
+        for(b of balises)
+        {
+          b.style.setProperty(prop,valueProp);
+        }
+      }
+
+
+
+      inputNom.value="";
+      inputProp.value="";
+      inputValue.value="";
+      selectElement.value="id";
+}
+
+
+
+
+/*
+  do{
+
+    var typeElement = prompt("Quel type d'element changer ? (id / class / tag )");
+    var nomElement = prompt("Quel est le nom de l'element "+typeElement);
+    var prop = prompt("Quelle prop pour le type d'element suivant : "+nomElement);
+    var valueProp = prompt("Quelle value pour la prop suivante : "+prop);
+
+    if(typeElement=="id")
+    {
+      var balise = document.getElementById(nomElement);
+      //  balise.style.color=valueProp;
+      balise.style.setProperty(prop,valueProp);
+    }
+    else if(typeElement=="class")
+    {
+      var balises = document.getElementsByClassName(nomElement);
+      for(b of balises)
+      {
+        b.style.setProperty(prop,valueProp);
+      }
+    }
+    else if(typeElement=="tag")
+    {
+      var balises = document.getElementsByTagName(nomElement);
+      for(b of balises)
+      {
+        b.style.setProperty(prop,valueProp);
+      }
+    }
+    else
+    {
+      alert("Ce type d'element n'existe pas");
+    }
+
+  } while(confirm("Faire une autre modif ?"))
+*/
+
+</script>
