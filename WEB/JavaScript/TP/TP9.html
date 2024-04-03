@@ -3,27 +3,57 @@
 <h1 id="chrono">00:00</h1>
 <input type="button" id="btnStart" value="Start">
 <input type="button" id="btnStop" disabled value="Stop">
-
+<input type="button" id="btReset" value="Reset">
 <script>
 
-var min=0;
-var sec=0;
+  var min=0;
+  var sec=0;
+  var monInterval;
 
-function startChrono(){}
+  btnStart.onclick=startChrono;
+  btnStop.onclick=stopChrono;
+  btReset.onclick=resetChrono;
 
-function stopChrono(){}
+  function startChrono()
+  {
+    //clearInterval(monInterval);
+    monInterval= setInterval(updateChrono,1000);
+    btnStop.disabled=false;
+    btnStart.disabled=true;
+  }
 
+  function stopChrono()
+  {
+    clearInterval(monInterval);
+    btnStop.disabled=true;
+    btnStart.disabled=false;
+  }
 
-function updateChrono()
-{
+  function resetChrono()
+  {
+    sec=0;
+    min=0;
+    let minAffiche = (min<10)? "0"+min : ""+min;
+    let secAffiche = (sec<10)? "0"+sec : ""+sec;
+    chrono.innerHTML=minAffiche+":"+secAffiche;
+  }
 
-
-
-
-  let minAffiche = (min<10)? "0"+min : ""+min;
-  let secAffiche = (sec<10)? "0"+sec : ""+sec;
-  chrono.innerHTML=minAffiche+":"+secAffiche;
-}
+  function updateChrono()
+  {
+    sec++;
+    if(sec==60)
+    {
+      sec=0;
+      min++;
+      if(min==60)
+      {
+        min=0;
+      }
+    }
+    let minAffiche = (min<10)? "0"+min : ""+min;
+    let secAffiche = (sec<10)? "0"+sec : ""+sec;
+    chrono.innerHTML=minAffiche+":"+secAffiche;
+  }
 
 
 
