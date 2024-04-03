@@ -1,0 +1,73 @@
+<style>
+
+  body
+  {
+    background-image : url("assets/img/water.png");
+    background-size:100% 100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+  }
+  #grass
+  {
+    display:none;
+    position: relative;
+    width:700px;
+    height:700px;
+    background-image : url("assets/img/Grass.png")
+  }
+
+  #pikachu
+  {
+    position:absolute;
+    top:0;
+    left:0;
+    display:inline-block;
+  }
+
+  #dratini
+  {
+    position:absolute;
+    top:0px;
+    left:0px;
+    display:inline-block;
+  }
+
+  #blood
+  {
+    display: none;
+    width: 100%;
+    height: 100%;
+    color: black;
+    font-size: 100px;
+    background-color: red;
+    text-align: center;
+  }
+
+  #blood2
+  {
+    display: none;
+    width: 100%;
+    height: 100%;
+    color: red;
+    font-size: 100px;
+    background-color: block;
+    text-align: center;
+  }
+
+</style>
+
+
+<script defer src="pikachu.js" charset="utf-8"></script>
+  <audio id="themePokemon" src="assets/audio/theme.mp3"></audio>
+<div id="formStart">
+  <input id="inputName" type="text" placeholder="pikachu"><input id="btnStart" disabled type="button" value="Start !">
+</div>
+
+<div id="grass">
+  <div id="pikachu"><img id="imgPikachu" src="assets/img/pikachuDown.png"></div>
+  <div id="dratini"><img id="imgDratini" src="assets/img/dratiniDown.png"></div>
+</div>
+
+<div id="blood">Miam! Pikachu a mangé Minidraco!</div>
+<div id="blood2">Mort de faim! Minidraco est sauf!</div>
