@@ -62,6 +62,7 @@ Saisie formulaire : libelle(text)
       text-align: center;
       margin-bottom: 20px; /* Ajout de marge en bas des titres */
     }
+
     /* CSS pour le formulaire */
     .form-container {
       margin-top: 20px;
@@ -109,9 +110,9 @@ Saisie formulaire : libelle(text)
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="#">Accueil</a>
+          <a class="nav-link" href="accueil.html">Accueil</a>
         </li>
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <a class="nav-link" href="#">Ajouter une matière</a>
         </li>
         <li class="nav-item">
@@ -119,10 +120,10 @@ Saisie formulaire : libelle(text)
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Modifier une matière</a>
-        </li>
+        </li> -->
         <li class="nav-item search-bar">
           <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Rechercher une matière" aria-label="Search">
+            <input class="form-control mr-sm-2" type="search" placeholder="Rechercher" aria-label="Search">
             <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Rechercher</button>
           </form>
         </li>
@@ -176,6 +177,7 @@ Saisie formulaire : libelle(text)
     </div>
 
     <!-- Affichage de la saisie de matière-->
+    <form action="matieres" method="POST">
     <div class="form-container">
       <h3>Ajouter une nouvelle Matière</h3>
       <div class="form-group">
@@ -184,7 +186,7 @@ Saisie formulaire : libelle(text)
         <button type="submit">Ajouter</button>
       </div>
     </div>
-
+  </form>
 
   </div>
 
