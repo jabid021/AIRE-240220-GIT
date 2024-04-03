@@ -43,7 +43,7 @@ function choixNomPkmn(){
   formStart.style.display = "none";
   grass.style.display = "block";
   gameOn = true;
-  themePokemon.play();
+  //themePokemon.play();
   chrono = setTimeout(starve,30000);
 }
 
