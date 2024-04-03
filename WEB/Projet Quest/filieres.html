@@ -23,7 +23,7 @@ Saisie formulaire : libelle(text), debut (date), fin(date)
             <th scope="col">Date de Début</th>
             <th scope="col">Date de Fin</th>
             <th scope="col">Actions</th>
-            
+
           </tr>
         </thead>
         <tbody>
@@ -51,7 +51,7 @@ Saisie formulaire : libelle(text), debut (date), fin(date)
             <td><button type="button" class="btn btn-warning">Modifier</button></td>
             <td><button type="button" class="btn btn-danger">Supprimer</button></td>
           </tr>
-        
+
         </tbody>
       </table>
 
@@ -62,19 +62,19 @@ Saisie formulaire : libelle(text), debut (date), fin(date)
 <br>
 <div  class="container">
     <div class="fw-medium">Ajouter nouvelle Fillière</div><br><br>
-<form action="FILIERE" method="post">
+<form action="filiere" method="post">
     <div class="mb-3">
       <label for="inputLibelle" class="form-label border">Libellé</label>
-      <input type="text" class="form-control border" id="inputLibelle" name="filieres.libelle" required>
-      
+      <input type="text" class="form-control border" id="inputLibelle" name="libelle" required>
+
     </div>
     <div class="mb-3">
         <label for="inputDebut" class="form-label border">Date de Début</label>
-        <input type="date" class="form-control border" id="inputDebut" name="filieres.debut" required value="2002-01-01">
+        <input type="date" class="form-control border" id="inputDebut" name="debut" required value="2002-01-01">
      </div>
      <div class="mb-3">
         <label for="inputFin" class="form-label border">Date de Fin</label>
-        <input type="date" class="form-control border" id="inputFin" name="filieres.fin" required value="2002-01-01">
+        <input type="date" class="form-control border" id="inputFin" name="fin" required value="2002-01-01">
      </div>
     <button type="submit" class="btn btn-success btn-lg  border">Ajouter</button>
   </form>
