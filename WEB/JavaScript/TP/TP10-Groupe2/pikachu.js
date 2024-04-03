@@ -1,8 +1,9 @@
 //1) saisir le nom du pokemon et valider avec le bouton (le nom ne doit pas etre vide !)
 //2) Masquer la div formStart, Afficher la div grass, mettre le nom du pokemon en title sur la div pikachu
 //3) Gerer les deplacements, pouvoir bouger dans toutes les directions (haut,bas,gauche,droite) => les fleches et / ou zqsd
-//4) Modifier la position de la div pikachu en fonction de la direction (+-30px par deplacement) et changer l'image
+//4) Modifier la position de la div pikachu en fonction de la direction (+-mouvementpx par deplacement) et changer l'image
 //5) Verifier que pikachu ne sort pas de la div grass
+
 
 var posX = 0;
 var posY = 0;
@@ -11,6 +12,7 @@ var pokemon = "pikachu";
 var direction = "Down";
 imgPikachu.setAttribute("src", "assets/img/" + pokemon + direction + ".png");
 inputName.onkeyup = verifContent;
+
 
 function verifContent(e) {
   if (inputName.value == "") {
@@ -62,14 +64,18 @@ function deplacement(event) {
   pikachu.style.left = posX + "px";
   imgPikachu.setAttribute("src", "assets/img/" + pokemon + direction + ".png");
 
-  if (posX == 330 && posY == 330) {
+  if (posX == 300 && posY == 300) {
     themePokemon.play();
     setTimeout(function () {
       themePokemon.pause();
-    }, 10000);
-    imgPikachu.setAttribute("src", "assets/img/pikachuGros.jpg");
+    }, 20000);
+
+    
+    imgPikachu.setAttribute("src", "assets/img/SachaBall.png");
     imgPikachu.setAttribute("width", "100%");
     imgPikachu.setAttribute("height", "100%");
     cross.style.display = "none";
+   
   }
+
 }

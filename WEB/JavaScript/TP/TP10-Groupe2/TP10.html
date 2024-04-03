@@ -1,47 +1,62 @@
 <style>
-  body {
-    background-image: url("assets/img/water.png");
-    background-size: 100% 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+
+  body
+  {
+    background-image : url("assets/img/water.png");
+    background-size:100% 100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
   }
-  #grass {
-    position: relative;
-    display: none;
-    width: 700px;
-    height: 700px;
-    background-image: url("assets/img/Grass.png");
+  #grass
+  {
+    position:relative;
+    display:none;
+    width:700px;
+    height:700px;
+    background-image : url("assets/img/Grass.png")
   }
 
-  #pikachu {
-    position: absolute;
-    top: 0;
-    left: 0;
-    display: inline-block;
+  #pikachu
+  {
+    position:absolute;
+    top:0;
+    left:0;
+    display:inline-block;
   }
-  #cross {
-    color: red;
-    position: absolute;
-    left: 330px;
-    top: 330px;
+
+  #btnMusique
+  {
+  display:none;
   }
+
+  #imgSacha {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 300px;
+    top:300px;
+    height: 50px;
+}
 </style>
 
+
 <script defer src="pikachu.js" charset="utf-8"></script>
+
 <audio id="themePokemon" src="assets/audio/theme.mp3"></audio>
+
 <div id="formStart">
   <input id="inputName" type="text" placeholder="pikachu" /><input
-    id="btnStart"
-    disabled
-    type="button"
-    value="Start !"
-  />
+    id="btnStart" disabled type="button" value="Start !"/>
 </div>
 
 <div id="grass">
   <div id="pikachu">
     <img id="imgPikachu" src="assets/img/pikachuDown.png" />
   </div>
-  <div id="cross">X (Tu veux te transformer !!)</div>
+  <div id="sacha">
+    <img id="imgSacha" src="assets/img/SACHA.png"/>
+  </div>
 </div>
+
+
