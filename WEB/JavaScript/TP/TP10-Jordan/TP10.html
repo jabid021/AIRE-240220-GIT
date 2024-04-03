@@ -10,6 +10,7 @@
   }
   #grass
   {
+    position:relative;
     display:none;
     width:700px;
     height:700px;
@@ -18,22 +19,26 @@
 
   #pikachu
   {
-    position:relative;
+    position:absolute;
     top:0;
     left:0;
     display:inline-block;
   }
 
+#btnMusique
+{
+  display:none;
+}
 </style>
 
 
 <script defer src="pikachu.js" charset="utf-8"></script>
-  <audio id="themePokemon" src="assets/audio/theme.mp3"></audio>
+  <audio id="themePokemon" src="assets/audio/theme.mp3" loop></audio>
+  <input type="button" id="btnMusique" value="Stop la musique">
 <div id="formStart">
   <input id="inputName" type="text" placeholder="pikachu"><input id="btnStart" disabled type="button" value="Start !">
 </div>
 
 <div id="grass">
   <div id="pikachu"><img id="imgPikachu" src="assets/img/pikachuDown.png"></div>
-
 </div>
