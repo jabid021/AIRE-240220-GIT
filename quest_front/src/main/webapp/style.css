@@ -1,0 +1,49 @@
+action modifier,supprimer {
+    color: lightblue;
+
+}
+
+button{
+    position: relative;
+}
+
+h2{
+    text-align: center;
+    color: lightseagreen;
+    
+}
+
+h3{
+    color: lightseagreen;
+
+    
+
+}
+
+th{
+    color: orangered;
+    background-color: aquamarine;
+}
+
+table{
+    background-color: lightcyan;
+    justify-content: center;
+
+
+}
+
+
+body{
+    background-color: aliceblue;
+}
+
+
+
+button{
+    background-color: green;
+    color: aliceblue;
+    justify-content: flex-end;
+    width: 22%;
+
+    
+}
