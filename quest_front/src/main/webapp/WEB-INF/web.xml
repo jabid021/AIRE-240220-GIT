@@ -4,4 +4,14 @@
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
   </welcome-file-list>
+  <servlet>
+    <description></description>
+    <display-name>FormateurController</display-name>
+    <servlet-name>FormateurController</servlet-name>
+    <servlet-class>quest.controller.FormateurController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>FormateurController</servlet-name>
+    <url-pattern>/FormateurController</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -19,7 +19,7 @@ public abstract class Compte {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	protected Integer id;
-	@Column(length = 50, nullable=false)
+	@Column(length = 50, nullable=false, unique=true)
 	protected String email;
 	@Column(length = 120, nullable=false)
 	protected String password;
