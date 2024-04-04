@@ -4,14 +4,7 @@
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
   </welcome-file-list>
-  <servlet>
-    <description></description>
-    <display-name>ProduitController</display-name>
-    <servlet-name>ProduitController</servlet-name>
-    <servlet-class>eshop.controller.ProduitController</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>ProduitController</servlet-name>
-    <url-pattern>/ProduitController</url-pattern>
-  </servlet-mapping>
+  <listener>
+    <listener-class>eshop.listener.StartTomcatListener</listener-class>
+  </listener>
 </web-app>
