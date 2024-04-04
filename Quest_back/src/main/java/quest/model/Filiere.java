@@ -2,16 +2,28 @@ package quest.model;
 
 import java.time.LocalDate;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="filiere")
 public class Filiere {
 
-
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	@Column(length = 30, nullable=false)
 	private String libelle;
 
 	private LocalDate debut;
 	private LocalDate fin;
 
-
+	public Filiere() {}
+	
 	public Filiere(Integer id,String libelle, LocalDate debut, LocalDate fin) {
 
 		this.id=id;
@@ -20,7 +32,7 @@ public class Filiere {
 		this.fin = fin;
 
 	}
-	
+
 	public Filiere(String libelle, LocalDate debut, LocalDate fin) {
 
 		this.libelle = libelle;
@@ -68,7 +80,7 @@ public class Filiere {
 	public void setFin(LocalDate fin) {
 		this.fin = fin;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "Filiere [id=" + id + ", libelle=" + libelle + ", debut=" + debut + ", fin=" + fin + "]";

@@ -1,12 +1,34 @@
 package quest.model;
 
+import javax.persistence.Column;
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="compte")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name="role",columnDefinition = "enum('Stagiaire', 'Formateur')")
 public abstract class Compte {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	protected Integer id;
+	@Column(length = 50, nullable=false)
 	protected String email;
+	@Column(length = 120, nullable=false)
 	protected String password;
+	@Column(length = 30, nullable=false)
 	protected String prenom;
+	@Column(length = 50, nullable=false)
 	protected String nom;
+	
+	public Compte() {}
 	
 	protected Compte(Integer id,String email, String password, String prenom, String nom) {
 		this.id=id;

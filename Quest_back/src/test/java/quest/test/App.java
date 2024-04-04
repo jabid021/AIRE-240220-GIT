@@ -1,29 +1,8 @@
 package quest.test;
 
-import java.time.LocalDate;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Scanner;
-
-import quest.dao.DAOCompte;
-import quest.dao.DAOFiliere;
-import quest.dao.DAOFormateur;
-import quest.dao.DAOMatiere;
-import quest.dao.DAOModule;
-import quest.dao.DAOOrdinateur;
-import quest.dao.DAOStagiaire;
-import quest.model.Adresse;
-import quest.model.Compte;
-import quest.model.Filiere;
-import quest.model.Formateur;
-import quest.model.Marque;
-import quest.model.Matiere;
-import quest.model.Module;
-import quest.model.Ordinateur;
-import quest.model.Stagiaire;
 public class App {
 
-
+/*
 	static DAOFiliere daoFiliere = new DAOFiliere();
 	static DAOMatiere daoMatiere = new DAOMatiere();
 	static DAOOrdinateur daoOrdinateur = new DAOOrdinateur();
@@ -648,5 +627,5 @@ public class App {
 
 
 	}
-
+*/
 }

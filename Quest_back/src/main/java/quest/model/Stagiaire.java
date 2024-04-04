@@ -1,10 +1,21 @@
 package quest.model;
 
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+@Entity
 public class Stagiaire extends Compte {
 
+	@Embedded
 	private Adresse adresse;
+	
+	@ManyToOne
+	@JoinColumn(name="filiere")
 	private Filiere filiere;
 
+	public Stagiaire() {}
 	
 	public Stagiaire(Integer id,String email, String password, String prenom, String nom, Adresse adresse, Filiere filiere) {
 		super(id,email, password, prenom, nom);

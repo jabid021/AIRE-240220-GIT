@@ -1,11 +1,33 @@
 package quest.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="ordinateur")
 public class Ordinateur {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private int ram;
+	@Enumerated(EnumType.STRING)
+	@Column(columnDefinition = "ENUM('Apple','Asus','Dell','HP','Acer'",nullable=false)
 	private Marque marque;
+	
+	@OneToOne
+	@JoinColumn(name="stagiaire")
 	private Stagiaire stagiaire;
 	
+	public Ordinateur() {}
 	
 	public Ordinateur(Integer id,int ram, Marque marque, Stagiaire stagiaire) {
 		this.id=id;
