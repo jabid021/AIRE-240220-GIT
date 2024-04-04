@@ -35,13 +35,6 @@ public class ProduitController extends HttpServlet {
    
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		try {
-			Class.forName("com.mysql.jdbc.Driver");
-		} catch (ClassNotFoundException e) 
-		{
-			e.printStackTrace();
-		}
-		
 		if(request.getParameter("id")==null) 
 		{
 			//findAll
