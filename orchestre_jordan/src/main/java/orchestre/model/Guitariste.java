@@ -6,7 +6,27 @@ public class Guitariste implements IMusicien {
 	private String prenom;
 	
 	
-	 public void jouer() {
+	 public IInstrument getInstrument() {
+		return instrument;
+	}
+
+
+	public void setInstrument(IInstrument instrument) {
+		this.instrument = instrument;
+	}
+
+
+	public String getPrenom() {
+		return prenom;
+	}
+
+
+	public void setPrenom(String prenom) {
+		this.prenom = prenom;
+	}
+
+
+	public void jouer() {
 		System.out.println("Le guitariste "+prenom+" joue ! "+instrument.son());	
 	}
 

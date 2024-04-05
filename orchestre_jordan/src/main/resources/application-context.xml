@@ -20,8 +20,23 @@
 	<property name="volume" value="100"/>
 </bean>
 
+	<bean id="guitare" class="orchestre.model.Guitare" />
+	<bean id="piano" class="orchestre.model.Piano" />
+	<bean id="flute" class="orchestre.model.Flute" />
 
 
+	<bean id="guitariste" class="orchestre.model.Guitariste">
+		<property name="prenom" value="Jordan" />
+		<property name="instrument" ref="guitare" />
+	</bean>
+
+	<bean id="pianiste" class="orchestre.model.Pianiste">
+		<property name="instrument" ref="piano" />
+	</bean>
+
+	<bean id="flutiste" class="orchestre.model.Flutiste">
+		<property name="flute" ref="flute" />
+	</bean>
 </beans>
 
 
