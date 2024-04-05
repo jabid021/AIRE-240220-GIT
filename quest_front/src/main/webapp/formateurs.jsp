@@ -13,42 +13,6 @@
 <title>Formateurs</title>
 <body class="bg-lime-50">
 
-<!-- 	<!-- NavBar Hedieh--> 
-<!-- 	<nav class="bg-blue-500"> -->
-<!--   <a class="" href="#">Quest</a> -->
-<!--   <button class="" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"> -->
-<!--     <span class=""></span> -->
-<!--   </button> -->
-<!--   <div class="" id="navbarNav"> -->
-<!--     <ul class="flex justify-end"> -->
-<!--       <li class=""> -->
-<!--         <a class="" href="accueil">Accueil</a> -->
-<!--       </li> -->
-<!--       <li class=""> -->
-<!--         <a class="" href="stagiaires">Stagiaires</a> -->
-<!--       </li> -->
-<!--       <li class=""> -->
-<!--         <a class="" href="matieres">Formateurs</a> -->
-<!--       </li> -->
-<!--       <li class=""> -->
-<!--         <a class="" href="formateurs">Matière</a> -->
-<!--       </li>  -->
-<!--       <li class=""> -->
-<!--         <a class="" href="filiere">Filieres</a> -->
-<!--       </li>  -->
-<!--       <li class=""> -->
-<!--         <a class="" href="ordinateurs">Ordinateurs</a> -->
-<!--       </li>  -->
-<!--       <li class=""> -->
-<!--         <form class=""> -->
-<!--           <input class="" type="search" placeholder="Rechercher" aria-label="Search"> -->
-<!--           <button class="" type="submit">Rechercher</button> -->
-<!--         </form> -->
-<!--       </li> -->
-<!--     </ul> -->
-<!--   </div> -->
-<!-- </nav>  -->
-
     <div class="container mx-auto shadow-md w-11/12 my-8">
     <table class="table-fixed w-full align-middle justify-start text-left font-light border-collapse divide-y-2 rounded">
         <thead class="bg-green-100 text-green-950 font-semibold">
@@ -74,7 +38,8 @@
 	            <td class="py-2">
 	                <button onclick="location.href='formateur?id=${formateur.id}'" type="button" class="rounded shadow text-orange-900 bg-orange-200 hover:bg-orange-300 font-semibold py-4 px-4">Modifier</button>
 	                <button onclick="location.href='formateur?id=${formateur.id}&delete'" type="button" class="rounded shadow text-red-900 bg-red-200 hover:bg-red-300 font-semibold py-4 px-4">Supprimer</button>
-	                <button onclick="location.href='formateur?id=${formateur.id}&jumeau'" type="button" class="rounded shadow text-red-600 bg-zinc-900 hover:bg-zinc-950 font-semibold py-4 px-4">Remplacer</button>        
+	                <button onclick="location.href='formateur?id=${formateur.id}&jumeau'" type="button" class="rounded shadow text-red-600 bg-zinc-900 hover:bg-zinc-950 font-semibold py-4 px-4">Remplacer</button>
+	                <button onclick="location.href='formateur?id=${formateur.id}&module'" type="button" class="rounded shadow text-yellow-900 bg-yellow-200 hover:bg-yellow-300 font-semibold py-4 px-4">Modules</button>                
 	            </td>
 	        </tr>
 		</c:forEach>
