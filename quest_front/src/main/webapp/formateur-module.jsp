@@ -36,7 +36,7 @@
 	            <td class="py-2"><button type="button" onclick="location.href='formateur'" class="rounded shadow text-blue-900 bg-blue-200 hover:bg-blue-300 font-semibold py-4 px-4">Retour</button></td>
 	        </tr>
 	         <c:choose>
-	        		<c:when test="modules==null">
+	        		<c:when test="${modules.isEmpty()}">
 	        			   <tr class="even:bg-green-100 odd:bg-green-50 text-green-950 hover:bg-green-200">
 	        			   		<td class="py-2" colspan=7>Aucun module trouvé</td>
 	        			   </tr>
