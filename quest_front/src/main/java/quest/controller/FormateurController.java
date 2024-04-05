@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import quest.context.Singleton;
 import quest.model.Formateur;
+import quest.model.Module;
 
 @WebServlet("/formateur")
 public class FormateurController extends HttpServlet {
@@ -44,7 +45,15 @@ public class FormateurController extends HttpServlet {
 				Integer id = Integer.parseInt(request.getParameter("id"));
 				Singleton.getInstance().getDaoCompte().deleteById(id);
 				response.sendRedirect("formateur");	
-			}	
+			}
+			else if(request.getParameter("module")!=null) {
+				Integer id = Integer.parseInt(request.getParameter("id"));
+				Formateur formateur = (Formateur) Singleton.getInstance().getDaoCompte().findById(id);
+				List<Module> modules = Singleton.getInstance().getDaoModule().findAllByFormateur(formateur.getId());
+				request.setAttribute("formateur", formateur);
+				request.setAttribute("modules", modules);
+				request.getRequestDispatcher("/formateur-module.jsp").forward(request, response);
+			}
 			else 
 			{
 				//findById	

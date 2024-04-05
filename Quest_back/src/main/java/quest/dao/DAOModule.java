@@ -67,9 +67,12 @@ public class DAOModule implements IDAOModule {
 		return modules;
 	}
 
-	
-
-	
-	
+	@Override
+	public List<Module> findAllByFormateur(Integer idFormateur) {
+		EntityManager em = Singleton.getInstance().getEmf().createEntityManager();
+		List<Module> modules = em.createQuery("SELECT m from Module m where m.formateur.id=:id").setParameter("id", idFormateur).getResultList();
+		em.close();
+		return modules;
+	}
 
 }
