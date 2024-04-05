@@ -4,7 +4,9 @@ public class Demo {
 	private int volume;
 	private boolean fenetre;
 	
-	
+	public Demo() {
+		this.fenetre=false;
+	}
 	
 	public int getVolume() {
 		return volume;
@@ -17,6 +19,12 @@ public class Demo {
 	}
 	public void setFenetre(boolean fenetre) {
 		this.fenetre = fenetre;
+	}
+
+	
+	@Override
+	public String toString() {
+		return "Demo [volume=" + volume + ", fenetre=" + fenetre + "]";
 	}
 	
 	
