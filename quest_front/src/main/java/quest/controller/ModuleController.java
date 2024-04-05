@@ -35,7 +35,7 @@ public class ModuleController extends HttpServlet {
 			request.setAttribute("filiere", filiere);
 			request.setAttribute("matieres", matieres);
 			request.setAttribute("formateurs", formateurs);
-			request.getRequestDispatcher("/filiere-modules.jsp").forward(request, response);
+			request.getRequestDispatcher("/WEB-INF/filiere-modules.jsp").forward(request, response);
 		}
 		else 
 		{
@@ -60,7 +60,7 @@ public class ModuleController extends HttpServlet {
 				request.setAttribute("formateurs", formateurs);
 				
 				request.setAttribute("module", module);
-				request.getRequestDispatcher("/update-module.jsp").forward(request, response);
+				request.getRequestDispatcher("/WEB-INF/update-module.jsp").forward(request, response);
 			}
 		}
 	}

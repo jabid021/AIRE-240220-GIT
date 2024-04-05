@@ -25,7 +25,7 @@ public class MatiereController extends HttpServlet {
 			//findAll
 			List<Matiere> matieres = Singleton.getInstance().getDaoMatiere().findAll();
 			request.setAttribute("matieres", matieres);
-			request.getRequestDispatcher("/matieres.jsp").forward(request, response);
+			request.getRequestDispatcher("/WEB-INF/matieres.jsp").forward(request, response);
 		}
 		else 
 		{
@@ -43,7 +43,7 @@ public class MatiereController extends HttpServlet {
 				Integer id = Integer.parseInt(request.getParameter("id"));
 				Matiere matiere = Singleton.getInstance().getDaoMatiere().findById(id);
 				request.setAttribute("matiere", matiere);
-				request.getRequestDispatcher("/update-matiere.jsp").forward(request, response);
+				request.getRequestDispatcher("/WEB-INF/update-matiere.jsp").forward(request, response);
 			}
 		}
 	}

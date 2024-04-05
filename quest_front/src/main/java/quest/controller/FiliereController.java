@@ -26,7 +26,7 @@ public class FiliereController  extends HttpServlet {
 			//findAll
 			List<Filiere> filieres = Singleton.getInstance().getDaoFiliere().findAll();
 			request.setAttribute("filieres", filieres);
-			request.getRequestDispatcher("/filieres.jsp").forward(request, response);
+			request.getRequestDispatcher("/WEB-INF/filieres.jsp").forward(request, response);
 		}
 		else 
 		{
@@ -44,7 +44,7 @@ public class FiliereController  extends HttpServlet {
 				Integer id = Integer.parseInt(request.getParameter("id"));
 				Filiere filiere = Singleton.getInstance().getDaoFiliere().findById(id);
 				request.setAttribute("filiere", filiere);
-				request.getRequestDispatcher("/update-filiere.jsp").forward(request, response);
+				request.getRequestDispatcher("/WEB-INF/update-filiere.jsp").forward(request, response);
 			}
 		}
 	}

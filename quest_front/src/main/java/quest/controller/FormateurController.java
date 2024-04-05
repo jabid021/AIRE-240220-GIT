@@ -18,12 +18,13 @@ import quest.model.Module;
 public class FormateurController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		if(request.getParameter("id")==null) 
 		{
 			//findAll
 			List<Formateur> formateurs = Singleton.getInstance().getDaoCompte().findAllFormateur();
 			request.setAttribute("formateurs", formateurs);
-			request.getRequestDispatcher("/formateurs.jsp").forward(request, response);
+			request.getRequestDispatcher("/WEB-INF/formateurs.jsp").forward(request, response);
 		}
 		else 
 		{
@@ -52,7 +53,7 @@ public class FormateurController extends HttpServlet {
 				List<Module> modules = Singleton.getInstance().getDaoModule().findAllByFormateur(formateur.getId());
 				request.setAttribute("formateur", formateur);
 				request.setAttribute("modules", modules);
-				request.getRequestDispatcher("/formateur-module.jsp").forward(request, response);
+				request.getRequestDispatcher("/WEB-INF/formateur-module.jsp").forward(request, response);
 			}
 			else 
 			{

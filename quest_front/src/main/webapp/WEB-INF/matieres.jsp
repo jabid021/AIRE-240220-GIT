@@ -1,8 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -11,10 +9,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Matieres</title>
-
-<!-- Banniere navbar par bootstrap -->
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
 <style>
 body {
@@ -106,38 +100,6 @@ th {
 </head>
 <body>
 
-	<!-- Bannière de ma page-->
-	<nav class="navbar navbar-expand-lg navbar-dark bg-info fixed-top">
-		<a class="navbar-brand" href="#">Quest</a>
-		<button class="navbar-toggler" type="button" data-toggle="collapse"
-			data-target="#navbarNav" aria-controls="navbarNav"
-			aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-		<div class="collapse navbar-collapse" id="navbarNav">
-			<ul class="navbar-nav ml-auto">
-				<li class="nav-item active"><a class="nav-link"
-					href="accueil.html">Accueil</a></li>
-				<!-- <li class="nav-item">
-          <a class="nav-link" href="#">Ajouter une matière</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Supprimer une matière</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Modifier une matière</a>
-        </li> -->
-				<li class="nav-item search-bar">
-					<form class="form-inline my-2 my-lg-0">
-						<input class="form-control mr-sm-2" type="search"
-							placeholder="Rechercher" aria-label="Search">
-						<button class="btn btn-outline-secondary my-2 my-sm-0"
-							type="submit">Rechercher</button>
-					</form>
-				</li>
-			</ul>
-		</div>
-	</nav>
 
 	<!-- Tableau d'affichage des matières-->
 	<div class="container">
@@ -149,7 +111,6 @@ th {
 					<th>libelle</th>
 					<th>Action</th>
 				</tr>
-
 				<c:forEach items="${matieres}" var="matiere">
 					<tr>
 						<td>${matiere.id}</td>
@@ -179,11 +140,5 @@ th {
 
 	</div>
 
-	<!-- script -->
-	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-	<script
-		src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-	<script
-		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

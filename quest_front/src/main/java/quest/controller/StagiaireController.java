@@ -28,10 +28,9 @@ public class StagiaireController extends HttpServlet {
 			List<Filiere> filieres = Singleton.getInstance().getDaoFiliere().findAll();
 			List<Stagiaire> stagiaires = Singleton.getInstance().getDaoCompte().findAllStagaire();
 
-
 			request.setAttribute("stagiaires", stagiaires);
 			request.setAttribute("filieres", filieres);
-			request.getRequestDispatcher("/stagiaires.jsp").forward(request, response);
+			request.getRequestDispatcher("/WEB-INF/stagiaires.jsp").forward(request, response);
 		}
 		else 
 		{
@@ -47,13 +46,12 @@ public class StagiaireController extends HttpServlet {
 			{
 				//findById	
 				Integer id = Integer.parseInt(request.getParameter("id"));
-				//Ordinateur ordinateur = Singleton.getInstance().getDaoOrdinateur().findById(id);
-				List<Stagiaire> stagiaires = Singleton.getInstance().getDaoCompte().findAllStagaire();
-
-				//request.setAttribute("ordinateur", ordinateur);
-				//request.setAttribute("marques", Marque.values());
-				request.setAttribute("stagiaires", stagiaires);
-				request.getRequestDispatcher("/update-ordinateur.jsp").forward(request, response);
+				List<Filiere> filieres = Singleton.getInstance().getDaoFiliere().findAll();
+				Stagiaire stagiaire = (Stagiaire) Singleton.getInstance().getDaoCompte().findById(id);
+				
+				request.setAttribute("stagiaire", stagiaire);
+				request.setAttribute("filieres", filieres);
+				request.getRequestDispatcher("/WEB-INF/update-stagiaire.jsp").forward(request, response);
 			}
 		}
 	}
@@ -74,13 +72,12 @@ public class StagiaireController extends HttpServlet {
 			String voieSt= request.getParameter("adresse.voie");
 			String villeSt= request.getParameter("adresse.ville");
 			String cpST= request.getParameter("adresse.cp");
-			//Filiere filiereST= request.getParameter("filiere");
-
+			
 			Stagiaire stagiaire;
 			Filiere filiere;
 
 			Integer idFiliere = Integer.parseInt(request.getParameter("filiere.id"));
-			filiere = (Filiere) Singleton.getInstance().getDaoFiliere().findById(idFiliere);
+			filiere = Singleton.getInstance().getDaoFiliere().findById(idFiliere);
 
 			Adresse adresse=new Adresse(numeroSt,voieSt,villeSt,cpST);
 			stagiaire = new Stagiaire(mailSt,passwordSt,nomSt,prenomSt,adresse,filiere);
@@ -102,13 +99,12 @@ public class StagiaireController extends HttpServlet {
 			String voieSt= request.getParameter("adresse.voie");
 			String villeSt= request.getParameter("adresse.ville");
 			String cpST= request.getParameter("adresse.cp");
-			//Filiere filiereST= request.getParameter("filiere");
-
+			
 			Stagiaire stagiaire;
 			Filiere filiere;
 
 			Integer idFiliere = Integer.parseInt(request.getParameter("filiere.id"));
-			filiere = (Filiere) Singleton.getInstance().getDaoFiliere().findById(idFiliere);
+			filiere = Singleton.getInstance().getDaoFiliere().findById(idFiliere);
 
 			Adresse adresse=new Adresse(numeroSt,voieSt,villeSt,cpST);
 			stagiaire = new Stagiaire(id,mailSt,passwordSt,nomSt,prenomSt,adresse,filiere);

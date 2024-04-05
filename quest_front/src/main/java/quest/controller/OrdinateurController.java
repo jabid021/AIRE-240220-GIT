@@ -32,7 +32,7 @@ public class OrdinateurController extends HttpServlet {
 			request.setAttribute("marques", Marque.values());
 			request.setAttribute("stagiaires", stagiaires);
 			request.setAttribute("ordinateurs", ordinateurs);
-			request.getRequestDispatcher("/ordinateurs.jsp").forward(request, response);
+			request.getRequestDispatcher("/WEB-INF/ordinateurs.jsp").forward(request, response);
 		}
 		else 
 		{
@@ -54,7 +54,7 @@ public class OrdinateurController extends HttpServlet {
 				request.setAttribute("ordinateur", ordinateur);
 				request.setAttribute("marques", Marque.values());
 				request.setAttribute("stagiaires", stagiaires);
-				request.getRequestDispatcher("/update-ordinateur.jsp").forward(request, response);
+				request.getRequestDispatcher("/WEB-INF/update-ordinateur.jsp").forward(request, response);
 			}
 		}
 	}

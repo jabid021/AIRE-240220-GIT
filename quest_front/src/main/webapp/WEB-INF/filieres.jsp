@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="ISO-8859-1"%>
-    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+    pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,8 +16,8 @@
         <thead>
           <tr>
             <th scope="col">Id</th>
-            <th scope="col">Libellé</th>
-            <th scope="col">Date de Début</th>
+            <th scope="col">LibellÃ©</th>
+            <th scope="col">Date de DÃ©but</th>
             <th scope="col">Date de Fin</th>
             <th scope="col">Actions</th>
 
@@ -46,15 +46,15 @@
 <br>
 <br>
 <div  class="container">
-    <div class="fw-medium">Ajouter nouvelle Fillière</div><br><br>
+    <div class="fw-medium">Ajouter nouvelle FilliÃ¨re</div><br><br>
 <form action="filiere" method="post">
     <div class="mb-3">
-      <label for="inputLibelle" class="form-label border">Libellé</label>
+      <label for="inputLibelle" class="form-label border">LibellÃ©</label>
       <input type="text" class="form-control border" id="inputLibelle" name="libelle" required>
 
     </div>
     <div class="mb-3">
-        <label for="inputDebut" class="form-label border">Date de Début</label>
+        <label for="inputDebut" class="form-label border">Date de DÃ©but</label>
         <input type="date" class="form-control border" id="inputDebut" name="debut" required value="2002-01-01">
      </div>
      <div class="mb-3">
