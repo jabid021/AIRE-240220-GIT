@@ -13,7 +13,7 @@
 <title>Formateurs</title>
 <body class="bg-lime-50">
 
-    <div class="container mx-auto shadow-md w-11/12 my-8">
+    <div class="container mx-auto shadow-md w-12/12 my-8">
     <table class="table-fixed w-full align-middle justify-start text-left font-light border-collapse divide-y-2 rounded">
         <thead class="bg-green-100 text-green-950 font-semibold">
             <tr>
@@ -36,10 +36,10 @@
 	            <td class="py-2">${formateur.prenom}</td>
 	            <td class="py-2">${formateur.tarif}€</td>
 	            <td class="py-2">
-	                <button onclick="location.href='formateur?id=${formateur.id}'" type="button" class="rounded shadow text-orange-900 bg-orange-200 hover:bg-orange-300 font-semibold py-4 px-4">Modifier</button>
-	                <button onclick="location.href='formateur?id=${formateur.id}&delete'" type="button" class="rounded shadow text-red-900 bg-red-200 hover:bg-red-300 font-semibold py-4 px-4">Supprimer</button>
-	                <button onclick="location.href='formateur?id=${formateur.id}&jumeau'" type="button" class="rounded shadow text-red-600 bg-zinc-900 hover:bg-zinc-950 font-semibold py-4 px-4">Remplacer</button>
-	                <button onclick="location.href='formateur?id=${formateur.id}&module'" type="button" class="rounded shadow text-yellow-900 bg-yellow-200 hover:bg-yellow-300 font-semibold py-4 px-4">Modules</button>                
+	                <button onclick="location.href='formateur?id=${formateur.id}'" type="button" class="rounded shadow text-orange-900 bg-orange-200 hover:bg-orange-300 font-semibold py-3 px-3">Modifier</button>
+	                <button onclick="location.href='formateur?id=${formateur.id}&delete'" type="button" class="rounded shadow text-red-900 bg-red-200 hover:bg-red-300 font-semibold py-3 px-3">Supprimer</button>
+	                <button onclick="location.href='formateur?id=${formateur.id}&jumeau'" type="button" class="rounded shadow text-red-600 bg-zinc-900 hover:bg-zinc-950 font-semibold py-3 px-3">Remplacer</button>
+	                <button onclick="location.href='formateur?id=${formateur.id}&module'" type="button" class="rounded shadow text-yellow-900 bg-yellow-200 hover:bg-yellow-300 font-semibold py-3 px-3">Modules</button>                
 	            </td>
 	        </tr>
 		</c:forEach>
