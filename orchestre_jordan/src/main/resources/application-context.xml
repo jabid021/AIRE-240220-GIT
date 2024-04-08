@@ -14,6 +14,27 @@
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
        		
 
+<bean id="aspectDemo" class="orchestre.aspect.AspectDemo"/>
+
+<bean id="voiture" class="orchestre.model.Voiture"/>
+
+
+<aop:config>
+<aop:pointcut expression="execution(public void orchestre.model.Voiture.avancer())" id="methodeAvancerPointCut"/>
+
+<aop:aspect	id="tissageAspect" ref="aspectDemo">
+	<aop:before method="startMoteur" pointcut-ref="methodeAvancerPointCut"></aop:before>
+	<aop:after method="stopMoteur" pointcut-ref="methodeAvancerPointCut"></aop:after>
+	<aop:around method="autourPlein" pointcut="execution(public void orchestre.model.Voiture.faireLePlein())"/>
+	<aop:after-returning method="seLancerSiReparation" returning="messageDeLautreFonction" pointcut="execution(public String orchestre.model.Voiture.reparer(int))"/>
+	<aop:after-throwing method="seLanceSiProbleme" pointcut="execution(public String orchestre.model.Voiture.reparer(int))" />
+</aop:aspect>
+
+</aop:config>
+
+
+
+
 
 
 <bean id="demo2" class="orchestre.demo.Demo2">

@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 
 import orchestre.demo.Demo;
 import orchestre.model.IMusicien;
+import orchestre.model.Voiture;
 
 public class Test {
 	
@@ -23,6 +24,8 @@ public class Test {
 	@Autowired
 	Demo obj;
 	
+	@Autowired
+	Voiture v;
 	
 	
 	public void run() {
@@ -34,17 +37,30 @@ public class Test {
 		//AnnotationConfigApplicationContext ctx  = new AnnotationConfigApplicationContext(AppConfig.class);
 		
 		//Demo obj = (Demo) ctx.getBean("monObjetDemo");
-		System.out.println(obj);
 		
-		/*IMusicien pianiste = (IMusicien) ctx.getBean("pianiste");
+		
+		/*
+		System.out.println(obj);
+		IMusicien pianiste = (IMusicien) ctx.getBean("pianiste");
 		IMusicien flutiste=(IMusicien) ctx.getBean("flutiste"); 
 		IMusicien guitariste=(IMusicien) ctx.getBean("guitariste");*/
 		
-		musicien.jouer();
-		flutiste.jouer();
-		guitariste.jouer();
+		/*guitariste.jouer();
 	
-	
+		v.faireLePlein();
+		v.avancer();
+		
+		
+		try {
+		v.reparer(1);
+		}catch(Exception e) {}
+		*/
+		
+		
+		
+		guitariste.toString();
+		
+		//System.out.println(guitariste.toString());
 	}
 
 }

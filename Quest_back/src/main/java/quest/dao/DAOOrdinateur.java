@@ -72,7 +72,6 @@ public class DAOOrdinateur implements IDAOOrdinateur {
 		return ordinateur;
 	}
 
-	
 
 	
 	
