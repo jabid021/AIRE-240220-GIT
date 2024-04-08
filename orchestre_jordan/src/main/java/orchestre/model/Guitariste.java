@@ -12,7 +12,7 @@ public class Guitariste implements IMusicien {
 	private IInstrument instrument;
 	private String prenom;
 	
-	
+
 	 public IInstrument getInstrument() {
 		return instrument;
 	}

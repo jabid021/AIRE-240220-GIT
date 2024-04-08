@@ -2,7 +2,6 @@ package orchestre.demo;
 
 import org.springframework.stereotype.Component;
 
-@Component
 public class Demo2 {
 
 	private int nb;
