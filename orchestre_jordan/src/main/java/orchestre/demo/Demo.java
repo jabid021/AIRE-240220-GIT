@@ -1,8 +1,15 @@
 package orchestre.demo;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+@Component
 public class Demo {
 	private int volume;
 	private boolean fenetre;
+	
+	@Autowired
+	private Demo2 demo2;
 	
 	public Demo() {
 		this.fenetre=false;
@@ -22,11 +29,20 @@ public class Demo {
 	}
 
 	
+	
+	public Demo2 getDemo2() {
+		return demo2;
+	}
+
+	public void setDemo2(Demo2 demo2) {
+		this.demo2 = demo2;
+	}
+
 	@Override
 	public String toString() {
-		return "Demo [volume=" + volume + ", fenetre=" + fenetre + "]";
+		return "Demo [volume=" + volume + ", fenetre=" + fenetre + ", demo2=" + demo2 + "]";
 	}
-	
+
 	
 	
 	

@@ -3,12 +3,9 @@ package orchestre.model;
 public class Flutiste implements IMusicien {
 	
 	private IInstrument flute;
-	private String prenom;
+	private String prenom="Olivier";
 	
-	public Flutiste() {
-		this.prenom="Olivier";
-	}
-	
+
 	 public IInstrument getFlute() {
 		return flute;
 	}
