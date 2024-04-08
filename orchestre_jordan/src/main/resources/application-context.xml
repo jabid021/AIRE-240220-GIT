@@ -15,7 +15,7 @@
        		
 
 
-<context:component-scan base-package="orchestre.model"/>
+
 <bean id="demo2" class="orchestre.demo.Demo2">
 	<property name="nb" value="15"/>
 </bean>
@@ -31,6 +31,7 @@
 
 
 <!-- 
+	<context:component-scan base-package="orchestre.model"/>
 	<bean id="guitare" class="orchestre.model.Guitare" />
 	<bean id="piano" class="orchestre.model.Piano" />
 	<bean id="flute" class="orchestre.model.Flute" />

@@ -3,12 +3,12 @@ package orchestre.demo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-@Component
+
 public class Demo {
 	private int volume;
 	private boolean fenetre;
 	
-	@Autowired
+
 	private Demo2 demo2;
 	
 	public Demo() {
