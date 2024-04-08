@@ -13,12 +13,14 @@
         http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
        		
-
+<!-- 
 <bean id="aspectDemo" class="orchestre.aspect.AspectDemo"/>
-
+<bean id="publicAspect" class="orchestre.aspect.PublicAspect"/>
 <bean id="voiture" class="orchestre.model.Voiture"/>
 
-
+ 
+ 
+ 
 <aop:config>
 <aop:pointcut expression="execution(public void orchestre.model.Voiture.avancer())" id="methodeAvancerPointCut"/>
 
@@ -30,6 +32,11 @@
 	<aop:after-throwing method="seLanceSiProbleme" pointcut="execution(public String orchestre.model.Voiture.reparer(int))" />
 </aop:aspect>
 
+
+
+<aop:aspect	id="tissageAspectTP" ref="publicAspect">
+	<aop:after-returning method="afterToStringGuitariste" returning="messageToString" pointcut="execution(public String orchestre.model.Guitariste.toString())"></aop:after-returning>
+</aop:aspect>
 </aop:config>
 
 
@@ -45,7 +52,7 @@
 	<property name="demo2" ref="demo2"/>
 	<property name="volume" value="100"/>
 </bean>
-
+-->
 <!-- 
 
  -->

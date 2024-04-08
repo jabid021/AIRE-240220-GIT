@@ -20,10 +20,6 @@ public class Test {
 	@Qualifier("pianiste")
 	IMusicien musicien;
 	
-	
-	@Autowired
-	Demo obj;
-	
 	@Autowired
 	Voiture v;
 	
@@ -56,9 +52,13 @@ public class Test {
 		}catch(Exception e) {}
 		*/
 		
-		
-		
-		guitariste.toString();
+		try {
+		guitariste.jouer();
+		}catch(Exception e) 
+		{
+			System.out.println(e.getMessage());
+		}
+		//guitariste.toString();
 		
 		//System.out.println(guitariste.toString());
 	}

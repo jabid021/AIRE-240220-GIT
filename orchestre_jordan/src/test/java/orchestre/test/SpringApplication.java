@@ -11,7 +11,7 @@ public class SpringApplication {
 		AnnotationConfigApplicationContext ctx  = new AnnotationConfigApplicationContext(AppConfig.class);
 		
 		ctx.getBeanFactory().createBean(Test.class).run();
-		
+		 
 		ctx.close();
 		
 	}
