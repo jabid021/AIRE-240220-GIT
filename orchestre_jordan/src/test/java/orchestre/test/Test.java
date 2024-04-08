@@ -2,6 +2,7 @@ package orchestre.test;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
 
 import orchestre.demo.Demo;
 import orchestre.model.IMusicien;
@@ -9,7 +10,7 @@ import orchestre.model.IMusicien;
 public class Test {
 	
 	@Autowired
-	IMusicien guitarise;
+	IMusicien guitariste;
 	
 	@Autowired
 	IMusicien flutiste;
@@ -24,7 +25,7 @@ public class Test {
 	
 	
 	
-	public static void main(String[] args) {
+	public void run() {
 		
 		//Pour une config principale de Spring en XML 
 		//ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("classpath:application-context.xml");
