@@ -54,7 +54,8 @@ public class Test {
 		
 		try {
 		guitariste.jouer();
-		}catch(Exception e) 
+		}
+		catch(Exception e) 
 		{
 			System.out.println(e.getMessage());
 		}
