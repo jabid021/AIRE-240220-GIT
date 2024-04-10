@@ -3,13 +3,18 @@ package quest.controller;
 import java.io.IOException;
 import java.util.List;
 
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import quest.context.Singleton;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.context.support.SpringBeanAutowiringSupport;
+
+import quest.dao.IDAOCompte;
+import quest.dao.IDAOFiliere;
 import quest.model.Adresse;
 import quest.model.Filiere;
 import quest.model.Stagiaire;
@@ -17,16 +22,25 @@ import quest.model.Stagiaire;
 @WebServlet("/stagiaire")
 public class StagiaireController extends HttpServlet {
 
+	@Autowired
+	IDAOCompte daoCompte;
 
-
+	@Autowired
+	IDAOFiliere daoFiliere;
+	
+	public void init(ServletConfig config) throws ServletException
+	{
+		super.init(config);
+		SpringBeanAutowiringSupport.processInjectionBasedOnServletContext(this, config.getServletContext());
+	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		if(request.getParameter("id")==null) 
 		{
 			//findAll
-			List<Filiere> filieres = Singleton.getInstance().getDaoFiliere().findAll();
-			List<Stagiaire> stagiaires = Singleton.getInstance().getDaoCompte().findAllStagaire();
+			List<Filiere> filieres = daoFiliere.findAll();
+			List<Stagiaire> stagiaires = daoCompte.findAllStagaire();
 
 			request.setAttribute("stagiaires", stagiaires);
 			request.setAttribute("filieres", filieres);
@@ -39,15 +53,15 @@ public class StagiaireController extends HttpServlet {
 			{
 				//delete
 				Integer id = Integer.parseInt(request.getParameter("id"));
-				Singleton.getInstance().getDaoCompte().deleteById(id);
+				daoCompte.deleteById(id);
 				response.sendRedirect("stagiaire");	
 			}	
 			else 
 			{
 				//findById	
 				Integer id = Integer.parseInt(request.getParameter("id"));
-				List<Filiere> filieres = Singleton.getInstance().getDaoFiliere().findAll();
-				Stagiaire stagiaire = (Stagiaire) Singleton.getInstance().getDaoCompte().findById(id);
+				List<Filiere> filieres =daoFiliere.findAll();
+				Stagiaire stagiaire = (Stagiaire) daoCompte.findById(id).get();
 				
 				request.setAttribute("stagiaire", stagiaire);
 				request.setAttribute("filieres", filieres);
@@ -77,11 +91,11 @@ public class StagiaireController extends HttpServlet {
 			Filiere filiere;
 
 			Integer idFiliere = Integer.parseInt(request.getParameter("filiere.id"));
-			filiere = Singleton.getInstance().getDaoFiliere().findById(idFiliere);
+			filiere = daoFiliere.findById(idFiliere).get();
 
 			Adresse adresse=new Adresse(numeroSt,voieSt,villeSt,cpST);
 			stagiaire = new Stagiaire(mailSt,passwordSt,nomSt,prenomSt,adresse,filiere);
-			Singleton.getInstance().getDaoCompte().save(stagiaire);
+			daoCompte.save(stagiaire);
 
 			response.sendRedirect("stagiaire");
 
@@ -104,11 +118,11 @@ public class StagiaireController extends HttpServlet {
 			Filiere filiere;
 
 			Integer idFiliere = Integer.parseInt(request.getParameter("filiere.id"));
-			filiere = Singleton.getInstance().getDaoFiliere().findById(idFiliere);
+			filiere = daoFiliere.findById(idFiliere).get();
 
 			Adresse adresse=new Adresse(numeroSt,voieSt,villeSt,cpST);
 			stagiaire = new Stagiaire(id,mailSt,passwordSt,nomSt,prenomSt,adresse,filiere);
-			Singleton.getInstance().getDaoCompte().save(stagiaire);
+			daoCompte.save(stagiaire);
 
 			response.sendRedirect("stagiaire");
 		}

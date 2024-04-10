@@ -1,28 +1,43 @@
 package quest.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import quest.context.Singleton;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.context.support.SpringBeanAutowiringSupport;
+
+import quest.dao.IDAOCompte;
+import quest.dao.IDAOModule;
 import quest.model.Formateur;
 import quest.model.Module;
 
 @WebServlet("/formateur")
 public class FormateurController extends HttpServlet {
 
+	@Autowired
+	IDAOCompte daoCompte;
+	@Autowired
+	IDAOModule daoModule;
+	
+	public void init(ServletConfig config) throws ServletException
+	{
+		super.init(config);
+		SpringBeanAutowiringSupport.processInjectionBasedOnServletContext(this, config.getServletContext());
+	}
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		if(request.getParameter("id")==null) 
 		{
 			//findAll
-			List<Formateur> formateurs = Singleton.getInstance().getDaoCompte().findAllFormateur();
+			List<Formateur> formateurs = daoCompte.findAllFormateur();
 			request.setAttribute("formateurs", formateurs);
 			request.getRequestDispatcher("/WEB-INF/formateurs.jsp").forward(request, response);
 		}
@@ -32,11 +47,11 @@ public class FormateurController extends HttpServlet {
 			{
 				//alternate update
 				Integer id = Integer.parseInt(request.getParameter("id"));
-				Formateur formateur = (Formateur) Singleton.getInstance().getDaoCompte().findById(id);
+				Formateur formateur = (Formateur) daoCompte.findById(id).get();
 				formateur.setPrenom(inverserVoyelles(formateur.getPrenom()));
 				formateur.setNom(inverserVoyelles(formateur.getNom()));
 
-				Singleton.getInstance().getDaoCompte().save(formateur);
+				daoCompte.save(formateur);
 
 				response.sendRedirect("formateur");
 			}
@@ -44,13 +59,13 @@ public class FormateurController extends HttpServlet {
 			{
 				//delete
 				Integer id = Integer.parseInt(request.getParameter("id"));
-				Singleton.getInstance().getDaoCompte().deleteById(id);
+				daoCompte.deleteById(id);
 				response.sendRedirect("formateur");	
 			}
 			else if(request.getParameter("module")!=null) {
 				Integer id = Integer.parseInt(request.getParameter("id"));
-				Formateur formateur = (Formateur) Singleton.getInstance().getDaoCompte().findById(id);
-				List<Module> modules = Singleton.getInstance().getDaoModule().findAllByFormateur(formateur.getId());
+				Formateur formateur = (Formateur) daoCompte.findById(id).get();
+				List<Module> modules = daoModule.findAllByFormateur(formateur.getId());
 				request.setAttribute("formateur", formateur);
 				request.setAttribute("modules", modules);
 				request.getRequestDispatcher("/WEB-INF/formateur-module.jsp").forward(request, response);
@@ -59,7 +74,7 @@ public class FormateurController extends HttpServlet {
 			{
 				//findById	
 				Integer id = Integer.parseInt(request.getParameter("id"));
-				Formateur formateur = (Formateur) Singleton.getInstance().getDaoCompte().findById(id);
+				Formateur formateur = (Formateur) daoCompte.findById(id).get();
 				request.setAttribute("formateur", formateur);
 				request.getRequestDispatcher("/update-formateur.jsp").forward(request, response);
 			}
@@ -78,7 +93,7 @@ public class FormateurController extends HttpServlet {
 			double tarif = Float.valueOf(request.getParameter("tarif"));
 
 			Formateur formateur = new Formateur(email,password,prenom,nom,tarif);
-			Singleton.getInstance().getDaoCompte().save(formateur);
+			daoCompte.save(formateur);
 
 			response.sendRedirect("formateur");
 
@@ -94,7 +109,7 @@ public class FormateurController extends HttpServlet {
 			double tarif = Float.valueOf(request.getParameter("tarif"));
 
 			Formateur formateur = new Formateur(id,email,password,prenom,nom,tarif);
-			Singleton.getInstance().getDaoCompte().save(formateur);
+			daoCompte.save(formateur);
 
 			response.sendRedirect("formateur");
 		}

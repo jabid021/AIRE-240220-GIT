@@ -3,27 +3,37 @@ package quest.controller;
 import java.io.IOException;
 import java.util.List;
 
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import quest.context.Singleton;
-import quest.model.Marque;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.context.support.SpringBeanAutowiringSupport;
+
+import quest.dao.IDAOMatiere;
 import quest.model.Matiere;
 
 
 @WebServlet("/matiere")
 public class MatiereController extends HttpServlet {
 
-
+	@Autowired
+	IDAOMatiere daoMatiere;
+	
+	public void init(ServletConfig config) throws ServletException
+	{
+		super.init(config);
+		SpringBeanAutowiringSupport.processInjectionBasedOnServletContext(this, config.getServletContext());
+	}
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		if(request.getParameter("id")==null) 
 		{
 			//findAll
-			List<Matiere> matieres = Singleton.getInstance().getDaoMatiere().findAll();
+			List<Matiere> matieres = daoMatiere.findAll();
 			request.setAttribute("matieres", matieres);
 			request.getRequestDispatcher("/WEB-INF/matieres.jsp").forward(request, response);
 		}
@@ -34,14 +44,14 @@ public class MatiereController extends HttpServlet {
 			{
 				//delete
 				Integer id = Integer.parseInt(request.getParameter("id"));
-				Singleton.getInstance().getDaoMatiere().deleteById(id);
+				daoMatiere.deleteById(id);
 				response.sendRedirect("matiere");	
 			}	
 			else 
 			{
 				//findById	
 				Integer id = Integer.parseInt(request.getParameter("id"));
-				Matiere matiere = Singleton.getInstance().getDaoMatiere().findById(id);
+				Matiere matiere = daoMatiere.findById(id).get();
 				request.setAttribute("matiere", matiere);
 				request.getRequestDispatcher("/WEB-INF/update-matiere.jsp").forward(request, response);
 			}
@@ -57,7 +67,7 @@ public class MatiereController extends HttpServlet {
 			String libelle = request.getParameter("libelle");
 
 			Matiere matiere = new Matiere(libelle);
-			Singleton.getInstance().getDaoMatiere().save(matiere);
+			daoMatiere.save(matiere);
 
 			response.sendRedirect("matiere");
 
@@ -71,7 +81,7 @@ public class MatiereController extends HttpServlet {
 
 			Matiere matiere = new Matiere(id,libelle);
 
-			Singleton.getInstance().getDaoMatiere().save(matiere);
+			daoMatiere.save(matiere);
 			response.sendRedirect("matiere");
 		}
 
