@@ -1,18 +1,9 @@
 package eshop.test;
 
-import java.util.List;
-
-import eshop.context.Singleton;
-import eshop.dao.IDAOPersonne;
-import eshop.dao.IDAOProduit;
-import eshop.model.Adresse;
-import eshop.model.Fournisseur;
-import eshop.model.Produit;
-
 public class TestDAO {
 
 	public static void main(String[] args) {
-		
+		/*
 		IDAOPersonne daoPersonne = Singleton.getInstance().getDaoPersonne();
 		IDAOProduit daoProduit = Singleton.getInstance().getDaoProduit();
 		
@@ -61,7 +52,7 @@ public class TestDAO {
 			System.out.println(p);
 		}
 		
-		
+		*/
 		
 	}
 

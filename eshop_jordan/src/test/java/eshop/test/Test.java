@@ -2,11 +2,6 @@ package eshop.test;
 
 import java.time.LocalDate;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-
-import eshop.context.Singleton;
 import eshop.model.Achat;
 import eshop.model.Adresse;
 import eshop.model.Client;
