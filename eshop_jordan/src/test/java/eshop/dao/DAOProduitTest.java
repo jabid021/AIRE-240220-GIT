@@ -18,6 +18,7 @@ import eshop.config.AppConfig;
 import eshop.model.Adresse;
 import eshop.model.Fournisseur;
 import eshop.model.Produit;
+import eshop.service.ProduitService;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -28,7 +29,7 @@ import eshop.model.Produit;
 public class DAOProduitTest {
 
 	@Autowired
-	IDAOProduit daoProduit;	
+	ProduitService produitService;	
 
 	@Autowired
 	IDAOPersonne daoPersonne;	
@@ -39,7 +40,7 @@ public class DAOProduitTest {
 		//Arrange
 		//Act
 		//Assert
-		assertNotNull(daoProduit);
+		assertNotNull(produitService);
 	}
 
 
@@ -51,12 +52,12 @@ public class DAOProduitTest {
 		Fournisseur fournisseur = new Fournisseur("AbidTest","CharlyTest",adresse1,"AJC IngenierieTest");
 		fournisseur = (Fournisseur) daoPersonne.save(fournisseur);
 		Produit produit = new Produit("Formation SQLTest",1200,fournisseur);
-		produit = daoProduit.save(produit);
+		produit = produitService.insert(produit);
 		Integer idProduitAdd = produit.getId();
 		Produit produitBdd=null;
 
 		//Act
-		produitBdd = daoProduit.findById(idProduitAdd);
+		produitBdd = produitService.getById(idProduitAdd);
 
 		//Assert
 		assertNotNull(produitBdd);	
@@ -73,11 +74,11 @@ public class DAOProduitTest {
 		Produit produitBdd=null;
 		Integer idProduitBdd;
 		//Act
-		produit = daoProduit.save(produit);
+		produit = produitService.insert(produit);
 
 		//Assert
 		idProduitBdd=produit.getId();
-		produitBdd = daoProduit.findById(idProduitBdd);
+		produitBdd = produitService.getById(idProduitBdd);
 
 		assertNotNull(idProduitBdd);
 		assertNotNull(produitBdd);
@@ -96,15 +97,15 @@ public class DAOProduitTest {
 		Fournisseur fournisseur = new Fournisseur("AbidTest","CharlyTest",adresse1,"AJC IngenierieTest");
 		fournisseur = (Fournisseur) daoPersonne.save(fournisseur);
 		Produit produit = new Produit("Formation SQLTest",1200,fournisseur);
-		produit = daoProduit.save(produit);
+		produit = produitService.insert(produit);
 		Integer idProduitAdd = produit.getId();
 		Produit produitBdd=null;
 
 		//Act
-		daoProduit.deleteById(idProduitAdd);
+		produitService.deleteById(idProduitAdd);
 
 		//Assert
-		produitBdd=daoProduit.findById(idProduitAdd);
+		produitBdd=produitService.getById(idProduitAdd);
 		assertNull(produitBdd);
 	}
 

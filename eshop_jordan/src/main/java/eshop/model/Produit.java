@@ -35,6 +35,16 @@ public class Produit {
 	public Produit() {}
 
 
+	
+	public Produit(Integer id, String libelle, double prix, Fournisseur fournisseur) {
+		this.id = id;
+		this.libelle = libelle;
+		this.prix = prix;
+		this.fournisseur = fournisseur;
+	}
+
+
+
 	public Produit(String libelle, double prix,Fournisseur fournisseur) {
 		this.libelle = libelle;
 		this.prix = prix;

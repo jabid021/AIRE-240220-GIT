@@ -1,25 +1,36 @@
 package eshop.servlet;
 
 import java.io.IOException;
-import java.util.List;
 
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import eshop.context.Singleton;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.context.support.SpringBeanAutowiringSupport;
+
 import eshop.model.Produit;
+import eshop.service.ProduitService;
 
 @WebServlet("/demo.jsp")
 public class DemoServlet extends HttpServlet {
 
-
+	@Autowired
+	ProduitService produitService;
+	
  //Gestion des pages web en java : 
 	//v1 : on fait du java et on ajoute du html dedans
 	//v2 : on fait du html et on ajoute du java dedans
 	//v3 : design pattern MVC (Model Vue Controller) => jsp pour afficher .. et servlet pour Controller et faire le pont vers le model
+	public void init(ServletConfig config) throws ServletException
+	{
+		super.init(config);
+		SpringBeanAutowiringSupport.processInjectionBasedOnServletContext(this, config.getServletContext());
+	}
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
@@ -45,7 +56,7 @@ public class DemoServlet extends HttpServlet {
 		//String login = request.getParameter("login");
 		Integer id = Integer.parseInt(request.getParameter("id"));
 	
-		Produit p = Singleton.getInstance().getDaoProduit().findById(id);
+		Produit p = produitService.getById(id);
 	
 		response.getWriter().println("<body>");
 		response.getWriter().println("<h1>Fiche du produit "+id+"</h1>");

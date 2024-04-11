@@ -15,4 +15,6 @@ public interface IDAOModule extends JpaRepository<Module,Integer>{
 	
 	@Query("SELECT m from Module m where m.formateur.id=:id")
 	public List<Module> findAllByFormateur(@Param("id") Integer idFormateur);
+	
+	
 }

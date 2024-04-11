@@ -11,8 +11,7 @@
 </head>
 <body>
 
-<%
-
+<% 
 Integer id = Integer.parseInt(request.getParameter("id"));
 Produit p = Singleton.getInstance().getDaoProduit().findById(id);
 %>
