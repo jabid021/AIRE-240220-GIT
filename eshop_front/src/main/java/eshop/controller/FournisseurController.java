@@ -67,11 +67,11 @@ public class FournisseurController extends HttpServlet {
 			//insert
 			String nom = request.getParameter("nom");
 			String prenom = request.getParameter("prenom");
-			String numero=request.getParameter("adresse.numero");;
-			String voie=request.getParameter("adresse.voie");;
-			String ville=request.getParameter("adresse.ville");;
-			String cp=request.getParameter("adresse.cp");;
-			String societe=request.getParameter("societe");;
+			String numero=request.getParameter("adresse.numero");
+			String voie=request.getParameter("adresse.voie");
+			String ville=request.getParameter("adresse.ville");
+			String cp=request.getParameter("adresse.cp");
+			String societe=request.getParameter("societe");
 			
 			
 			Personne p = new Fournisseur(nom,prenom,new Adresse(numero,voie,ville,cp),societe);
