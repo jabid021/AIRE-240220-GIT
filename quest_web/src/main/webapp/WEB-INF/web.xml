@@ -4,6 +4,7 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	version="2.5">
 	<display-name>quest_web</display-name>
+
 	<welcome-file-list>
 		<welcome-file>home</welcome-file>
 	</welcome-file-list>

@@ -21,7 +21,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
 @EnableJpaRepositories("quest.dao")
-//@ComponentScan()
+@ComponentScan("quest.service")
 @EnableTransactionManagement // Pour avoir accès à @Transactional (qui fait lui meme les .begin / .commit / .rollback)
 @PropertySource("classpath:infos.properties")
 public class AppConfig {

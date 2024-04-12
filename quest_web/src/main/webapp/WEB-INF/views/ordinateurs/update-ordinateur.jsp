@@ -1,11 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
 <meta charset="utf-8" />
-<title>Ordinateurs</title>
+<title>Fiche Ordinateur</title>
 
 <style>
 #container-bootstrap {
@@ -48,50 +49,15 @@
 </head>
 <body>
 	<div class="container">
-		<h1>Liste des Ordinateurs</h1>
-		<table id="tab" class="table table-hover">
-			<thead>
-				<tr>
-					<th>Id</th>
-					<th>Ram</th>
-					<th>Marque</th>
-					<th>Stagiaire</th>
-				</tr>
-			</thead>
-			<tbody>
-				<c:forEach items="${ordinateurs}" var="ordinateur">
-					<tr>
-						<td>${ordinateur.id}</td>
-						<td>${ordinateur.ram}Go</td>
-						<td>${ordinateur.marque}</td>
-						<c:choose>
-							<c:when test="${ordinateur.stagiaire==null}">
-								<td>Pas de stagiaire</td>
-							</c:when>
-							
-							<c:otherwise>
-								<td>${ordinateur.stagiaire.id} - ${ordinateur.stagiaire.nom} ${ordinateur.stagiaire.prenom}</td>
-							</c:otherwise>
-						</c:choose>
-		
-						
-						<td><a href="ordinateur?id=${ordinateur.id}"><button
-									class="btn btn-success" type="submit">Modifier</button></a> <a
-							href="ordinateur?id=${ordinateur.id}&delete"><button
-									class="btn btn-danger" type="submit">Supprimer</button></a></td>
-					</tr>
-
-				</c:forEach>
-
-			</tbody>
-		</table>
+		<h1>Fiche de l'Ordinateur ${ordinateur.id}</h1>
 	</div>
 	<div class="container">
 		<form class="form-group row" action="ordinateur" id="inscription"
 			method="POST">
 			<fieldset>
 				<table id="tab1" class="table table-active table-bordered">
-					<h1>Ajouter un ordinateur</h1>
+					<h1>Modifier un ordinateur</h1>
+					<input type="hidden" value="${ordinateur.id}" name="id">
 					<thead>
 						<tr>
 							<th><label>RAM</label></th>
@@ -101,9 +67,9 @@
 						<tr>
 							<td><select id="ram" name="ram" required>
 									<option value="">Choisir une RAM</option>
-									<option value="8">8G</option>
-									<option value="16">16G</option>
-									<option value="32">32G</option>
+									<option <c:if test="${ordinateur.ram==8}"> selected </c:if> value="8">8G</option>
+									<option <c:if test="${ordinateur.ram==16}"> selected </c:if> value="16">16G</option>
+									<option <c:if test="${ordinateur.ram==32}"> selected </c:if> value="32">32G</option>
 							</select></td>
 						</tr>
 					<thead>
@@ -116,20 +82,42 @@
 							required>
 								<option value="">Choisir une MARQUE Ordinateur</option>
 								<c:forEach items="${marques}" var="marque">
-									<option>${marque}</option>
+
+									<c:choose>
+										<c:when test="${marque== ordinateur.marque}">
+											<option selected>${marque}</option>
+										</c:when>
+
+										<c:otherwise>
+											<option>${marque}</option>
+										</c:otherwise>
+									</c:choose>
+ 
 								</c:forEach>
 						</select></td>
 					</tr>
-					
-					
+
+
 					<tr>
-							<td><select name="stagiaire.id">
-									<option value="">Pas de stagiaire</option>
-									<c:forEach items="${stagiaires}" var="stagiaire">
-										<option value="${stagiaire.id}">${stagiaire.id}-${stagiaire.nom} ${stagiaire.prenom}</option>
-									</c:forEach>
-							</select></td>
-						</tr>
+						<td><select name="stagiaire.id">
+								<option value="">Pas de stagiaire</option>
+								<c:forEach items="${stagiaires}" var="stagiaire">
+								
+								<c:choose>
+										<c:when test="${stagiaire.id== ordinateur.stagiaire.id}">
+											<option selected value="${stagiaire.id}">${stagiaire.id}-${stagiaire.nom}
+										${stagiaire.prenom}</option>
+										</c:when>
+
+										<c:otherwise>
+											<option value="${stagiaire.id}">${stagiaire.id}-${stagiaire.nom}
+										${stagiaire.prenom}</option>
+										</c:otherwise>
+									</c:choose>
+									
+								</c:forEach>
+						</select></td>
+					</tr>
 					</tbody>
 					<tr>
 						<td>
