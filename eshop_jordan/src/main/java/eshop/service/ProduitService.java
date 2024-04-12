@@ -24,7 +24,7 @@ public class ProduitService {
 		}
 		else 
 		{
-		return opt.get();
+			return opt.get();
 		}
 	}
 
