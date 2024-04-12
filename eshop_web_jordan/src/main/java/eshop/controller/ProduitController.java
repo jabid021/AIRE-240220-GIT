@@ -36,7 +36,7 @@ public class ProduitController {
 		List<Fournisseur> fournisseurs = daoPersonne.findAllFournisseur();
 		model.addAttribute("produits",produits);
 		model.addAttribute("fournisseurs",fournisseurs);
-		return "/WEB-INF/produits.jsp";
+		return "produits/produits";
 	}
 	
 	@GetMapping("/{id}")
@@ -46,7 +46,7 @@ public class ProduitController {
 		List<Fournisseur> fournisseurs = daoPersonne.findAllFournisseur();
 		model.addAttribute("produit",produit);
 		model.addAttribute("fournisseurs",fournisseurs);
-		return "/WEB-INF/updateProduit.jsp";
+		return "produits/updateProduit";
 	}
 	
 	@PostMapping

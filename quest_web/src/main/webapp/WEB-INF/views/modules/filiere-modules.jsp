@@ -90,8 +90,8 @@ legend {
 							</c:otherwise>
 						</c:choose>
 						<td colspan="2">
-							<a href="module?id=${module.id}"><button disabled class="btn-modifier">Modifier</button></a>
-							<a href="module?filiere=${filiere.id}&id=${module.id}&delete"><button class="btn-supprimer">Supprimer</button></a>
+							<a href="module/${module.id}"><button class="btn-modifier">Modifier</button></a>
+							<a href="module/delete/${module.id}"><button class="btn-supprimer">Supprimer</button></a>
 						</td>
 					</tr>
 
@@ -115,7 +115,7 @@ legend {
 			</div>
 			<div class="mb-3">
 				<label for="inputquest" class="form-label">Quest</label> <input
-					type="text" class="form-control" id="inputLibelle" name="quest"
+					type="number" class="form-control" id="inputLibelle" name="quest"
 					required>
 			</div>
 			<input type="hidden" value="${filiere.id}" name="filiere.id">

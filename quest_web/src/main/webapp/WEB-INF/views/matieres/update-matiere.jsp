@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+ 
+    
+    
+    
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -96,17 +100,21 @@
     <h3 id="titreMaTable">Fiche Matiere ${matiere.id}</h3>
 
     <!-- Affichage de la saisie de matière-->
-    <form action="matiere/${matiere.id}" method="POST">
+    <form:form action="matiere/${matiere.id}" method="POST" modelAttribute="matiere">
     <div class="form-container">
       <h3>Modifier la Matière</h3>
-      <input type="hidden" value="${matiere.id}" name="id">
+      <form:hidden path="id"/>
+      <!--  <input type="hidden" value="${matiere.id}" name="id">-->
       <div class="form-group">
-        <label for="libelle">Libellé de la Matière :</label>
-        <input type="text" id="libelle" value="${matiere.libelle}" name="libelle">
+       <!--  <label for="libelle">Libellé de la Matière :</label>
+         <input type="text" id="libelle" value="${matiere.libelle}" name="libelle">
+       -->
+        <form:label path="libelle">Libellé de la Matière :</form:label>
+        <form:input path="libelle" />
         <input type="submit" value="Modifier">
       </div>
     </div>
-  </form>
+  </form:form>
 
   </div>
   
