@@ -22,7 +22,7 @@
             <th class="py-4 w-4/12">Actions</th>
             </tr>
         </thead>
-        <form action="formateur" method="POST">
+        <form action="formateur/${formateur.id}" method="POST">
 	        <tr class="text-green-950 bg-blue-100">
 	            <td class="py-2"><input class="py-1 w-11/12" readonly type="number" value="${formateur.id}" name="id" id="id"></td>
 	            <td class="py-2"><input class="py-1 w-11/12" type="email" value="${formateur.email}" name="email" id="email" placeholder="jardonibad@gmail.com"></td>

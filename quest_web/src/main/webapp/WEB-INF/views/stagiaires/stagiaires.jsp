@@ -103,10 +103,10 @@ dd {
 						<td>${stagiaire.adresse.cp}</td>
 						<td>${stagiaire.filiere.id}-${stagiaire.filiere.libelle}</td>
 
-						<td colspan="2"><a href="stagiaire?id=${stagiaire.id}">
+						<td colspan="2"><a href="stagiaire/${stagiaire.id}">
 								<div class="btn-group">
 									<button type="button" class="btn btn-outline-warning">Modifier</button>
-						</a> <a href="stagiaire?id=${stagiaire.id}&delete">
+						</a> <a href="stagiaire/delete/${stagiaire.id}">
 								<button type="button" class="btn btn-outline-danger">Supprimer</button>
 								</div>
 						</a></td>

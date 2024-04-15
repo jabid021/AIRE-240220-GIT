@@ -1,22 +1,21 @@
 package eshop.controller;
 
 import java.util.List;
-import java.util.Optional;
+
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import eshop.dao.IDAOPersonne;
 import eshop.model.Fournisseur;
-import eshop.model.Personne;
 import eshop.model.Produit;
 import eshop.service.ProduitService;
 
@@ -53,19 +52,29 @@ public class ProduitController {
 	}
 
 	@PostMapping
-	public String ajoutProduit(@ModelAttribute Produit produit
+	public String ajoutProduit(@Valid @ModelAttribute Produit produit,BindingResult result,Model model
 			//@RequestParam String libelle, double prix, @RequestParam("fournisseur.id") Integer idFournisseur
 			) 
 	{
-
+		if(result.hasErrors()) 
+		{
+			model.addAttribute("produits",produitSrv.getAll());
+			model.addAttribute("fournisseurs",daoPersonne.findAllFournisseur());
+			return "produits/produits";
+		}
 		produitSrv.insert(produit);
 		return "redirect:/produit";
 	}
 
 
 	@PostMapping("/{id}")
-	public String modifierProduit(@ModelAttribute Produit produit) 
+	public String modifierProduit(@Valid @ModelAttribute Produit produit,BindingResult result, Model model) 
 	{
+		if(result.hasErrors()) 
+		{
+			model.addAttribute("fournisseurs",daoPersonne.findAllFournisseur());
+			return "produits/updateProduit";
+		}
 		produitSrv.update(produit);
 		return "redirect:/produit";
 	}

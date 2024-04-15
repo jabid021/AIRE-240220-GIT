@@ -35,14 +35,23 @@ public class OrdinateurService {
 	
 	public Ordinateur insert(Ordinateur ordinateur) 
 	{
+		if(ordinateur.getStagiaire().getId()==null) 
+		{
+			ordinateur.setStagiaire(null);
+		}
 		return daoOrdinateur.save(ordinateur);
 	}
 	
 	public Ordinateur update(Ordinateur ordinateur) 
 	{
+		
 		if(ordinateur.getId()==null) 
 		{
 			throw new RuntimeException("Un update sans id ?!");
+		}
+		if(ordinateur.getStagiaire().getId()==null) 
+		{
+			ordinateur.setStagiaire(null);
 		}
 		return daoOrdinateur.save(ordinateur);
 	}

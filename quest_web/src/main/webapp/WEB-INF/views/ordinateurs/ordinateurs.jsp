@@ -75,9 +75,9 @@
 						</c:choose>
 		
 						
-						<td><a href="ordinateur?id=${ordinateur.id}"><button
+						<td><a href="ordinateur/${ordinateur.id}"><button
 									class="btn btn-success" type="submit">Modifier</button></a> <a
-							href="ordinateur?id=${ordinateur.id}&delete"><button
+							href="ordinateur/delete/${ordinateur.id}"><button
 									class="btn btn-danger" type="submit">Supprimer</button></a></td>
 					</tr>
 

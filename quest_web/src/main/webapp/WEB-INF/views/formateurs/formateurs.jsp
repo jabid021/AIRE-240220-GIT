@@ -34,10 +34,10 @@
 	            <td class="py-2">${formateur.prenom}</td>
 	            <td class="py-2">${formateur.tarif}€</td>
 	            <td class="py-2">
-	                <button onclick="location.href='formateur?id=${formateur.id}'" type="button" class="rounded shadow text-orange-900 bg-orange-200 hover:bg-orange-300 font-semibold py-3 px-3">Modifier</button>
-	                <button onclick="location.href='formateur?id=${formateur.id}&delete'" type="button" class="rounded shadow text-red-900 bg-red-200 hover:bg-red-300 font-semibold py-3 px-3">Supprimer</button>
-	                <button onclick="location.href='formateur?id=${formateur.id}&jumeau'" type="button" class="rounded shadow text-red-600 bg-zinc-900 hover:bg-zinc-950 font-semibold py-3 px-3">Remplacer</button>
-	                <button onclick="location.href='formateur?id=${formateur.id}&module'" type="button" class="rounded shadow text-yellow-900 bg-yellow-200 hover:bg-yellow-300 font-semibold py-3 px-3">Modules</button>                
+	                <button onclick="location.href='formateur/${formateur.id}'" type="button" class="rounded shadow text-orange-900 bg-orange-200 hover:bg-orange-300 font-semibold py-3 px-3">Modifier</button>
+	                <button onclick="location.href='formateur/delete/${formateur.id}'" type="button" class="rounded shadow text-red-900 bg-red-200 hover:bg-red-300 font-semibold py-3 px-3">Supprimer</button>
+	                <button onclick="location.href='formateur/jumeau/${formateur.id}'" type="button" class="rounded shadow text-red-600 bg-zinc-900 hover:bg-zinc-950 font-semibold py-3 px-3">Remplacer</button>
+	                <button onclick="location.href='module/formateur-${formateur.id}'" type="button" class="rounded shadow text-yellow-900 bg-yellow-200 hover:bg-yellow-300 font-semibold py-3 px-3">Modules</button>                
 	            </td>
 	        </tr>
 		</c:forEach>

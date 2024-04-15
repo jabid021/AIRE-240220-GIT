@@ -9,7 +9,7 @@
 </head>
 <div id="content">
   <h1>Liste des Produits</h1>
-  <input id="btnAddProduit" type="button" class ="btn btn-success" value="Ajouter">
+  <!--  <input id="btnAddProduit" type="button" class ="btn btn-success" value="Ajouter">-->
   <a href="home"><input type="button" class ="btn btn-info" value="Retour"></a>
 
   <table class="table table-striped">
@@ -59,11 +59,13 @@
 				<tr>
 					<td><form:label path="libelle">Libelle :</form:label></td>
 					<td><form:input required="required" path="libelle" placeholder="Saisir votre libelle"/></td>
+					<td><form:errors path="libelle" style="color:red"/> </td>
 				</tr>
 				<tr>
 					<td><form:label path="prix">Prix :</form:label></td>
 					<td><form:input required="required" path="prix"
 						type="number" placeholder="Saisir prix" step="0.01"/></td>
+						<td><form:errors path="prix" style="color:red"/> </td>
 				</tr>
 				<tr>
 					<td><form:label path="fournisseur.id">Fournisseur :</form:label></td>
@@ -85,10 +87,10 @@
 </html>
 <script>
 
-
+/*
   btnAddProduit.onclick=function()
   {
     addFormProduit.style.display="block";
   }
- 
+ */
 </script>

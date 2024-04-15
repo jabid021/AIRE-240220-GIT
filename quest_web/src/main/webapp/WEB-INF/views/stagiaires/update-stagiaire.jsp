@@ -70,7 +70,7 @@ dd {
 
 	<h1>Fiche du Stagiaire ${stagiaire.id}</h1>
 	<main>
-		<form action="stagiaire" method="POST">
+		<form action="stagiaire/${stagiaire.id}" method="POST">
 			<fieldset>
 				<legend>
 					<b>Modifier un stagiaire</b>

@@ -52,7 +52,7 @@
 		<h1>Fiche de l'Ordinateur ${ordinateur.id}</h1>
 	</div>
 	<div class="container">
-		<form class="form-group row" action="ordinateur" id="inscription"
+		<form class="form-group row" action="ordinateur/${ordinateur.id}" id="inscription"
 			method="POST">
 			<fieldset>
 				<table id="tab1" class="table table-active table-bordered">

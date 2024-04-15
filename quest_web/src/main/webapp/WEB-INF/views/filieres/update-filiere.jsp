@@ -12,9 +12,9 @@
     <h3 id="titreMaTable">Fiche Filiere ${filiere.id}</h3>
 
     <!-- Affichage de la saisie de filière-->
-    <form action="filiere" method="POST">
+    <form action="filiere/${filiere.id}" method="POST">
     <div class="form-Filiere">
-    <h3>   Fiche Matiere ${filiiere.id} </h3>
+    <h3>   Fiche Matiere ${filiere.id} </h3>
       <input type="hidden" value="${filiere.id}" name="id">
       <div class="form-group">
         <label for="libelle">Libellé de la Filière :</label>

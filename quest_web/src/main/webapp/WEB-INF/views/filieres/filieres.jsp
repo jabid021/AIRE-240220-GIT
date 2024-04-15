@@ -30,9 +30,9 @@
             <td>${filiere.libelle }</td>
             <td>${filiere.debut }</td>
             <td>${filiere.fin }</td>
-            <td><a href="filiere?id=${filiere.id}"><button type="button" class="btn btn-warning">Modifier</button></a></td>
-            <td><a href="filiere?id=${filiere.id}&delete"><button type="button" class="btn btn-danger">Supprimer</button></a></td>
-          	<td><a href="module?filiere=${filiere.id}"><button type="button" class="btn btn-info">Voir ses modules</button></a></td>
+            <td><a href="filiere/${filiere.id}"><button type="button" class="btn btn-warning">Modifier</button></a></td>
+            <td><a href="filiere/delete/${filiere.id}"><button type="button" class="btn btn-danger">Supprimer</button></a></td>
+          	<td><a href="module/filiere-${filiere.id}"><button type="button" class="btn btn-info">Voir ses modules</button></a></td>
           </tr>
           </c:forEach>
           
