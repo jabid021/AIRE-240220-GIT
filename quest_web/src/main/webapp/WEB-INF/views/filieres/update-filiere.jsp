@@ -20,11 +20,11 @@
         <label for="libelle">Libellé de la Filière :</label>
         <input type="text" id="libelle" value="${filiere.libelle}" name="libelle">
         
-        <label for="libelle">Date Début de la Matière :</label>
-        <input type="text" id="libelle" value="$filiere.debut}" name="libelle">
+        <label for="debut">Date Début de la Matière :</label>
+        <input type="date" id="debut" value="${filiere.debut}" name="debut">
         
-        <label for="libelle">Date Fin de la Matière :</label>
-        <input type="text" id="libelle" value="${filiere.fin}" name="libelle">
+        <label for="fin">Date Fin de la Matière :</label>
+        <input type="date" id="fin" value="${filiere.fin}" name="fin">
         
         <input type="submit" value="Modifier">
       </div>
