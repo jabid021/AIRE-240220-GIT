@@ -114,8 +114,7 @@ th {
 					<tr>
 						<td>${matiere.id}</td>
 						<td>${matiere.libelle}</td>
-						<td class="action-buttons"><a
-							href="matiere/${matiere.id}"><button>Modifier</button></a>
+						<td class="action-buttons"><a href="matiere/${matiere.id}"><button>Modifier</button></a>
 							<a href="matiere/delete/${matiere.id}"><button>Supprimer</button></a>
 						</td>
 					</tr>
@@ -126,16 +125,23 @@ th {
 		</div>
 
 		<!-- Affichage de la saisie de matière-->
-		<form action="matiere" method="POST">
+		<form:form action="matiere" method="POST"
+			modelAttribute="matiere">
 			<div class="form-container">
-				<h3>Ajouter une nouvelle Matière</h3>
+				<h3>Ajouter une Matière</h3>
+				<!--  <input type="hidden" value="${matiere.id}" name="id">-->
 				<div class="form-group">
-					<label for="libelle">Libellé de la Matière :</label> <input
-						type="text" id="libelle" name="libelle"> <input
-						type="submit" value="Ajouter">
+					<!--  <label for="libelle">Libellé de la Matière :</label>
+         <input type="text" id="libelle" value="${matiere.libelle}" name="libelle">
+       -->
+					<form:label path="libelle">Libellé de la Matière :</form:label>
+					<form:input path="libelle" />
+					<form:errors path="libelle" style="color:red"/>
+					<form:errors path="libelle"><span style="color:red">Ceci est autre message d'error</span></form:errors>
+					<input type="submit" value="Ajouter">
 				</div>
 			</div>
-		</form>
+		</form:form>
 
 	</div>
 

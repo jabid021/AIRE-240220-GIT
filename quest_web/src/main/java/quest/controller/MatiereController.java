@@ -2,9 +2,12 @@ package quest.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,6 +30,7 @@ public class MatiereController {
 	{
 		List<Matiere> matieres = matiereSrv.getAll();
 		model.addAttribute("matieres",matieres);
+		model.addAttribute("matiere",new Matiere());
 		return "matieres/matieres";
 	}
 	
@@ -38,19 +42,41 @@ public class MatiereController {
 		return "matieres/update-matiere";
 	}
 	
+	//En Ajoutant @Valid, notre controller peut verifier si l'objet recu (ici la matiere) respecte 
+	//l'ensemble des validators coté back, si ce n'est pas le cas, le controlleur va interrompre le traitement
+	//et afficher que l'objet n'est pas complet /valide ( La requête envoyée par le client était syntaxiquement incorrecte.)
+	
+	
+	//Si on veut recup les erreurs de validation, on doit utiliser BindingResult
 	@PostMapping
-	public String ajoutMatiere(@ModelAttribute Matiere matiere) 
+	public String ajoutMatiere(@Valid @ModelAttribute Matiere matiere, BindingResult result,Model model) 
 	{
-		matiereSrv.insert(matiere);
-		
-		return "redirect:/matiere";
+		if(result.hasErrors()) 
+		{
+			List<Matiere> matieres = matiereSrv.getAll();
+			model.addAttribute("matieres",matieres);
+			return "matieres/matieres";
+		}
+		else 
+		{
+			matiereSrv.insert(matiere);
+			return "redirect:/matiere";
+		}	
 	}
 	
 	@PostMapping("/{id}")
-	public String modifierMatiere(@ModelAttribute Matiere matiere) 
+	public String modifierMatiere(@Valid @ModelAttribute Matiere matiere,BindingResult result,Model model) 
 	{
-		matiereSrv.update(matiere);
-		return "redirect:/matiere";
+		if(result.hasErrors()) 
+		{
+			List<Matiere> matieres = matiereSrv.getAll();
+			model.addAttribute("matieres",matieres);
+			return "matieres/update-matiere";
+		}
+		else {
+			matiereSrv.update(matiere);
+			return "redirect:/matiere";
+		}
 	}
 	
 	@GetMapping("/delete/{id}")

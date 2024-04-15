@@ -6,6 +6,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name="matiere")
@@ -14,7 +17,9 @@ public class Matiere {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer  id ;
-	@Column(length = 50, nullable=false)
+	@Column(length = 50, nullable=false)            
+	@NotBlank(message = "Libelle ne peut pas etre vide !")
+	@Size(min=5 ,max = 50)
 	private String libelle;
 
 	public Matiere() {}

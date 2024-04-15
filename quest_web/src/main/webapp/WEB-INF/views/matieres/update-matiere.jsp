@@ -111,6 +111,7 @@
        -->
         <form:label path="libelle">Libellé de la Matière :</form:label>
         <form:input path="libelle" />
+        <form:errors path="libelle" style="color:red"></form:errors>
         <input type="submit" value="Modifier">
       </div>
     </div>

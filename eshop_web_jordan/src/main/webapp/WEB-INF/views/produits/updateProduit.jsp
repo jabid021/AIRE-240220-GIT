@@ -7,36 +7,24 @@
 	<div id="content">
 
 		<h3>Modifier Produit ${produit.id}</h3>
-		<form action="produit/${produit.id}" method="post">
-			<input type="hidden" name="id" value="${produit.id}">
+		<form:form action="produit/${produit.id}" method="post" modelAttribute="produit">
+			<form:hidden path="id" />
 			<table>
 				<tr>
-					<td>Libelle :</td>
-					<td><input required name="libelle" value="${produit.libelle}"
-						type="text" placeholder="Saisir votre libelle"></td>
+					<td><form:label path="libelle">Libelle :</form:label></td>
+					<td><form:input required="required" path="libelle" placeholder="Saisir votre libelle"/></td>
 				</tr>
 				<tr>
-					<td>Prix :</td>
-					<td><input required value="${produit.prix}" name="prix"
-						type="number" placeholder="Saisir prix" step="0.01"></td>
+					<td><form:label path="prix">Prix :</form:label></td>
+					<td><form:input required="required" path="prix"
+						type="number" placeholder="Saisir prix" step="0.01"/></td>
 				</tr>
 				<tr>
-					<td>Fournisseur :</td>
-					<td><select required name="fournisseur.id">
-							<option value="">Choisir un fournisseur</option>
-							<c:forEach items="${fournisseurs}" var="fournisseur">
-								<c:choose>
-									<c:when test="${produit.fournisseur.id==fournisseur.id}">
-										<option selected value="${fournisseur.id}">${fournisseur.id} -
-											${fournisseur.nom} ${fournisseur.prenom}</option>
-									</c:when>
-									<c:otherwise>
-										<option value="${fournisseur.id}">${fournisseur.id} -
-											${fournisseur.nom} ${fournisseur.prenom}</option>
-									</c:otherwise>
-								</c:choose>
-							</c:forEach>
-					</select></td>
+					<td><form:label path="fournisseur.id">Fournisseur :</form:label></td>
+					<td><form:select required="required" path="fournisseur.id">
+							<form:option value="">Choisir un fournisseur</form:option>
+							<form:options items="${fournisseurs}"  itemValue="id" itemLabel="infoSelect"/>
+					</form:select></td>
 				</tr>
 			</table>
 
@@ -45,7 +33,7 @@
 			<input class="btn btn-warning" type="submit" value="Modifier">
 			<a href="produit"><input type="button" class="btn btn-info"
 				value="Retour"></a>
-		</form>
+		</form:form>
 	</div>
 </body>
 </html>

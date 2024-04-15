@@ -7,9 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import eshop.dao.IDAOPersonne;
@@ -24,11 +26,11 @@ public class ProduitController {
 
 	@Autowired
 	ProduitService produitSrv;
-	
+
 	@Autowired
 	IDAOPersonne daoPersonne;
-	
-	
+
+
 	@GetMapping
 	public String allProduits(Model model) 
 	{
@@ -36,9 +38,10 @@ public class ProduitController {
 		List<Fournisseur> fournisseurs = daoPersonne.findAllFournisseur();
 		model.addAttribute("produits",produits);
 		model.addAttribute("fournisseurs",fournisseurs);
+		model.addAttribute("produit",new Produit());
 		return "produits/produits";
 	}
-	
+
 	@GetMapping("/{id}")
 	public String ficheProduit(@PathVariable("id") Integer idProduit,Model model) 
 	{
@@ -48,47 +51,32 @@ public class ProduitController {
 		model.addAttribute("fournisseurs",fournisseurs);
 		return "produits/updateProduit";
 	}
-	
+
 	@PostMapping
-	public String ajoutProduit(@RequestParam String libelle, double prix, @RequestParam("fournisseur.id") Integer idFournisseur) 
+	public String ajoutProduit(@ModelAttribute Produit produit
+			//@RequestParam String libelle, double prix, @RequestParam("fournisseur.id") Integer idFournisseur
+			) 
 	{
-		
-		Optional<Personne> opt = daoPersonne.findById(idFournisseur); 
-		if(opt.isPresent()) 
-		{
-			if(opt.get() instanceof Fournisseur) 
-			{
-				Fournisseur fournisseur = (Fournisseur) opt.get();	
-				Produit produit = new Produit(libelle,prix,fournisseur);
-				produitSrv.insert(produit);
-			}
-		}
+
+		produitSrv.insert(produit);
 		return "redirect:/produit";
 	}
-	
+
+
 	@PostMapping("/{id}")
-	public String modifierProduit(@PathVariable Integer id,  @RequestParam String libelle, double prix, @RequestParam("fournisseur.id") Integer idFournisseur) 
+	public String modifierProduit(@ModelAttribute Produit produit) 
 	{
-		Optional<Personne> opt = daoPersonne.findById(idFournisseur); 
-		if(opt.isPresent()) 
-		{
-			if(opt.get() instanceof Fournisseur) 
-			{
-				Fournisseur fournisseur = (Fournisseur) opt.get();	
-				Produit produit = new Produit(id,libelle,prix,fournisseur);
-				produitSrv.update(produit);
-			}
-		}
+		produitSrv.update(produit);
 		return "redirect:/produit";
 	}
-	
+
 	@GetMapping("/delete/{id}")
 	public String supprimerProduit(@PathVariable Integer id) 
 	{
 		produitSrv.deleteById(id);
 		return "redirect:/produit";
 	}
-	
-	
-	
+
+
+
 }

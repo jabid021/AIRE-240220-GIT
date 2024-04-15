@@ -103,7 +103,6 @@ public class Produit {
 		this.ventes = ventes;
 	}
 
-
 	@Override
 	public String toString() {
 		return "Produit [id=" + id + ", libelle=" + libelle + ", prix=" + prix + ", fournisseur=" + fournisseur + "]";

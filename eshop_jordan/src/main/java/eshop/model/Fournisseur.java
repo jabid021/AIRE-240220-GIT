@@ -14,12 +14,12 @@ public class Fournisseur extends Personne {
 	@Column(name="company",length = 40)
 	private String societe;
 
-	
+
 	@OneToMany(mappedBy = "fournisseur")
 	private List<Produit> stock;
-	
+
 	public Fournisseur() {}
-	
+
 	public Fournisseur(String nom, String prenom, Adresse adresse, String societe) {
 		super(nom, prenom, adresse);
 		this.societe = societe;
@@ -32,7 +32,7 @@ public class Fournisseur extends Personne {
 	public void setSociete(String societe) {
 		this.societe = societe;
 	}
-	
+
 
 	public List<Produit> getStock() {
 		return stock;
@@ -42,12 +42,17 @@ public class Fournisseur extends Personne {
 		this.stock = stock;
 	}
 
+	public String getInfoSelect() 
+	{
+		return id+"-"+prenom+" "+nom;
+	}
+
 	@Override
 	public String toString() {
 		return "Fournisseur [id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", adresse=" + adresse + ", societe="
 				+ societe + "]";
 	}
-	
-	
-	
+
+
+
 }
