@@ -8,7 +8,7 @@
 
 		<h3>Modifier Produit ${produit.id}</h3>
 		<form action="produit/${produit.id}" method="post">
-			
+			<input type="hidden" name="id" value="${produit.id}">
 			<table>
 				<tr>
 					<td>Libelle :</td>

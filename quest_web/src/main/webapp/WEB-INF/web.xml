@@ -5,9 +5,7 @@
 	version="2.5">
 	<display-name>quest_web</display-name>
 
-	<welcome-file-list>
-		<welcome-file>home</welcome-file>
-	</welcome-file-list>
+
 
 	<jsp-config>
 		<jsp-property-group>

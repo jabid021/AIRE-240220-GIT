@@ -38,6 +38,12 @@ public class Matiere {
 	public void setLibelle(String libelle) {
 		this.libelle = libelle;
 	}
+	
+	
+	public String getInfoSelect() 
+	{
+		return this.id+"-"+this.libelle;
+	}
 	@Override
 	public String toString() {
 		return "Matiere [id=" + id + ", libelle=" + libelle + "]";

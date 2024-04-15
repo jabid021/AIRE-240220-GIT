@@ -87,10 +87,6 @@ public class ModuleController {
 	@PostMapping("/{id}")
 	public String modifierModule(@ModelAttribute Module module) 
 	{
-		if(module.getFormateur().getId()==null) 
-		{
-			module.setFormateur(null);
-		}
 		moduleSrv.update(module);
 		return "redirect:/module/filiere-"+module.getFiliere().getId();
 	}

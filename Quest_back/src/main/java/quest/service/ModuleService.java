@@ -51,6 +51,11 @@ public class ModuleService {
 		{
 			throw new RuntimeException("Un update sans id ?!");
 		}
+		
+		if(module.getFormateur().getId()==null) 
+		{
+			module.setFormateur(null);
+		}
 		return daoModule.save(module);
 	}
 	

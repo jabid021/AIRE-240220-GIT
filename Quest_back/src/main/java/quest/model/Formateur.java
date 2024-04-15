@@ -30,6 +30,12 @@ public class Formateur extends Compte{
 		this.tarif = tarif;
 	}
 
+	public String getInfoSelect() 
+	{
+		return this.id+" - "+this.prenom+" "+this.nom;
+	}
+
+	
 	@Override
 	public String toString() {
 		return "Formateur [tarif=" + tarif + ", id=" + id + ", email=" + email + ", password=" + password + ", prenom="

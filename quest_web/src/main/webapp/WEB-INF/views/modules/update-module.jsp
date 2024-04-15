@@ -82,14 +82,14 @@ legend {
 				<form:label path="matiere.id" class="form-label">Matiere</form:label> 
 				<form:select path="matiere.id" required="required">
 				<form:option value="">Choisir une matiere</form:option>
-				<form:options items="${matieres}"  itemValue="id" itemLabel="libelle"/>
+				<form:options items="${matieres}"  itemValue="id" itemLabel="infoSelect"/>
 				</form:select>
 			</div>
 			<div class="mb-3">
 				<label for="inputformateur" class="form-label">Formateur</label> 
 				<form:select path="formateur.id">
 					<form:option value="">Pas de formateur</form:option>
-					<form:options items="${formateurs}" itemValue="id" itemLabel="prenom"/>
+					<form:options items="${formateurs}" itemValue="id" itemLabel="infoSelect"/>
 				</form:select>
 			</div>
 			<div>

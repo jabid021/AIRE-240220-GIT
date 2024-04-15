@@ -26,6 +26,7 @@ public class WebConfig implements WebMvcConfigurer
 		registry.addResourceHandler ("/assets/**").addResourceLocations("/WEB-INF/assets/");
 		registry.addResourceHandler ("/style.css").addResourceLocations("/style.css");
 		registry.addResourceHandler ("/output.css").addResourceLocations("/output.css");
+		registry.addResourceHandler ("/index.html").addResourceLocations("/index.html");
 	}
 
 
@@ -44,10 +45,5 @@ public class WebConfig implements WebMvcConfigurer
 	        registrar.registerFormatters(registry);
 	    }
 	
-	/*
-	 * NE MARCHE PAS POUR L'INSTANT
-	 * public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addViewController("/index").setViewName("index"); // "index" est le nom de votre fichier HTML
-    }*/
 
 }
