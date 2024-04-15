@@ -40,6 +40,11 @@ public class ModuleService {
 		return daoModule.findAllByFiliere(idFiliere);
 	}
 	
+	public List<Module> getAllByFormateur(Integer idFormateur)
+	{
+		return daoModule.findAllByFormateur(idFormateur);
+	}
+	
 	public Module insert(Module module) 
 	{
 		return daoModule.save(module);
@@ -52,7 +57,7 @@ public class ModuleService {
 			throw new RuntimeException("Un update sans id ?!");
 		}
 		
-		if(module.getFormateur().getId()==null) 
+		if(module.getFormateur()!=null &&  module.getFormateur().getId()==null) 
 		{
 			module.setFormateur(null);
 		}

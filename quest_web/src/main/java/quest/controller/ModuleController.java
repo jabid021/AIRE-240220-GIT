@@ -6,7 +6,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import quest.dao.IDAOCompte;
 import quest.dao.IDAOFiliere;
+import quest.model.Compte;
 import quest.model.Filiere;
 import quest.model.Formateur;
 import quest.model.Matiere;
@@ -40,7 +40,7 @@ public class ModuleController {
 	MatiereService matiereSrv;
 	
 	@GetMapping("/filiere-{filiere}")
-	public String allModules(@PathVariable("filiere") Integer idFiliere,Model model) 
+	public String allModulesByFiliere(@PathVariable("filiere") Integer idFiliere,Model model) 
 	{
 		List<Module> modules = moduleSrv.getAllByFiliere(idFiliere);
 		List<Formateur> formateurs = daoCompte.findAllFormateur();
@@ -52,6 +52,17 @@ public class ModuleController {
 		model.addAttribute("formateurs",formateurs);
 		model.addAttribute("matieres",matieres);
 		return "modules/filiere-modules";
+	}
+	
+	@GetMapping("/formateur-{formateur}")
+	public String allModulesByFormateur(@PathVariable("formateur") Integer idFormateur,Model model) 
+	{
+		List<Module> modules = moduleSrv.getAllByFormateur(idFormateur);
+		Compte formateur = daoCompte.findById(idFormateur).get();
+		
+		model.addAttribute("modules",modules);
+		model.addAttribute("formateur",formateur);
+		return "modules/formateur-modules";
 	}
 	
 	@GetMapping("/{id}")

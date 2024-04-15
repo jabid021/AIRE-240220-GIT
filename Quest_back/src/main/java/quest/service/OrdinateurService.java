@@ -49,7 +49,7 @@ public class OrdinateurService {
 		{
 			throw new RuntimeException("Un update sans id ?!");
 		}
-		if(ordinateur.getStagiaire().getId()==null) 
+		if(ordinateur.getStagiaire()!=null &&  ordinateur.getStagiaire().getId()==null) 
 		{
 			ordinateur.setStagiaire(null);
 		}
