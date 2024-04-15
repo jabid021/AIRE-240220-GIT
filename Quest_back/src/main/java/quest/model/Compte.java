@@ -9,6 +9,10 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Table;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name="compte")
@@ -22,10 +26,13 @@ public abstract class Compte {
 	@Column(length = 50, nullable=false, unique=true)
 	protected String email;
 	@Column(length = 120, nullable=false)
+	@Min(8)
 	protected String password;
 	@Column(length = 30, nullable=false)
+	@NotBlank
 	protected String prenom;
 	@Column(length = 50, nullable=false)
+	@NotBlank
 	protected String nom;
 	
 	public Compte() {}

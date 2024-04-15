@@ -70,11 +70,10 @@ dd {
 
 	<h1>Fiche du Stagiaire ${stagiaire.id}</h1>
 	<main>
-		<form action="stagiaire/${stagiaire.id}" method="POST">
+		<form:form  action="stagiaire/${stagiaire.id}" method="POST" modelAttribute="stagiaire">
 			<fieldset>
 				<legend>
-					<b>Modifier un stagiaire</b>
-					<input type="hidden" value="${stagiaire.id}" name="id">
+					<<b>Modifier un stagiaire</b>
 				</legend>
 				<table>
 					<tbody>
@@ -83,8 +82,13 @@ dd {
 							<td>Mail :</td>
 						</tr>
 						<tr>
-							<td><input style="width: 80%" required name="email"
-								placeholder="Saisir votre email" type="email"></td>
+							<td>
+							<form:label path="email"></form:label>
+							
+							<form:input style="width: 80%" required="required" path="email"
+								placeholder="Saisir votre email" type="email"/>
+							<form:errors path="email" style= "color: red" ></form:errors>
+								</td>
 						</tr>
 
 
@@ -92,41 +96,61 @@ dd {
 							<td>Password :</td>
 						</tr>
 						<tr>
-							<td><input style="width: 80%" maxlength="8" required name="password"
-								placeholder="Saisir votre password" type="password"></td>
+							<td>
+							<form:label path="password"></form:label>
+							<form:input style="width: 80%" required="required" path="password"
+								placeholder="Saisir votre password" type="password"/>
+								<form:errors path="password" style= "color: red" ></form:errors>
+								</td>
 						</tr>
 
 						<tr>
 							<td>Nom :</td>
 						</tr>
 						<tr>
-							<td><input style="width: 80%" required name="nom"
-								placeholder="Saisir votre nom" type="text"></td>
+							<td>
+							<form:label path="nom"></form:label>
+							<form:input style="width: 80%" required="required" path="nom"
+								placeholder="Saisir votre nom" type="text"/>
+								<form:errors path="nom" style= "color: red" ></form:errors>
+								</td>
 						</tr>
 
 						<tr>
 							<td>Prenom :</td>
 						</tr>
 						<tr>
-							<td><input style="width: 80%"
-								placeholder="Saisir votre prenom" required name="prenom" type="text"></td>
+							<td>
+							<form:label path="prenom"></form:label>
+							<form:input style="width: 80%"
+								placeholder="Saisir votre prenom" required="required" path="prenom" type="text"/>
+								<form:errors path="prenom" style= "color: red" ></form:errors>
+								</td>
 						</tr>
 
 						<tr>
 							<td>Numero :</td>
 						</tr>
 						<tr>
-							<td><input style="width: 80%" required name="adresse.numero"
-								placeholder="Saisir votre numero d'adresse" type="text"></td>
+							<td>
+							<form:label path="adresse.numero"></form:label>
+							<form:input style="width: 80%" required="required" path="adresse.numero"
+								placeholder="Saisir votre numero d'adresse" type="text"/>
+								<form:errors path="adresse.numero" style= "color: red" ></form:errors>
+								</td>
 						</tr>
 
 						<tr>
 							<td>Voie :</td>
 						</tr>
 						<tr>
-							<td><input style="width: 80%"
-								placeholder="Saisir votre voie d'adresse" required name="adresse.voie"
-								type="text"></td>
+							<td>
+							<form:label path="adresse.voie"></form:label>
+							<form:input style="width: 80%"
+								placeholder="Saisir votre voie d'adresse" required="required" path="adresse.voie"
+								type="text"/>
+								<form:errors path="adresse.voie" style= "color: red" ></form:errors>
+								</td>
 						</tr>
 
 
@@ -134,37 +158,44 @@ dd {
 							<td>Ville :</td>
 						</tr>
 						<tr>
-							<td><input style="width: 80%" required name="adresse.ville"
-								placeholder="Saisir votre ville" type="text"></td>
+							<td>
+							<form:label path="adresse.ville"></form:label>
+							<form:input style="width: 80%" required="required" path="adresse.ville"
+								placeholder="Saisir votre ville" type="text"/>
+								<form:errors path="adresse.ville" style= "color: red" ></form:errors>
+								</td>
 						</tr>
 
 						<tr>
 							<td>Cp:</td>
 						</tr>
 						<tr>
-							<td><input style="width: 80%" required name="adresse.cp"
-								placeholder="Saisir votre code postal" type="text"></td>
+							<td>
+							<form:label path="adresse.cp"></form:label>
+							<form:input style="width: 80%" required="required" path="adresse.cp"
+								placeholder="Saisir votre code postal" type="text"/>
+								<form:errors path="adresse.cp" style= "color: red" ></form:errors>
+								</td>
 						</tr>
 
 						<tr>
 							<td>Filiere :</td>
 						</tr>
 						<tr>
-							<td><select name="filiere.id" required>
-									<option value="">Choisir une filière</option>
-									<c:forEach items="${filieres}" var="filiere">
-										<option value="${filiere.id}">${filiere.id}-${filiere.libelle}</option>
-									</c:forEach>
-									<%-- >option value="1">1 - AIRE</option>
-									<option value="2">2 - POEI JAVA</option>
-									<option value="3">3 - POEI COBOL</option--%>
-							</select></td>
+							<td>
+							<form:label path="filiere.id"></form:label>
+							<form:select path="filiere.id" required="required">
+									<form:option value="">Choisir une filière</form:option>
+									<form:options items="${filieres}" itemValue="id" itemLabel="infos"/>
+									<form:errors path="filiere.id" style= "color: red" ></form:errors>
+										
+							</form:select></td>
 						</tr>
 					</tbody>
 				</table>
 			</fieldset>
-			<button type="submit" class="btn btn-success">Modifier</button>
-		</form>
+			<input class ="btn btn-success" type="submit" value="Modifier">
+		</form:form>
 	</main>
 
 

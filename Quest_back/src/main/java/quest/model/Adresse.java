@@ -2,17 +2,22 @@ package quest.model;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
+import javax.validation.constraints.NotBlank;
 
 @Embeddable
 public class Adresse {
 	
 	@Column(length = 10)
+	@NotBlank(message= "numero NON VALIDE!!")
 	private String numero;
 	@Column(length = 50)
+	@NotBlank(message= "voie NON VALIDE!!")
 	private String voie;
 	@Column(length = 50)
+	@NotBlank(message= "ville NON VALIDE!!")
 	private String ville;
 	@Column(length = 15)
+	@NotBlank(message= "cp NON VALIDE!!")
 	private String cp;
 	
 

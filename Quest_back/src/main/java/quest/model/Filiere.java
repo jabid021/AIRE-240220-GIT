@@ -80,6 +80,10 @@ public class Filiere {
 	public void setFin(LocalDate fin) {
 		this.fin = fin;
 	}
+	
+	public String getInfos() {
+		return this.id+"-"+this.libelle;
+	}
 
 	@Override
 	public String toString() {

@@ -96,7 +96,7 @@
 						<form:select path="stagiaire.id">
 								<form:option value="">Pas de stagiaire</form:option>		
 									
-								<form:options items="${stagiaires}" itemValue="id" itemLabel="prenom"/>
+								<form:options items="${stagiaires}" itemValue="id" itemLabel="infos"/>
 						</form:select>
 						</td>
 					</tr>

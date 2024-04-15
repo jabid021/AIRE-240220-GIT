@@ -4,11 +4,14 @@ import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.validation.Valid;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 public class Stagiaire extends Compte {
 
 	@Embedded
+	@Valid
 	private Adresse adresse;
 	
 	@ManyToOne
@@ -48,6 +51,11 @@ public class Stagiaire extends Compte {
 
 	public void setFiliere(Filiere filiere) {
 		this.filiere = filiere;
+	}
+	
+	//Integer id,String email, String password, String password, String nom, Adresse adresse, Filiere filiere
+	public String getInfos() {
+		return this.id+" "+this.prenom+" "+this.nom;
 	}
 
 	@Override

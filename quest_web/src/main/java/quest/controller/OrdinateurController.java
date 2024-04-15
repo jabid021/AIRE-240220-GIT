@@ -14,11 +14,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import quest.dao.IDAOCompte;
 import quest.model.Marque;
 import quest.model.Ordinateur;
 import quest.model.Stagiaire;
 import quest.service.OrdinateurService;
+import quest.service.StagiaireService;
 
 
 
@@ -30,7 +30,7 @@ public class OrdinateurController {
 	OrdinateurService ordinateurSrv;
 
 	@Autowired
-	IDAOCompte daoCompte;
+	StagiaireService stagiaireSrv;
 
 	@GetMapping
 	public String allOrdinateurs(Model model) 
@@ -40,8 +40,8 @@ public class OrdinateurController {
 		model.addAttribute("ordinateur",new Ordinateur());
 		model.addAttribute("marques", Marque.values());
 		
-		//List<Stagiaire> stagiaires = stagiaireSrv.getAll();
-		List<Stagiaire> stagiaires = daoCompte.findAllStagaire();
+		List<Stagiaire> stagiaires = stagiaireSrv.getAll();
+	
 		model.addAttribute("stagiaires",stagiaires);
 		
 		
@@ -54,8 +54,8 @@ public class OrdinateurController {
 		Ordinateur ordinateur = ordinateurSrv.getById(idOrdinateur);
 		model.addAttribute("ordinateur",ordinateur);
 		
-		//Stagiaire stagiaire = stagiaireSrv.getById(idStagiaire);
-		List<Stagiaire> stagiaires = daoCompte.findAllStagaire();
+		List<Stagiaire> stagiaires= stagiaireSrv.getAll();
+
 		model.addAttribute("stagiaires",stagiaires);
 		
 		return "ordinateurs/update-ordinateur";
@@ -75,7 +75,7 @@ public class OrdinateurController {
 			List<Ordinateur> ordinateurs = ordinateurSrv.getAll();
 			model.addAttribute("ordinateurs",ordinateurs);
 			
-			List<Stagiaire> stagiaires = daoCompte.findAllStagaire();
+			List<Stagiaire> stagiaires= stagiaireSrv.getAll();
 			model.addAttribute("stagiaires",stagiaires);
 			
 			return "ordinateurs/ordinateurs";
@@ -95,8 +95,8 @@ public class OrdinateurController {
 			List<Ordinateur> ordinateurs = ordinateurSrv.getAll();
 			model.addAttribute("ordinateurs",ordinateurs);
 			
-			//List<Stagiaire> stagiaires = stagiaireSrv.getAll();
-			List<Stagiaire> stagiaires = daoCompte.findAllStagaire();
+			
+			List<Stagiaire> stagiaires= stagiaireSrv.getAll();
 			model.addAttribute("stagiaires",stagiaires);
 			
 			return "ordinateurs/update-ordinateur";
