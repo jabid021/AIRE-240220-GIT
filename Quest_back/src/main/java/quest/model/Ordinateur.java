@@ -87,6 +87,9 @@ public class Ordinateur {
 		this.stagiaire = stagiaire;
 	}
 
+	public String getInfos() {
+		return this.id+" - "+this.ram+" - "+this.marque;
+	}
 
 	@Override
 	public String toString() {

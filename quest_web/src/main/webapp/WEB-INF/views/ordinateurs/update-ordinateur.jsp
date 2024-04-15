@@ -52,12 +52,12 @@
 		<h1>Fiche de l'Ordinateur ${ordinateur.id}</h1>
 	</div>
 	<div class="container">
-		<form class="form-group row" action="ordinateur/${ordinateur.id}" id="inscription"
-			method="POST">
+		<form:form class="form-group row" action="ordinateur/${ordinateur.id}" 
+			method="POST" modelAttribute="ordinateur">
 			<fieldset>
 				<table id="tab1" class="table table-active table-bordered">
 					<h1>Modifier un ordinateur</h1>
-					<input type="hidden" value="${ordinateur.id}" name="id">
+					<form:hidden path="id"/>
 					<thead>
 						<tr>
 							<th><label>RAM</label></th>
@@ -65,12 +65,14 @@
 					</thead>
 					<tbody>
 						<tr>
-							<td><select id="ram" name="ram" required>
+							<td>
+							<form:select path="ram" requied="required">
 									<option value="">Choisir une RAM</option>
-									<option <c:if test="${ordinateur.ram==8}"> selected </c:if> value="8">8G</option>
-									<option <c:if test="${ordinateur.ram==16}"> selected </c:if> value="16">16G</option>
-									<option <c:if test="${ordinateur.ram==32}"> selected </c:if> value="32">32G</option>
-							</select></td>
+									<form:option value="8">8G</form:option>
+									<form:option value="16">16G</form:option>
+									<form:option value="32">32G</form:option>
+							</form:select>
+							</td>
 						</tr>
 					<thead>
 						<tr>
@@ -78,45 +80,25 @@
 						</tr>
 					</thead>
 					<tr>
-						<td><select class="custom-select" id="marque" name="marque"
-							required>
-								<option value="">Choisir une MARQUE Ordinateur</option>
-								<c:forEach items="${marques}" var="marque">
-
-									<c:choose>
-										<c:when test="${marque== ordinateur.marque}">
-											<option selected>${marque}</option>
-										</c:when>
-
-										<c:otherwise>
-											<option>${marque}</option>
-										</c:otherwise>
-									</c:choose>
- 
-								</c:forEach>
-						</select></td>
+						<td>
+						<form:select class="custom-select" path="marque" requied="required">
+								<form:option value="">Choisir une MARQUE Ordinateur</form:option>
+								
+								<form:options items="${marques}"/>
+							
+						</form:select>
+						</td>
 					</tr>
 
 
 					<tr>
-						<td><select name="stagiaire.id">
-								<option value="">Pas de stagiaire</option>
-								<c:forEach items="${stagiaires}" var="stagiaire">
-								
-								<c:choose>
-										<c:when test="${stagiaire.id== ordinateur.stagiaire.id}">
-											<option selected value="${stagiaire.id}">${stagiaire.id}-${stagiaire.nom}
-										${stagiaire.prenom}</option>
-										</c:when>
-
-										<c:otherwise>
-											<option value="${stagiaire.id}">${stagiaire.id}-${stagiaire.nom}
-										${stagiaire.prenom}</option>
-										</c:otherwise>
-									</c:choose>
+						<td>
+						<form:select path="stagiaire.id">
+								<form:option value="">Pas de stagiaire</form:option>		
 									
-								</c:forEach>
-						</select></td>
+								<form:options items="${stagiaires}" itemValue="id" itemLabel="prenom"/>
+						</form:select>
+						</td>
 					</tr>
 					</tbody>
 					<tr>
@@ -127,7 +109,7 @@
 					</tr>
 				</table>
 			</fieldset>
-		</form>
+		</form:form>
 	</div>
 </body>
 </html>
