@@ -2,11 +2,15 @@ package quest.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 
 @Entity
 public class Formateur extends Compte{
 
 	@Column(columnDefinition = "DECIMAL(5,2)")
+	@Min(70)
+	@Max(10000)
 	private double tarif;
 	
 	public Formateur() {}

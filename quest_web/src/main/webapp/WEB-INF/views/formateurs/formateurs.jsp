@@ -42,17 +42,18 @@
 	        </tr>
 		</c:forEach>
 		
-        <form action="formateur" method="POST">
+        <form:form  modelAttribute="formateur" action="formateur" method="POST">
         <tr class="text-green-950 bg-blue-100">
             <td class="py-2"></td>
-            <td class="py-2"><input class="py-1 w-11/12" type="email" name="email" id="email" placeholder="jardonibad@gmail.com"></td>
-            <td class="py-2"><input class="py-1 w-11/12" type="password" name="password" id="password" placeholder="drowssap"></td>
-            <td class="py-2"><input class="py-1 w-11/12" type="text" name="nom" id="nom" placeholder="Ibad"></td>
-            <td class="py-2"><input class="py-1 w-11/12" type="text" name="prenom" id="prenom" placeholder="Jardon"></td>
-            <td class="py-2"><input class="py-1 w-11/12" type="number" name="tarif" id="tarif" placeholder="530.00€" step="0.01"></td>
+            <td class="py-2"><form:input class="py-1 w-11/12" required="required" type="email" path="email" id="email" placeholder="jardonibad@gmail.com"/></td>
+            <td class="py-2"><form:input class="py-1 w-11/12" required="required" type="password" path="password" id="password" placeholder="drowssap"/></td>
+            <td class="py-2"><form:input class="py-1 w-11/12" required="required" type="text" path="nom" id="nom" placeholder="Ibad"/></td>
+            <td class="py-2"><form:input class="py-1 w-11/12" required="required" type="text" path="prenom" id="prenom" placeholder="Jardon"/></td>
+            <td class="py-2"><form:input class="py-1 w-11/12" required="required" type="number" path="tarif" id="tarif" placeholder="530.00€" step="0.01"/>
+            <form:errors path="tarif">Le tarif doit être compris entre 70 et 10000€</form:errors></td>
             <td class="py-2"><button type="submit" class="rounded justify-self-center shadow text-blue-900 bg-blue-200 hover:bg-blue-300 font-semibold py-4 px-4">Ajouter</button></td>
         </tr>
-        </form>
+        </form:form>
     </table>
     </div>
 </body>
