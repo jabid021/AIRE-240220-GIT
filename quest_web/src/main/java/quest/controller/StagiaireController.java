@@ -86,7 +86,7 @@ public class StagiaireController {
 	}
 	
 	@GetMapping("/delete/{id}")
-	public String supprimerMatiere(@PathVariable Integer id) 
+	public String supprimerStagiaire(@PathVariable Integer id) 
 	{
 		stagiaireSrv.deleteById(id);
 		return "redirect:/stagiaire";

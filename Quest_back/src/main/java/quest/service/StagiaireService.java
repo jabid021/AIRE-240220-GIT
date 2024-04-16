@@ -36,25 +36,84 @@ public class StagiaireService {
 	
 	
 	
-	public Stagiaire insert(Stagiaire Stagiaire) 
+	public Stagiaire insert(Stagiaire stagiaire) 
 	{
-		return daoCompte.save(Stagiaire);
+		return daoCompte.save(stagiaire);
 	}
 	
-	public Stagiaire update(Stagiaire Stagiaire) 
+	public Stagiaire update(Stagiaire stagiaire) 
 	{
-		if(Stagiaire.getId()==null) 
+		if(stagiaire.getId()==null) 
 		{
 			throw new RuntimeException("Un update sans id ?!");
 		}
 		
 		
-		return daoCompte.save(Stagiaire);
+		return daoCompte.save(stagiaire);
 	}
 	
-	public void delete(Stagiaire Stagiaire) 
+	
+	public Stagiaire updatePartiel(Stagiaire stagiaireJSON) 
 	{
-		daoCompte.delete(Stagiaire);
+		if(stagiaireJSON.getId()==null) 
+		{
+			throw new RuntimeException("Un update sans id ?!");
+		}
+		Optional<Compte> opt = daoCompte.findById(stagiaireJSON.getId());
+		if(opt.isPresent()) {
+			Stagiaire stagiaireBdd = (Stagiaire) opt.get();
+			if(stagiaireJSON.getAdresse()!=null) 
+			{
+				if(stagiaireJSON.getAdresse().getNumero()!=null) 
+				{
+					stagiaireBdd.getAdresse().setNumero(stagiaireJSON.getAdresse().getNumero());
+				}
+				if(stagiaireJSON.getAdresse().getVoie()!=null) 
+				{
+					stagiaireBdd.getAdresse().setVoie(stagiaireJSON.getAdresse().getVoie());
+				}
+				if(stagiaireJSON.getAdresse().getVille()!=null) 
+				{
+					stagiaireBdd.getAdresse().setVille(stagiaireJSON.getAdresse().getVille());
+				}
+				if(stagiaireJSON.getAdresse().getCp()!=null) 
+				{
+					stagiaireBdd.getAdresse().setCp(stagiaireJSON.getAdresse().getCp());
+				}
+			}
+			if(stagiaireJSON.getEmail()!=null) 
+			{
+				stagiaireBdd.setEmail(stagiaireJSON.getEmail());
+			}
+			if(stagiaireJSON.getNom()!=null) 
+			{
+				stagiaireBdd.setNom(stagiaireJSON.getNom());
+			}
+			if(stagiaireJSON.getPrenom()!=null) 
+			{
+				stagiaireBdd.setPrenom(stagiaireJSON.getPrenom());
+			}
+			if(stagiaireJSON.getPassword()!=null) 
+			{
+				stagiaireBdd.setPassword(stagiaireJSON.getPassword());
+			}
+			if(stagiaireJSON.getFiliere()!=null) 
+			{
+				stagiaireBdd.setFiliere(stagiaireJSON.getFiliere());
+			}
+			return daoCompte.save(stagiaireBdd);
+		}
+		else 
+		{
+			return null;
+		}
+		
+		
+	}
+	
+	public void delete(Stagiaire stagiaire) 
+	{
+		daoCompte.delete(stagiaire);
 	}
 	public void deleteById(Integer id) 
 	{

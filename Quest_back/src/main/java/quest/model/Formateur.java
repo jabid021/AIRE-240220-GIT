@@ -10,7 +10,7 @@ public class Formateur extends Compte{
 
 	@Column(columnDefinition = "DECIMAL(5,2)")
 	@Min(70)
-	@Max(10000)
+	@Max(1000)
 	private double tarif;
 	
 	public Formateur() {}

@@ -26,7 +26,7 @@ public abstract class Compte {
 	@Column(length = 50, nullable=false, unique=true)
 	protected String email;
 	@Column(length = 120, nullable=false)
-	@Min(8)
+	@Size(min = 8)
 	protected String password;
 	@Column(length = 30, nullable=false)
 	@NotBlank
