@@ -27,11 +27,6 @@ public class DemoRestController {
 	}
 	
 	
-	@PostMapping
-	public void insertProduit(@RequestBody Produit produit) 
-	{
-		System.out.println(produit);
-	}
-
+	
 
 }
