@@ -48,7 +48,7 @@ public class FiliereService {
 		{
 			throw new RuntimeException("Un update sans id ?!");
 		}
-		System.out.println(filiere.toString());
+		
 		return daoFiliere.save(filiere);
 	}
 	

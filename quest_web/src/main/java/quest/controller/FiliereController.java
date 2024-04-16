@@ -72,8 +72,7 @@ public class FiliereController {
 				return "filieres/update-filiere";
 			}
 			else {
-				//filiere.setDebut(debut);
-				//filiere.setFin(fin);
+			
 				
 				filiereSrv.update(filiere);
 				return "redirect:/filiere";

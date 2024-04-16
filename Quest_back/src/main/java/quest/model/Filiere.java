@@ -8,6 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.Valid;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 @Table(name="filiere")
@@ -17,9 +19,11 @@ public class Filiere {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	@Column(length = 30, nullable=false)
+	@NotBlank(message = "Libelle ne peut pas etre vide !")
 	private String libelle;
-
+	@Valid
 	private LocalDate debut;
+	@Valid
 	private LocalDate fin;
 
 	public Filiere() {}

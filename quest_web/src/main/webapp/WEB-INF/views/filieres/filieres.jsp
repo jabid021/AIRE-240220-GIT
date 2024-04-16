@@ -47,22 +47,27 @@
 <br>
 <div  class="container">
     <div class="fw-medium">Ajouter nouvelle Fillière</div><br><br>
-<form action="filiere" method="post">
+<form:form  action="filiere" method="post"  modelAttribute="filiere">
+<form:hidden path="id" />
     <div class="mb-3">
-      <label for="inputLibelle" class="form-label border">Libellé</label>
-      <input type="text" class="form-control border" id="inputLibelle" name="libelle" required>
-
+      <form:label path="libelle"  class="form-label border">Libellé</form:label>
+      <form:input path="libelle" type="text" class="form-control border" id="inputLibelle" 
+                  required="required"/>
+      <form:errors path="libelle" style="color:red"></form:errors>
     </div>
     <div class="mb-3">
-        <label for="inputDebut" class="form-label border">Date de Début</label>
-        <input type="date" class="form-control border" id="inputDebut" name="debut" required value="2002-01-01">
+        <form:label path="debut" class="form-label border">Date de Début</form:label>
+        <form:input path="debut" type="date" class="form-control border" id="inputDebut" 
+        required="required" value="2002-01-01"/>
      </div>
      <div class="mb-3">
-        <label for="inputFin" class="form-label border">Date de Fin</label>
-        <input type="date" class="form-control border" id="inputFin" name="fin" required value="2002-01-01">
+        <form:label path="fin" class="form-label border">Date de Fin</form:label>
+        <form:input path="fin"  type="date" class="form-control border" id="inputFin" name="fin" 
+        required="required" value="2002-01-01"/>
+        
      </div>
     <button type="submit" class="btn btn-success btn-lg  border">Ajouter</button>
-  </form>
+  </form:form>
 </div>
 
 </body>
