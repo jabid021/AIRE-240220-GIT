@@ -83,9 +83,7 @@
 						<td>
 						<form:select class="custom-select" path="marque" requied="required">
 								<form:option value="">Choisir une MARQUE Ordinateur</form:option>
-								
 								<form:options items="${marques}"/>
-							
 						</form:select>
 						</td>
 					</tr>

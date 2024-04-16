@@ -51,19 +51,17 @@
 <form:hidden path="id" />
     <div class="mb-3">
       <form:label path="libelle"  class="form-label border">Libellé</form:label>
-      <form:input path="libelle" type="text" class="form-control border" id="inputLibelle" 
+      <form:input path="libelle" type="text" class="form-control border"
                   required="required"/>
       <form:errors path="libelle" style="color:red"></form:errors>
     </div>
     <div class="mb-3">
         <form:label path="debut" class="form-label border">Date de Début</form:label>
-        <form:input path="debut" type="date" class="form-control border" id="inputDebut" 
-        required="required" value="2002-01-01"/>
+        <form:input path="debut" type="date" class="form-control border" />
      </div>
      <div class="mb-3">
         <form:label path="fin" class="form-label border">Date de Fin</form:label>
-        <form:input path="fin"  type="date" class="form-control border" id="inputFin" name="fin" 
-        required="required" value="2002-01-01"/>
+        <form:input path="fin"  type="date" class="form-control border" name="fin" />
         
      </div>
     <button type="submit" class="btn btn-success btn-lg  border">Ajouter</button>
