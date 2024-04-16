@@ -10,30 +10,41 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonView;
+
+import quest.view.Views;
 @Entity
 @Table(name="module")
 public class Module {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@JsonView(Views.Common.class)
 	private Integer id;
 	@Column(nullable = false)
+	@JsonView(Views.Common.class)
 	private LocalDate debut;
 	@Column(nullable = false)
+	@JsonView(Views.Common.class)
 	private LocalDate fin;
+	@JsonView(Views.Common.class)
 	private int quest;
 	
 	@ManyToOne
 	@JoinColumn(name="matiere",nullable=false)
+	@JsonView(Views.Module.class)
 	private Matiere matiere;
 	
 	@ManyToOne
 	@JoinColumn(name="filiere",nullable=false)
+	@JsonView(Views.Module.class)
 	private Filiere filiere;
 	
 	
 	@ManyToOne
 	@JoinColumn(name="formateur")
+	@JsonView(Views.Module.class)
 	private Formateur formateur;
 
 	public Module() {}

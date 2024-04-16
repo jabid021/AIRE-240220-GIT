@@ -5,17 +5,22 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.validation.Valid;
-import javax.validation.constraints.NotBlank;
+
+import com.fasterxml.jackson.annotation.JsonView;
+
+import quest.view.Views;
 
 @Entity
 public class Stagiaire extends Compte {
 
 	@Embedded
 	@Valid
+	@JsonView(Views.Compte.class)
 	private Adresse adresse;
 	
 	@ManyToOne
 	@JoinColumn(name="filiere")
+	@JsonView(Views.Compte.class)
 	private Filiere filiere;
 
 	public Stagiaire() {}

@@ -11,20 +11,30 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonView;
+
+import quest.view.Views;
+
 @Entity
 @Table(name="ordinateur")
 public class Ordinateur {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@JsonView(Views.Common.class)
 	private Integer id;
+	@JsonView(Views.Common.class)
 	private int ram;
 	@Enumerated(EnumType.STRING)
 	@Column(columnDefinition = "ENUM('Apple','Asus','Dell','HP','Acer'",nullable=false)
+	@JsonView(Views.Common.class)
 	private Marque marque;
 	
 	@OneToOne
 	@JoinColumn(name="stagiaire")
+	@JsonView(Views.Ordinateur.class)
 	private Stagiaire stagiaire;
 	
 	public Ordinateur() {}

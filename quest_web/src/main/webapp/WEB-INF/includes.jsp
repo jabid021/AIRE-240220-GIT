@@ -24,7 +24,7 @@
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
-
+<link rel="stylesheet" href="style.css">
 
 
 <nav id="navbar" class="navbar navbar-expand-lg navbar-dark bg-info fixed-top">

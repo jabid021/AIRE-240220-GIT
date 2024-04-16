@@ -10,16 +10,22 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
+import quest.view.Views;
+
 @Entity
 @Table(name="matiere")
 public class Matiere {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@JsonView(Views.Common.class)
 	private Integer  id ;
 	@Column(length = 50, nullable=false)            
 	@NotBlank(message = "Libelle ne peut pas etre vide !")
 	@Size(min=5 ,max = 50)
+	@JsonView(Views.Common.class)
 	private String libelle;
 
 	public Matiere() {}

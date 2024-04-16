@@ -21,62 +21,55 @@ import org.springframework.web.server.ResponseStatusException;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
-import quest.model.Stagiaire;
-import quest.service.StagiaireService;
+import quest.model.Ordinateur;
+import quest.service.OrdinateurService;
 import quest.view.Views;
 
 @RestController
-@RequestMapping("/api/stagiaire")
+@RequestMapping("/api/ordinateur")
 @CrossOrigin("*")
-public class StagiaireRestController {
+public class OrdinateurRestController {
 
 	@Autowired 
-	StagiaireService stagiaireSrv;
+	OrdinateurService ordinateurSrv;
 
 	@GetMapping
-	@JsonView(Views.Compte.class)
-	public List<Stagiaire> allStagiaires() 
+	@JsonView(Views.Ordinateur.class)
+	public List<Ordinateur> allOrdinateurs() 
 	{
-		return stagiaireSrv.getAll();
+		return ordinateurSrv.getAll();
 	}
 	
 	@GetMapping("/{id}")
-	@JsonView(Views.Compte.class)
-	public Stagiaire ficheStagiaire(@PathVariable Integer id) 
+	@JsonView(Views.Ordinateur.class)
+	public Ordinateur ficheOrdinateur(@PathVariable Integer id) 
 	{
-		return stagiaireSrv.getById(id);
+		return ordinateurSrv.getById(id);
 	}
 
 	
 	@PostMapping
-	public Stagiaire ajoutStagiaire(@Valid @RequestBody Stagiaire stagiaire, BindingResult result) 
+	public Ordinateur ajoutOrdinateur(@Valid @RequestBody Ordinateur ordinateur, BindingResult result) 
 	{
 		if(result.hasErrors()) 
 		{
-			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Le stagiaire n'est pas valide");
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Le ordinateur n'est pas valide");
 		}
-		return stagiaireSrv.insert(stagiaire);
+		return ordinateurSrv.insert(ordinateur);
 	}
 	
 	@PutMapping("/{id}")
-	public Stagiaire modifierStagiaire(@PathVariable Integer id,@RequestBody Stagiaire stagiaire) 
+	public Ordinateur modifierOrdinateur(@PathVariable Integer id,@RequestBody Ordinateur ordinateur) 
 	{
-		stagiaire.setId(id);
-		return stagiaireSrv.update(stagiaire);
+		ordinateur.setId(id);
+		return ordinateurSrv.update(ordinateur);
 	}
 	
-
-	@PatchMapping("/{id}")
-	public Stagiaire modifierPartiellementStagiaire(@PathVariable Integer id,@RequestBody Stagiaire stagiaire) 
-	{
-		stagiaire.setId(id);
-		return stagiaireSrv.updatePartiel(stagiaire);
-	}
 	
 	@DeleteMapping("/{id}")
-	public void supprimerStagiaire(@PathVariable Integer id) 
+	public void supprimerOrdinateur(@PathVariable Integer id) 
 	{
-		stagiaireSrv.deleteById(id);
+		ordinateurSrv.deleteById(id);
 	}
 	
 }

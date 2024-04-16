@@ -5,7 +5,6 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -14,23 +13,32 @@ import javax.persistence.Table;
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
+import quest.view.Views;
+
 @Entity
 @Table(name="filiere")
 public class Filiere {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@JsonView(Views.Common.class)
 	private Integer id;
 	@Column(length = 30, nullable=false)
 	@NotBlank(message = "Libelle ne peut pas etre vide !")
+	@JsonView(Views.Common.class)
 	private String libelle;
 	@Valid
+	@JsonView(Views.Common.class)
 	private LocalDate debut;
 	@Valid
+	@JsonView(Views.Common.class)
 	private LocalDate fin;
 	
-	/*@OneToMany(mappedBy="filiere")
-	private List<Stagiaire> inscrits;*/
+	@OneToMany(mappedBy="filiere")
+	@JsonView(Views.FiliereWithStagiaire.class)
+	private List<Stagiaire> inscrits;
 	
 	public Filiere() {}
 	

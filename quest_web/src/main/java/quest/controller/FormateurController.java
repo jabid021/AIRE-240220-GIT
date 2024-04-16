@@ -46,10 +46,7 @@ public class FormateurController{
 	
 	@GetMapping("/jumeau/{id}")
 	public String replaceFormateur(@PathVariable("id") Integer id) {
-		Formateur formateur = formateurSrv.getById(id);
-		formateur.setPrenom(inverserVoyelles(formateur.getPrenom()));
-		formateur.setNom(inverserVoyelles(formateur.getNom()));
-		formateurSrv.update(formateur);
+		formateurSrv.updateJumeau(id);
 		return "redirect:/formateur";
 	}
 	
@@ -73,37 +70,5 @@ public class FormateurController{
 		return "redirect:/formateur";
 	}
 		
-	protected static String inverserVoyelles(String mot) {
-        char[] voyelles = {'a', 'e', 'i', 'o', 'u', 'y', 'A', 'E', 'I', 'O', 'U', 'Y'};
-        StringBuilder resultat = new StringBuilder(mot);
-        int debut = 0;
-        int fin = mot.length() - 1;
-
-        while (debut < fin) {
-            while (debut < fin && !estVoyelle(mot.charAt(debut), voyelles)) {
-                debut++;
-            }
-            while (debut < fin && !estVoyelle(mot.charAt(fin), voyelles)) {
-                fin--;
-            }
-
-            if (debut < fin) {
-                char temp = resultat.charAt(debut);
-                resultat.setCharAt(debut, resultat.charAt(fin));
-                resultat.setCharAt(fin, temp);
-                debut++;
-                fin--;
-            }
-        }
-        return resultat.toString();
-    }
-
-    protected static boolean estVoyelle(char c, char[] voyelles) {
-        for (char voyelle : voyelles) {
-            if (c == voyelle) {
-                return true;
-            }
-        }
-        return false;
-    }
+	
 }

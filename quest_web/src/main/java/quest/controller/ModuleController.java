@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 import quest.dao.IDAOCompte;
 import quest.dao.IDAOFiliere;
 import quest.model.Compte;
@@ -22,6 +24,7 @@ import quest.model.Matiere;
 import quest.model.Module;
 import quest.service.MatiereService;
 import quest.service.ModuleService;
+import quest.view.Views;
 
 @Controller
 @RequestMapping("/module")
@@ -40,6 +43,7 @@ public class ModuleController {
 	MatiereService matiereSrv;
 	
 	@GetMapping("/filiere-{filiere}")
+	@JsonView(Views.Module.class)
 	public String allModulesByFiliere(@PathVariable("filiere") Integer idFiliere,Model model) 
 	{
 		List<Module> modules = moduleSrv.getAllByFiliere(idFiliere);
@@ -55,6 +59,7 @@ public class ModuleController {
 	}
 	
 	@GetMapping("/formateur-{formateur}")
+	@JsonView(Views.Module.class)
 	public String allModulesByFormateur(@PathVariable("formateur") Integer idFormateur,Model model) 
 	{
 		List<Module> modules = moduleSrv.getAllByFormateur(idFormateur);
@@ -66,6 +71,7 @@ public class ModuleController {
 	}
 	
 	@GetMapping("/{id}")
+	@JsonView(Views.Module.class)
 	public String ficheModule(@PathVariable("id") Integer idModule,Model model) 
 	{
 		Module module = moduleSrv.getById(idModule);

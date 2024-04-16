@@ -9,10 +9,12 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Table;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+
+import com.fasterxml.jackson.annotation.JsonView;
+
+import quest.view.Views;
 
 @Entity
 @Table(name="compte")
@@ -22,17 +24,22 @@ public abstract class Compte {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@JsonView(Views.Common.class)
 	protected Integer id;
 	@Column(length = 50, nullable=false, unique=true)
+	@JsonView(Views.Common.class)
 	protected String email;
 	@Column(length = 120, nullable=false)
 	@Size(min = 8)
+	@JsonView(Views.Compte.class)
 	protected String password;
 	@Column(length = 30, nullable=false)
 	@NotBlank
+	@JsonView(Views.Common.class)
 	protected String prenom;
 	@Column(length = 50, nullable=false)
 	@NotBlank
+	@JsonView(Views.Common.class)
 	protected String nom;
 	
 	public Compte() {}

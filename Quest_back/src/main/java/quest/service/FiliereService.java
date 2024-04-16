@@ -31,6 +31,12 @@ public class FiliereService {
 	}
 	
 	
+	public Filiere getByIdWithStagiaires(Integer id) 
+	{
+		return daoFiliere.findByIdWithStagiaires(id);
+	}
+	
+	
 	public List<Filiere> getAll()
 	{
 		return daoFiliere.findAll();
