@@ -18,7 +18,11 @@
 			<version>5.3.21</version>
 		</dependency>
 
+<<<<<<< Updated upstream
 
+=======
+		
+>>>>>>> Stashed changes
 		<dependency>
 			<groupId>formation-aire</groupId>	
 			<artifactId>eshop_jordan</artifactId>

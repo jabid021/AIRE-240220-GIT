@@ -11,16 +11,24 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
+import eshop.view.Views;
+
 @Entity
 @DiscriminatorValue("customer")
 public class Client extends Personne {
 
 	@Column(columnDefinition = "int(2)")
+	@JsonView(Views.Common.class)
 	private int age;
 	@Column(name="date_naissance")
+	@JsonView(Views.Common.class)
 	private LocalDate dateNaissance;
 	
 	@OneToMany(mappedBy = "client" )
+	@JsonView(Views.ClientWithAchats.class)
+	
 	//@JoinTable(name="achats",joinColumns = @JoinColumn(name="acheteur"),inverseJoinColumns = @JoinColumn(name="achat"))
 	private List<Achat> achats = new ArrayList();
 	

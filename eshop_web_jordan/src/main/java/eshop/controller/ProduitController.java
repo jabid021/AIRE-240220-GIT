@@ -37,8 +37,12 @@ public class ProduitController {
 		List<Fournisseur> fournisseurs = daoPersonne.findAllFournisseur();
 		model.addAttribute("produits",produits);
 		model.addAttribute("fournisseurs",fournisseurs);
+<<<<<<< Updated upstream
 		model.addAttribute("produit",new Produit());
 		return "produits/produits";
+=======
+		return "produits/produits2";
+>>>>>>> Stashed changes
 	}
 
 	@GetMapping("/{id}")

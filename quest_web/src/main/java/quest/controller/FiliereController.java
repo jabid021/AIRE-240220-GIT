@@ -26,7 +26,7 @@ public class FiliereController {
 
 	@Autowired
 	FiliereService filiereSrv;
-	
+
 	@GetMapping
 	public String allFilieres(Model model) 
 	{
@@ -35,55 +35,52 @@ public class FiliereController {
 		model.addAttribute("filiere",new Filiere());
 		return "filieres/filieres";
 	}
-	
+
+
 	@GetMapping("/{id}")
-	public String ficheFiliere(@PathVariable("id") Integer idFiliere,Model model) 
+	public String ficheFiliere(@PathVariable("id") Integer idFilere,Model model) 
 	{
-		Filiere filiere = filiereSrv.getById(idFiliere);
+		Filiere filiere = filiereSrv.getById(idFilere);
 		model.addAttribute("filiere",filiere);
 		return "filieres/update-filiere";
 	}
-	
-	//Si on veut recup les erreurs de validation, on doit utiliser BindingResult
-		@PostMapping
-		public String ajoutFiliere(@Valid @ModelAttribute Filiere filiere, BindingResult result,Model model) 
+
+	@PostMapping
+	public String ajoutFiliere(@Valid @ModelAttribute Filiere filiere, BindingResult result,Model model) 
+	{
+		if(result.hasErrors()) 
 		{
-			if(result.hasErrors()) 
-			{
-				List<Filiere> filieres = filiereSrv.getAll();
-				model.addAttribute("filieres",filieres);
-				return "filieres/filieres";
-			}
-			else 
-			{
-				filiereSrv.insert(filiere);
-				return "redirect:/filiere";
-			}	
+			List<Filiere> filieres = filiereSrv.getAll();
+			model.addAttribute("filieres",filieres);
+			return "filieres/filieres";
 		}
-		
-		@PostMapping("/{id}")
-		public String modifierFiliere(@Valid @ModelAttribute Filiere filiere,BindingResult result,Model model) 
+		else 
 		{
-			System.out.println(filiere.toString());
-			if(result.hasErrors()) 
-			{
-				List<Filiere> filieres = filiereSrv.getAll();
-				model.addAttribute("filieres",filieres);
-				return "filieres/update-filiere";
-			}
-			else {
-			
-				
-				filiereSrv.update(filiere);
-				return "redirect:/filiere";
-			}
+			filiereSrv.insert( filiere);
+			return "redirect:/filiere";
+		}	
+	}
+
+	@PostMapping("/{id}")
+	public String modifierFiliere(@Valid @ModelAttribute Filiere filiere,BindingResult result,Model model) 
+	{
+		if(result.hasErrors()) 
+		{
+			List<Filiere> filieres = filiereSrv.getAll();
+			model.addAttribute("filieres",filieres);
+			return "filieres/update-filiere";
 		}
-		
-		@GetMapping("/delete/{id}")
-		public String supprimerFiliere(@PathVariable Integer id) 
-		{
-			filiereSrv.deleteById(id);
+		else {
+			filiereSrv.update(filiere);
 			return "redirect:/filiere";
 		}
-		
+	}
+
+	@GetMapping("/delete/{id}")
+	public String supprimerFiliere(@PathVariable Integer id) 
+	{
+		filiereSrv.deleteById(id);
+		return "redirect:/filiere";
+	}
+
 }

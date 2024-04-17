@@ -7,15 +7,21 @@ import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
+import eshop.view.Views;
+
 @Entity
 @DiscriminatorValue("supplier")
 public class Fournisseur extends Personne {
 
 	@Column(name="company",length = 40)
+	@JsonView(Views.Common.class)
 	private String societe;
 
 
 	@OneToMany(mappedBy = "fournisseur")
+	@JsonView(Views.FournisseurWithStock.class)
 	private List<Produit> stock;
 
 	public Fournisseur() {}
@@ -42,10 +48,12 @@ public class Fournisseur extends Personne {
 		this.stock = stock;
 	}
 
-	public String getInfoSelect() 
-	{
-		return id+"-"+prenom+" "+nom;
+
+	public String getInfos() {
+		return this.id + " - " + this.nom + " - " + this.prenom;
+		
 	}
+	
 
 	@Override
 	public String toString() {
