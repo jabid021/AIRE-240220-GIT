@@ -15,6 +15,10 @@ import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
+import eshop.view.Views;
+
 @Entity
 @Table(name="product")
 public class Produit {
@@ -22,9 +26,11 @@ public class Produit {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	
 	@Column(name="label",nullable = false,length = 30)
 	@NotBlank
 	private String libelle;
+	
 	@Column(name="price",columnDefinition = "DOUBLE(6,2) default 0", nullable = false)
 	@Min(value=100, message="le prix doit etre sup à 100")
 	@Max(10000)
@@ -32,9 +38,11 @@ public class Produit {
 	
 	@ManyToOne
 	@JoinColumn(name="vendeur",nullable = false)
+	@JsonView(Views.Produit.class)
 	private Fournisseur fournisseur;
 	
 	@OneToMany(mappedBy = "produit")
+	@JsonView(Views.ProduitWithVentes.class)
 	private List<Achat> ventes;
 	
 	public Produit() {}
