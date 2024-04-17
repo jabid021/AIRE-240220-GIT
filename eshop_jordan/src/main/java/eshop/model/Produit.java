@@ -25,15 +25,18 @@ public class Produit {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@JsonView(Views.Common.class)
 	private Integer id;
 	
 	@Column(name="label",nullable = false,length = 30)
 	@NotBlank
+	@JsonView(Views.Common.class)
 	private String libelle;
 	
 	@Column(name="price",columnDefinition = "DOUBLE(6,2) default 0", nullable = false)
 	@Min(value=100, message="le prix doit etre sup à 100")
 	@Max(10000)
+	@JsonView(Views.Common.class)
 	private double prix;
 	
 	@ManyToOne

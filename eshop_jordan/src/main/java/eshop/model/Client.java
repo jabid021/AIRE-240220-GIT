@@ -12,6 +12,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import javax.swing.text.View;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import eshop.view.Views;
@@ -26,6 +27,7 @@ public class Client extends Personne {
 	
 	@Column(name="date_naissance")
 	@JsonView(Views.Common.class)
+	@JsonFormat(pattern = "yyyy-MM-dd")
 	private LocalDate dateNaissance;
 	
 	@OneToMany(mappedBy = "client" )
