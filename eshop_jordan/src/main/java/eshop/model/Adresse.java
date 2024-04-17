@@ -9,7 +9,7 @@ import eshop.view.Views;
 
 @Embeddable
 public class Adresse {
-
+ //Hayet
 	@Column(name="number",nullable = false,length = 15)
 	@JsonView(Views.Common.class)
 	private String numero;
