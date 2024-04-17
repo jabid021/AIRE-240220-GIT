@@ -11,6 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import eshop.view.Views;
@@ -26,6 +27,7 @@ public class Achat {
 	
 	@Column(name="date_achat",nullable = false)
 	@JsonView(Views.Common.class)
+	@JsonFormat(pattern = "yyyy-MM-dd")
 	private LocalDate dateAchat;
 	@JsonView(Views.Common.class)
 	private int quantite;
@@ -37,12 +39,12 @@ public class Achat {
 	
 	@ManyToOne
 	@JoinColumn(name="client",nullable = false)
-	@JsonView(Views.Achat.class)
+	@JsonView(Views.ProduitWithVentes.class)
 	private Client client;
 	
 	@ManyToOne
 	@JoinColumn(name="produit",nullable = false)
-	@JsonView(Views.Achat.class)
+	@JsonView(Views.ClientWithAchats.class)
 	private Produit produit;
 
 	public Achat() {}
