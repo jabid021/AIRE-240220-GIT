@@ -7,7 +7,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 @Configuration
 @EnableWebMvc
-//@Import(AppConfig.class)
+@Import(AppConfig.class)
 @ComponentScan("eshop.restcontroller")
 public class WebConfig {
 
