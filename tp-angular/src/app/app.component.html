@@ -1,0 +1,9 @@
+<p>{{prenom}}</p>
+
+<h3>[value] et (change)</h3>
+<input type="text" [value]="prenom" (change)="changePrenom($event)"/>
+<button (click)="resetPrenom()">Effacer</button><br/>
+<h3>[(ngModel)]</h3>
+<input type="text" [(ngModel)]="prenom"/>
+<h3>[ngModel] et (ngModelChange)</h3>
+<input type="text" [ngModel]="prenom" (ngModelChange)="prenom = $event.toUpperCase()"/>
