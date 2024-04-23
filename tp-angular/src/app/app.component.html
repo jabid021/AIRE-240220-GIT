@@ -17,7 +17,18 @@
   </select><br />
   <input type="color" [(ngModel)]="couleur">
   
-  <hr/>
+<hr/>
 
   <input type="text" #nom value="fdjjfdjfdj"/>
   <p>{{nom.value}}</p>
+
+<hr/>
+
+<fieldset>
+  <input type="number" [(ngModel)]="todo.id"/><br/>
+  <input type="text" [(ngModel)]="todo.title"/><br/>
+  Completé : <input type="checkbox" [(ngModel)]="todo.completed"/>
+
+  <p *ngIf="todo.title && todo.id != 0" [ngClass]="{'negatif': !todo.completed}">{{todo.title}}</p>
+</fieldset>
+  

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Todo } from './todo';
 
 @Component({
   selector: 'app-root',
@@ -8,6 +9,7 @@ import { Component } from '@angular/core';
 export class AppComponent {
   prenom = "Eric";
   couleur = "#000000"
+  todo: Todo = new Todo(4, "mon todo example", false);
 
   resetPrenom() {
     this.prenom = "";
