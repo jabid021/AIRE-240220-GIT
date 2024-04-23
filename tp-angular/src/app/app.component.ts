@@ -15,6 +15,8 @@ export class AppComponent {
 
   todoForm: Todo = new Todo();
 
+  recherche: string = "";
+
   constructor() {
     this.todos.push(new Todo(6, "Faire le repassage", false));
     this.todos.push(new Todo(8, "Passer la tondeuse", true));
@@ -32,6 +34,14 @@ export class AppComponent {
   addTodo() {
     this.todos.push(this.todoForm);
     this.todoForm = new Todo();
+  }
+
+  search(): Array<Todo> {
+    if(this.recherche) {
+      return this.todos.filter(todo => todo.title?.includes(this.recherche));
+    } else {
+      return this.todos;
+    }
   }
 
 }

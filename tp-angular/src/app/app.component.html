@@ -35,7 +35,7 @@
 <div bg-black>Mon exemple d'élément HTML modifié par directive</div>
 
 <hr/>
-
+Recherche : <input type="text" [(ngModel)]="recherche"/>
 <table style="border: 2px solid">
   <thead>
     <tr>
@@ -46,10 +46,10 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let item of todos">
-      <td>{{item.id}}</td>
-      <td>{{item.title}}</td>
-      <td><span *ngIf="item.completed;else sinon">Terminé</span></td>
+    <tr *ngFor="let t of search()">
+      <td>{{t.id}}</td>
+      <td>{{t.title}}</td>
+      <td><span *ngIf="t.completed;else sinon">Terminé</span></td>
       <td></td>
     </tr>
   </tbody>
@@ -61,7 +61,7 @@
       <td><input type="number" [(ngModel)]="todoForm.id"/></td>
       <td><input type="text" [(ngModel)]="todoForm.title"/></td>
       <td><input type="checkbox" [(ngModel)]="todoForm.completed"/></td>
-      <td><button (click)="addTodo()">Valider</button></td>
+      <td><button (click)="addTodo()">Ajouter</button></td>
     </tr>
   </tfoot>
 </table>
