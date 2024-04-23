@@ -11,12 +11,27 @@ export class AppComponent {
   couleur = "#000000"
   todo: Todo = new Todo(4, "mon todo example", false);
 
+  todos: Array<Todo> = new Array<Todo>();
+
+  todoForm: Todo = new Todo();
+
+  constructor() {
+    this.todos.push(new Todo(6, "Faire le repassage", false));
+    this.todos.push(new Todo(8, "Passer la tondeuse", true));
+    this.todos.push(new Todo(9, "Aspirer", true));
+  }
+
   resetPrenom() {
     this.prenom = "";
   }
 
   changePrenom(evt: any) {
     this.prenom = evt.target.value;
+  }
+
+  addTodo() {
+    this.todos.push(this.todoForm);
+    this.todoForm = new Todo();
   }
 
 }

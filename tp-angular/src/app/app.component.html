@@ -20,7 +20,7 @@
 <hr/>
 
   <input type="text" #nom value="fdjjfdjfdj"/>
-  <p>{{nom.value}}</p>
+  <p bg-black>{{nom.value}}</p>
 
 <hr/>
 
@@ -31,4 +31,40 @@
 
   <p *ngIf="todo.title && todo.id != 0" [ngClass]="{'negatif': !todo.completed}">{{todo.title}}</p>
 </fieldset>
+
+<div bg-black>Mon exemple d'élément HTML modifié par directive</div>
+
+<hr/>
+
+<table style="border: 2px solid">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Titre</th>
+      <th>Complet ?</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of todos">
+      <td>{{item.id}}</td>
+      <td>{{item.title}}</td>
+      <td><span *ngIf="item.completed;else sinon">Terminé</span></td>
+      <td></td>
+    </tr>
+  </tbody>
+  <ng-template #sinon>
+    <span>Non terminé</span>
+  </ng-template>
+  <tfoot>
+    <tr>
+      <td><input type="number" [(ngModel)]="todoForm.id"/></td>
+      <td><input type="text" [(ngModel)]="todoForm.title"/></td>
+      <td><input type="checkbox" [(ngModel)]="todoForm.completed"/></td>
+      <td><button (click)="addTodo()">Valider</button></td>
+    </tr>
+  </tfoot>
+</table>
+
+
   
