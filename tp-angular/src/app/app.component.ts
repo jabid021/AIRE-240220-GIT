@@ -7,6 +7,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   prenom = "Eric";
+  couleur = "#000000"
 
   resetPrenom() {
     this.prenom = "";

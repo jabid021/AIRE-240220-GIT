@@ -1,4 +1,4 @@
-<p>{{prenom}}</p>
+<p [style.color]="couleur">{{prenom}}</p>
 
 <h3>[value] et (change)</h3>
 <input type="text" [value]="prenom" (change)="changePrenom($event)"/>
@@ -7,3 +7,14 @@
 <input type="text" [(ngModel)]="prenom"/>
 <h3>[ngModel] et (ngModelChange)</h3>
 <input type="text" [ngModel]="prenom" (ngModelChange)="prenom = $event.toUpperCase()"/>
+<hr/>
+<select [(ngModel)]="couleur">
+    <option value="#000000">Noir</option>
+    <option value="#008000">Vert</option>
+    <option value="#FFFF00">Jaune</option>
+    <option value="#0000FF">Bleu</option>
+    <option value="#FF0000">Rouge</option>
+  </select><br />
+  <input type="color" [(ngModel)]="couleur">
+  
+  <hr/>
