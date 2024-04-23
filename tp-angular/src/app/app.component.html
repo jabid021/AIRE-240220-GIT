@@ -78,7 +78,16 @@ Recherche : <input type="text" [(ngModel)]="recherche"/>
 
 <div hello-world>Le contenu de mon second appel au composant Hello World</div>
 
-<asc-bold>N'importe quel texte qui sera mis en gras</asc-bold>
+<asc-bold>
+  <span standard>voici le texte :</span>
+  <span gras>que vous voulez mettre en gras</span>
+  <span class="grandTexte">Texte dans le style grandTexte</span>
+</asc-bold><br/>
+
+<asc-bold>
+  <span standard>texte dans la flag standard</span>
+  <span gras>texte dans le flag gras</span>
+</asc-bold>
 
 
 
