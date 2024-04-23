@@ -17,6 +17,8 @@ export class AppComponent {
 
   recherche: string = "";
 
+  dtJour: Date = new Date();
+
   constructor() {
     this.todos.push(new Todo(6, "Faire le repassage", false));
     this.todos.push(new Todo(8, "Passer la tondeuse", true));
