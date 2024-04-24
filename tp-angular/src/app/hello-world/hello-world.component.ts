@@ -1,4 +1,4 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, Input } from '@angular/core';
 
 @Component({
   selector: 'hello-world, [hello-world]',
@@ -6,6 +6,12 @@ import { Component, HostListener } from '@angular/core';
   styleUrl: './hello-world.component.css'
 })
 export class HelloWorldComponent {
+
+  @Input("texteAfficher")
+  texteRecuEnAttribut?: string;
+
+  @Input()
+  donnee?: string;
 
   @HostListener("mouseenter")
   showAlert() {

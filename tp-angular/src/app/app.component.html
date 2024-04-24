@@ -74,9 +74,11 @@ Recherche : <input type="text" [(ngModel)]="recherche"/>
 
 <hr/>
 
-<hello-world>Le contenu de mon premier appel au composant Hello World</hello-world>
+<hello-world texteAfficher="On affiche le prénom" [donnee]="prenom">Le contenu de mon premier appel au composant Hello World</hello-world>
 
-<div hello-world>Le contenu de mon second appel au composant Hello World</div>
+<div hello-world texteAfficher="On affiche le titre du todo" [donnee]="todo.title">Le contenu de mon second appel au composant Hello World</div>
+
+<hr/>
 
 <asc-bold>
   <span standard>voici le texte :</span>
