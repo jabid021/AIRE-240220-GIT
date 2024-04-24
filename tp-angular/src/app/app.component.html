@@ -96,7 +96,9 @@ Recherche : <input type="text" [(ngModel)]="recherche"/>
 
 <asc-text-field label="Prénom : " [value]="prenom" (emetteur)="majPrenom($event)"></asc-text-field>
 
+<asc-text-field label="Titre du todo : " [value]="todo.title"></asc-text-field>
 
+<hr/>
 <asc-list>
   <ng-template #contenuAInjecter>
     <h1>Contenu à injecter</h1>
@@ -107,6 +109,10 @@ Recherche : <input type="text" [(ngModel)]="recherche"/>
     <h1>Contenu à injecter Deuxième</h1>
   </ng-template>
 </asc-list>
+<hr/>
 
+<p asc-tooltip titre="Et voilà le tooltip">Voilà le message</p>
+
+<asc-tooltip titre="Et voilà le tooltip">Voilà le message</asc-tooltip>
 
   

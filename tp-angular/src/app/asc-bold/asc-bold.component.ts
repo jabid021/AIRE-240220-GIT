@@ -1,4 +1,4 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 
 @Component({
   selector: 'asc-bold',
@@ -6,6 +6,7 @@ import { Component, HostListener } from '@angular/core';
   styleUrl: './asc-bold.component.css'
 })
 export class AscBoldComponent {
+
 
   compteur: number = 0;
 
