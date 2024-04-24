@@ -1,4 +1,4 @@
-import { Component, HostListener, Input } from '@angular/core';
+import { Component, EventEmitter, HostListener, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'hello-world, [hello-world]',
@@ -13,6 +13,9 @@ export class HelloWorldComponent {
   @Input()
   donnee?: string;
 
+  @Output("sortie")
+  monOutput = new EventEmitter<string>();
+
   @HostListener("mouseenter")
   showAlert() {
     console.log("Je passe au dessus du fieldset");
@@ -21,6 +24,10 @@ export class HelloWorldComponent {
   @HostListener("mouseleave")
   hideAlert() {
     console.log("Je sors du fieldset");
+  }
+
+  clickButton() {
+    this.monOutput.emit("texte qui vient depuis le composant Hello World");
   }
 
 

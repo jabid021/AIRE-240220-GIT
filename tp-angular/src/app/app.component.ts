@@ -46,4 +46,12 @@ export class AppComponent {
     }
   }
 
+  maSortieDepuisHelloWorld(chaine: string) {
+    console.log("dans l'app component : " + chaine);
+  }
+
+  maSortieDepuisHelloWorldBis(chaine: string) {
+    console.log("dans l'app component Bis : " + chaine);
+  }
+
 }
