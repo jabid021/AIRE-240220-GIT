@@ -1,1 +1,8 @@
-<p style="font-weight: bolder;"><ng-content></ng-content></p>
+<ng-content select="[standard]"></ng-content>
+<span style="font-weight: bold;">
+    <ng-content select="[gras]"></ng-content>
+</span>
+<fieldset>
+    <legend>Le texte qui vient depuis l'élément qui porte style .grandTexte</legend>
+    <ng-content select=".grandTexte"></ng-content>
+</fieldset>
