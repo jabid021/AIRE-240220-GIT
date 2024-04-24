@@ -1,0 +1,30 @@
+Recherche : <input type="text" [(ngModel)]="recherche"/>
+<table style="border: 2px solid">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Titre</th>
+      <th>Complet ?</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let t of search()">
+      <td>{{t.id}}</td>
+      <td>{{t.title}}</td>
+      <td [style.color]="t.completed | todoState">{{t.completed | todoState:"string"}}</td>
+      <td><button [routerLink]="['/todo', t.id]">Détail via routerLink</button><button (click)="goToDetail(t.id)">Détail via TS</button></td>
+    </tr>
+  </tbody>
+  <ng-template #sinon>
+    <span>Non terminé</span>
+  </ng-template>
+  <tfoot>
+    <tr>
+      <td><input type="number" [(ngModel)]="todoForm.id"/></td>
+      <td><input type="text" [(ngModel)]="todoForm.title"/></td>
+      <td><input type="checkbox" [(ngModel)]="todoForm.completed"/></td>
+      <td><button (click)="addTodo()">Ajouter</button></td>
+    </tr>
+  </tfoot>
+</table>
