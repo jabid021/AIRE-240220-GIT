@@ -97,7 +97,16 @@ Recherche : <input type="text" [(ngModel)]="recherche"/>
 <asc-text-field label="Prénom : " [value]="prenom" (emetteur)="majPrenom($event)"></asc-text-field>
 
 
+<asc-list>
+  <ng-template #contenuAInjecter>
+    <h1>Contenu à injecter</h1>
 
+    <h3>Chapitre 3</h3>
+  </ng-template>
+  <ng-template #contenuAInjecterBis>
+    <h1>Contenu à injecter Deuxième</h1>
+  </ng-template>
+</asc-list>
 
 
   
