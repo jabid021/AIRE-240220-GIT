@@ -1,0 +1,14 @@
+<!-- <button (click)="allerA('accueil')">Accueil</button>&nbsp;<button (click)="allerA('cours')">Cours</button>&nbsp;<button (click)="allerA('formateur')">Formateur</button><br/>
+
+<accueil *ngIf="pageEnCours == 'accueil'"></accueil>
+
+<cours *ngIf="pageEnCours == 'cours'"></cours>
+
+<formateur *ngIf="pageEnCours == 'formateur'"></formateur> -->
+
+<!-- [routerLink] : 1ère de déclencher une route -->
+<button [routerLink]="['/home']" routerLinkActive="boutonActif">Accueil</button>&nbsp;<button [routerLink]="['/cours']" routerLinkActive="boutonActif">Cours</button>&nbsp;<button (click)="allerA('/formateur')" routerLinkActive="boutonActif">Formateur</button><br/>
+<br/>
+<fieldset>
+  <router-outlet></router-outlet>
+</fieldset>
