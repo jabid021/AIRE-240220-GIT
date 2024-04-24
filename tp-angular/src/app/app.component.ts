@@ -33,6 +33,11 @@ export class AppComponent {
     this.prenom = evt.target.value;
   }
 
+  majPrenom(val: string) {
+    console.log("majPrenom")
+    this.prenom = val;
+  }
+
   addTodo() {
     this.todos.push(this.todoForm);
     this.todoForm = new Todo();

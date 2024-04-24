@@ -94,7 +94,7 @@ Recherche : <input type="text" [(ngModel)]="recherche"/>
 <hr/>
 <hr/>
 
-<asc-text-field label="Prénom : " [value]="prenom"></asc-text-field>
+<asc-text-field label="Prénom : " [value]="prenom" (emetteur)="majPrenom($event)"></asc-text-field>
 
 
 
