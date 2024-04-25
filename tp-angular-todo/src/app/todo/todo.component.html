@@ -1,5 +1,5 @@
-Recherche : <input type="text" [(ngModel)]="recherche"/>
-<table style="border: 2px solid">
+<label class="form-label">Recherche : </label><input type="text" [(ngModel)]="recherche" class="form-control"/>
+<table class="table table-striped mt-3">
   <thead>
     <tr>
       <th>Id</th>
@@ -13,18 +13,28 @@ Recherche : <input type="text" [(ngModel)]="recherche"/>
       <td>{{t.id}}</td>
       <td>{{t.title}}</td>
       <td [style.color]="t.completed | todoState">{{t.completed | todoState:"string"}}</td>
-      <td><button [routerLink]="['/todo', t.id]">Détail via routerLink</button><button (click)="goToDetail(t.id)">Détail via TS</button></td>
+      <td><div class="btn-group btn-group-sm">
+            <button [routerLink]="['/todo', t.id]" class="btn btn-primary"><i class="bi bi-ticket-detailed"></i> [routerLink]</button>
+            <button (click)="goToDetail(t.id)" class="btn btn-success"><i class="bi bi-ticket-detailed"></i> [TS]</button>
+            <button (click)="edit(t.id)" class="btn btn-primary"><i class="bi bi-pen"></i></button>
+            <button (click)="remove(t.id)" class="btn btn-danger"><i class="bi bi-trash"></i></button>
+          </div></td>
     </tr>
   </tbody>
-  <ng-template #sinon>
-    <span>Non terminé</span>
-  </ng-template>
   <tfoot>
     <tr>
-      <td><input type="number" [(ngModel)]="todoForm.id"/></td>
-      <td><input type="text" [(ngModel)]="todoForm.title"/></td>
-      <td><input type="checkbox" [(ngModel)]="todoForm.completed"/></td>
-      <td><button (click)="addTodo()">Ajouter</button></td>
+      <td colspan="4">
+        <button (click)="add()" class="btn btn-lg btn-success"><i class="bi bi-plus"></i></button>
+      </td>
+    </tr>
+    <tr *ngIf="todoForm">
+      <td><input type="number" [(ngModel)]="todoForm.id" class="form-control" readonly/></td>
+      <td><input type="text" [(ngModel)]="todoForm.title" class="form-control"/></td>
+      <td><input type="checkbox" [(ngModel)]="todoForm.completed" class="form-check-input"/></td>
+      <td><div class="btn-group">
+            <button (click)="save()" class="btn btn-success"><i class="bi bi-check-lg"></i></button>
+            <button (click)="cancel()" class="btn btn-warning"><i class="bi bi-backspace"></i></button>
+          </div></td>
     </tr>
   </tfoot>
 </table>
