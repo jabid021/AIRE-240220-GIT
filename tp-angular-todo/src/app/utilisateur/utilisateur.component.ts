@@ -15,4 +15,16 @@ export class UtilisateurComponent {
     this.utilisateurs.push(new Utilisateur(6, "SAMY", "Marie Antoine", "msamy", "123456", true));
     this.utilisateurs.push(new Utilisateur(8, "SULTAN", "Eric", "esultan", "123456", false));
   }
+
+  edit(id?: number) {
+
+  }
+
+  add() {
+
+  }
+
+  cancel() {
+    
+  }
 }

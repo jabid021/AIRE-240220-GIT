@@ -10,6 +10,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { TodoStatePipe } from './todo-state.pipe';
 import { FormsModule } from '@angular/forms';
 import { UtilisateurComponent } from './utilisateur/utilisateur.component';
+import { BooleanPipe } from './boolean.pipe';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { UtilisateurComponent } from './utilisateur/utilisateur.component';
     TodoDetailComponent,
     PageNotFoundComponent,
     TodoStatePipe,
-    UtilisateurComponent
+    UtilisateurComponent,
+    BooleanPipe
   ],
   imports: [
     BrowserModule,
