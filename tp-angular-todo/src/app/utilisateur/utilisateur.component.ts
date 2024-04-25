@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Utilisateur } from '../model';
+import { UtilisateurService } from './utilisateur.service';
 
 @Component({
   selector: 'app-utilisateur',
@@ -7,23 +8,17 @@ import { Utilisateur } from '../model';
   styleUrl: './utilisateur.component.css'
 })
 export class UtilisateurComponent {
-  utilisateurs: Array<Utilisateur> = new Array<Utilisateur>();
-
   utilisateurForm?: Utilisateur = undefined;
 
-  constructor() {
-    this.utilisateurs.push(new Utilisateur(2, "AZID", "Hana", "hazid", "123456", false));
-    this.utilisateurs.push(new Utilisateur(5, "BARDOU", "Hedieh", "hbardou", "123456", false));
-    this.utilisateurs.push(new Utilisateur(6, "SAMY", "Marie Antoine", "msamy", "123456", true));
-    this.utilisateurs.push(new Utilisateur(8, "SULTAN", "Eric", "esultan", "123456", false));
+  constructor(private utilisateurService: UtilisateurService) {
   }
 
   list() {
-    return this.utilisateurs;
+    return this.utilisateurService.findAll();
   }
 
   edit(id?: number) {
-    this.utilisateurForm = {...this.utilisateurs.find(u => u.id == id)};
+    this.utilisateurForm = {...this.utilisateurService.findById(id)};
   }
 
   add() {
@@ -39,20 +34,9 @@ export class UtilisateurComponent {
 
     if(this.utilisateurForm) {
       if(this.utilisateurForm?.id) {
-        let pos = this.utilisateurs.findIndex(u => u.id == this.utilisateurForm?.id);
-
-        this.utilisateurs[pos] = this.utilisateurForm;
+        this.utilisateurService.update(this.utilisateurForm);
       } else {
-        let max = 0;
-        this.utilisateurs.forEach(u => {
-          if(u.id && u.id > max) {
-            max = u.id;
-          }
-        });
-
-        this.utilisateurForm.id = ++max;
-
-        this.utilisateurs.push(this.utilisateurForm);
+        this.utilisateurService.create(this.utilisateurForm);
       }
       this.utilisateurForm = undefined;
     }
@@ -66,8 +50,6 @@ export class UtilisateurComponent {
     // rechercher par l'id, la position de l'objet à supprimer 
     // effectuer la suppression sur le tableau avec la méthodse splice
 
-    let pos = this.utilisateurs.findIndex(u => u.id == id);
-
-    this.utilisateurs.splice(pos, 1);
+    this.utilisateurService.delete(id);
   }
 }
