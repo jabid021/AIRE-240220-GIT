@@ -18,6 +18,10 @@ export class UtilisateurComponent {
     this.utilisateurs.push(new Utilisateur(8, "SULTAN", "Eric", "esultan", "123456", false));
   }
 
+  list() {
+    return this.utilisateurs;
+  }
+
   edit(id?: number) {
     this.utilisateurForm = {...this.utilisateurs.find(u => u.id == id)};
   }
@@ -32,6 +36,26 @@ export class UtilisateurComponent {
     
     // sinon (création), vous devez rechercher l'id le plus grand du tableau afin d'affecter l'incrément de celui-ci dans le nouvel objet utilisateurForm
     // puis le rajouter dans le tableau
+
+    if(this.utilisateurForm) {
+      if(this.utilisateurForm?.id) {
+        let pos = this.utilisateurs.findIndex(u => u.id == this.utilisateurForm?.id);
+
+        this.utilisateurs[pos] = this.utilisateurForm;
+      } else {
+        let max = 0;
+        this.utilisateurs.forEach(u => {
+          if(u.id && u.id > max) {
+            max = u.id;
+          }
+        });
+
+        this.utilisateurForm.id = ++max;
+
+        this.utilisateurs.push(this.utilisateurForm);
+      }
+      this.utilisateurForm = undefined;
+    }
   }
 
   cancel() {
@@ -41,5 +65,9 @@ export class UtilisateurComponent {
   remove(id?: number) {
     // rechercher par l'id, la position de l'objet à supprimer 
     // effectuer la suppression sur le tableau avec la méthodse splice
+
+    let pos = this.utilisateurs.findIndex(u => u.id == id);
+
+    this.utilisateurs.splice(pos, 1);
   }
 }

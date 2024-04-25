@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Todo } from '../model';
 import { Router } from '@angular/router';
+import { TodoService } from './todo.service';
 
 @Component({
   selector: 'app-todo',
@@ -10,31 +11,17 @@ import { Router } from '@angular/router';
 export class TodoComponent {
   recherche: string = "";
 
-  todos: Array<Todo> = new Array<Todo>();
-
   todoForm?: Todo;
 
-  constructor(private router: Router) {
-    this.todos.push(new Todo(6, "Faire le repassage", false));
-    this.todos.push(new Todo(8, "Passer la tondeuse", true));
-    this.todos.push(new Todo(9, "Aspirer", true));
+  constructor(private router: Router, private todoService: TodoService) {
   }
 
   save() {
     if(this.todoForm) {
       if(this.todoForm?.id) { // modification
-        let position = this.todos.findIndex(t => t.id == this.todoForm?.id);
-
-        this.todos[position] = this.todoForm;
+        this.todoService.update(this.todoForm);
       } else { // création
-        let max = 0;
-        for(let t of this.todos) {
-          if(t.id && t.id > max) {
-            max = t.id;
-          }
-        }
-        this.todoForm.id = ++max;
-        this.todos.push(this.todoForm);
+        this.todoService.create(this.todoForm);
       }
     }
 
@@ -43,20 +30,20 @@ export class TodoComponent {
 
   search(): Array<Todo> {
     if(this.recherche) {
-      return this.todos.filter(todo => todo.title?.includes(this.recherche));
+      return this.todoService.findAll().filter(todo => todo.title?.includes(this.recherche));
     } else {
-      return this.todos;
+      return this.todoService.findAll();
     }
 
     // if(this.recherche) {
     //   let todosCopy: Array<Todo> = new Array<Todo>();
-    //   for(let todo of this.todos) {
+    //   for(let todo of this.todoService.findAll()) {
     //     if(todo.title?.includes(this.recherche)) {
     //       todosCopy.push(todo);
     //     }
     //   }
     // } else {
-    //   return this.todos;
+    //   return this.todoService.findAll();
     // }
   }
 
@@ -69,21 +56,11 @@ export class TodoComponent {
   }
 
   edit(id?: number) {
-    this.todoForm = {...this.todos.find(t => t.id == id)};
+    this.todoForm = {...this.todoService.findById(id)};
   }
 
   remove(id?: number) {
-    let position = this.todos.findIndex(t => t.id == id);
-
-    let positionAlt;
-    for(let i=0;i<this.todos.length;i++) {
-      if(this.todos[i] == id) {
-        positionAlt = i;
-        break;
-      }
-    }
-
-    this.todos.splice(position, 1); // argument 1 (position): début de la suppression - argument 2 (1) : nombre d'éléments à supprimer
+    this.todoService.delete(id);
   }
 
   cancel() {

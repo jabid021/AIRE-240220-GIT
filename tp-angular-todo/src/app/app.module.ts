@@ -11,6 +11,7 @@ import { TodoStatePipe } from './todo-state.pipe';
 import { FormsModule } from '@angular/forms';
 import { UtilisateurComponent } from './utilisateur/utilisateur.component';
 import { BooleanPipe } from './boolean.pipe';
+import { TodoService } from './todo/todo.service';
 
 @NgModule({
   declarations: [
