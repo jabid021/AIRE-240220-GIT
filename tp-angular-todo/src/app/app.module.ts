@@ -9,6 +9,7 @@ import { TodoDetailComponent } from './todo-detail/todo-detail.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { TodoStatePipe } from './todo-state.pipe';
 import { FormsModule } from '@angular/forms';
+import { UtilisateurComponent } from './utilisateur/utilisateur.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { FormsModule } from '@angular/forms';
     TodoComponent,
     TodoDetailComponent,
     PageNotFoundComponent,
-    TodoStatePipe
+    TodoStatePipe,
+    UtilisateurComponent
   ],
   imports: [
     BrowserModule,
