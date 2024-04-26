@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Utilisateur } from '../model';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -22,4 +23,20 @@ export class UtilisateurHttpService {
   findAll(): Utilisateur[] {
     return this.utilisateurs;
   }
+
+  // findById(id?: number): Observable<Utilisateur> {
+    
+  // }
+
+  // create(utilisateur: Utilisateur): void {
+   
+  // }
+
+  // update(utilisateur: Utilisateur): void {
+   
+  // }
+
+  // delete(id?: number): void {
+    
+  // }
 }
