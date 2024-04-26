@@ -24,19 +24,25 @@ export class UtilisateurHttpService {
     return this.utilisateurs;
   }
 
-  // findById(id?: number): Observable<Utilisateur> {
-    
-  // }
+  findById(id?: number): Observable<Utilisateur> {
+    return this.http.get<Utilisateur>("http://localhost:8080/api/utilisateur/"+id);
+  }
 
-  // create(utilisateur: Utilisateur): void {
-   
-  // }
+  create(utilisateur: Utilisateur): void {
+    this.http.post<Utilisateur>("http://localhost:8080/api/utilisateur", utilisateur).subscribe(resp => {
+      this.load();
+    });
+  }
 
-  // update(utilisateur: Utilisateur): void {
-   
-  // }
+  update(utilisateur: Utilisateur): void {
+    this.http.put<Utilisateur>("http://localhost:8080/api/utilisateur/"+utilisateur.id, utilisateur).subscribe(resp => {
+      this.load();
+    });
+  }
 
-  // delete(id?: number): void {
-    
-  // }
+  delete(id?: number): void {
+    this.http.delete<void>("http://localhost:8080/api/utilisateur/"+id).subscribe(resp => {
+      this.load();
+    });
+  }
 }

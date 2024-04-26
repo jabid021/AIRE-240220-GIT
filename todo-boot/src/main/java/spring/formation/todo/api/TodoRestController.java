@@ -38,7 +38,7 @@ public class TodoRestController {
 	
 	@GetMapping("/by-title/{recherche}")
 	@JsonView(Views.ViewTodo.class)
-	public List<Todo> findAllByTitle(@PathVariable String recherche) {
+	public List<Todo> findAllByTitle(@PathVariable(required = false) String recherche) {
 		return this.todoRepository.findByTitleContaining(recherche);
 	}
 

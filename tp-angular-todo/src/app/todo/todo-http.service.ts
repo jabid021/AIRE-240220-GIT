@@ -22,6 +22,16 @@ export class TodoHttpService {
     });
   }
 
+  loadByTitle(title: string ) {
+    if(title) {
+      this.http.get<Todo[]>("http://localhost:8080/api/todo/by-title/"+title).subscribe(resp => {
+        this.todos = resp;
+      });
+    } else {
+      this.load();
+    }
+  }
+
   findAll(): Todo[] {
     return this.todos;
   }

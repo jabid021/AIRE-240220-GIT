@@ -12,7 +12,7 @@ import { UtilisateurHttpService } from './utilisateur-http.service';
 export class UtilisateurComponent {
   utilisateurForm?: Utilisateur = undefined;
 
-  constructor(private utilisateurService: UtilisateurService, private utilisateurHttpService: UtilisateurHttpService) {
+  constructor(private utilisateurHttpService: UtilisateurHttpService) {
   }
 
   list() {
@@ -20,7 +20,10 @@ export class UtilisateurComponent {
   }
 
   edit(id?: number) {
-    this.utilisateurForm = {...this.utilisateurService.findById(id)};
+    this.utilisateurHttpService.findById(id).subscribe(resp => {
+      this.utilisateurForm = resp;
+    });
+
   }
 
   add() {
@@ -36,9 +39,9 @@ export class UtilisateurComponent {
 
     if(this.utilisateurForm) {
       if(this.utilisateurForm?.id) {
-        this.utilisateurService.update(this.utilisateurForm);
+        this.utilisateurHttpService.update(this.utilisateurForm);
       } else {
-        this.utilisateurService.create(this.utilisateurForm);
+        this.utilisateurHttpService.create(this.utilisateurForm);
       }
       this.utilisateurForm = undefined;
     }
@@ -52,6 +55,6 @@ export class UtilisateurComponent {
     // rechercher par l'id, la position de l'objet à supprimer 
     // effectuer la suppression sur le tableau avec la méthodse splice
 
-    this.utilisateurService.delete(id);
+    this.utilisateurHttpService.delete(id);
   }
 }

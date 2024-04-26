@@ -29,23 +29,12 @@ export class TodoComponent {
     this.todoForm = undefined;
   }
 
-  search(): Array<Todo> {
-    if(this.recherche) {
-      return this.todoHttpService.findAll().filter(todo => todo.title?.includes(this.recherche));
-    } else {
-      return this.todoHttpService.findAll();
-    }
+  list(): Array<Todo> {
+    return this.todoHttpService.findAll();
+  }
 
-    // if(this.recherche) {
-    //   let todosCopy: Array<Todo> = new Array<Todo>();
-    //   for(let todo of this.todoService.findAll()) {
-    //     if(todo.title?.includes(this.recherche)) {
-    //       todosCopy.push(todo);
-    //     }
-    //   }
-    // } else {
-    //   return this.todoService.findAll();
-    // }
+  search(rech: string) {
+    this.todoHttpService.loadByTitle(rech);
   }
 
   goToDetail(id?: number) {

@@ -1,4 +1,4 @@
-<label class="form-label">Recherche : </label><input type="text" [(ngModel)]="recherche" class="form-control"/>
+<label class="form-label">Recherche : </label><input type="text" [ngModel]="recherche" (ngModelChange)="search($event)" class="form-control"/>
 <table class="table table-striped mt-3">
   <thead>
     <tr>
@@ -9,7 +9,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let t of search()">
+    <tr *ngFor="let t of list()">
       <td>{{t.id}}</td>
       <td>{{t.title}}</td>
       <td [style.color]="t.completed | todoState">{{t.completed | todoState:"string"}}</td>
