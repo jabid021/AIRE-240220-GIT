@@ -20,7 +20,7 @@ public class Todo {
 	@JsonView(Views.ViewCommon.class)
 	private String title;
 	@JsonView(Views.ViewCommon.class)
-	private boolean disabled;
+	private boolean completed;
 	@ManyToOne
 	@JoinColumn(name = "user_id")
 	@JsonView(Views.ViewTodoDetail.class)
@@ -30,10 +30,10 @@ public class Todo {
 		super();
 	}
 
-	public Todo(String title, boolean disabled) {
+	public Todo(String title, boolean completed) {
 		super();
 		this.title = title;
-		this.disabled = disabled;
+		this.completed = completed;
 	}
 
 	public Long getId() {
@@ -52,12 +52,12 @@ public class Todo {
 		this.title = title;
 	}
 
-	public boolean isDisabled() {
-		return disabled;
+	public boolean isCompleted() {
+		return completed;
 	}
 
-	public void setDisabled(boolean disabled) {
-		this.disabled = disabled;
+	public void setCompleted(boolean completed) {
+		this.completed = completed;
 	}
 
 	public Utilisateur getUser() {

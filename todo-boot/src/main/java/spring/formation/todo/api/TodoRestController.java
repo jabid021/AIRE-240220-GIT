@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,6 +24,7 @@ import spring.formation.todo.repository.TodoRepository;
 
 @RestController
 @RequestMapping("/api/todo")
+@CrossOrigin("*")
 public class TodoRestController {
 
 	@Autowired
@@ -32,6 +34,12 @@ public class TodoRestController {
 	@JsonView(Views.ViewTodo.class)
 	public List<Todo> findAll() {
 		return this.todoRepository.findAll();
+	}
+	
+	@GetMapping("/by-title/{recherche}")
+	@JsonView(Views.ViewTodo.class)
+	public List<Todo> findAllByTitle(@PathVariable String recherche) {
+		return this.todoRepository.findByTitleContaining(recherche);
 	}
 
 	@GetMapping("/{id}")
