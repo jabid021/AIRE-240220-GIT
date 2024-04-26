@@ -29,3 +29,14 @@ export class Utilisateur {
         this.disabled = disabled;
     }
 }
+
+export class Liste {
+    id?: number;
+    nom?: string;
+    todos: Array<Todo> = new Array<Todo>();
+
+    constructor(id?: number, nom?: string) {
+        this.id = id;
+        this.nom = nom;
+    }
+}

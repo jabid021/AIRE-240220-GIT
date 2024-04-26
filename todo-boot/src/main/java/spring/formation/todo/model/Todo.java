@@ -25,6 +25,10 @@ public class Todo {
 	@JoinColumn(name = "user_id")
 	@JsonView(Views.ViewTodoDetail.class)
 	private Utilisateur user;
+	@ManyToOne
+	@JoinColumn(name="liste_id")
+	@JsonView(Views.ViewTodo.class)
+	private Liste liste;
 
 	public Todo() {
 		super();

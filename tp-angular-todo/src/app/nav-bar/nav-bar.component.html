@@ -1,0 +1,23 @@
+<ul class="nav nav-pills mt-3">
+    <li class="nav-item" >
+        <a class="nav-link" [routerLink]="['/home']" routerLinkActive="active">Accueil</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" *ngIf="isLogged()" [routerLink]="['/liste']" routerLinkActive="active">Liste</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" *ngIf="isLogged()" [routerLink]="['/todo']" routerLinkActive="active">Todo</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" *ngIf="isLogged()" [routerLink]="['/utilisateur']" routerLinkActive="active">Utilisateur</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" *ngIf="!isLogged()" [routerLink]="['/login']" routerLinkActive="active">Connexion</a>
+    </li>
+    <li class="nav-item" *ngIf="isLogged()">
+        <button class="nav-link" (click)="logout()">Déconnexion</button>
+    </li>
+    <li class="nav-item">
+        <span>{{showUtilisateur()}}</span>
+    </li>
+</ul>

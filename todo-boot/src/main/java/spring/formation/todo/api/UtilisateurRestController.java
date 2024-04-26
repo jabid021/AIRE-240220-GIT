@@ -18,6 +18,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
+import spring.formation.todo.api.dto.ConnexionDTO;
 import spring.formation.todo.model.Utilisateur;
 import spring.formation.todo.model.Views;
 import spring.formation.todo.repository.UtilisateurRepository;
@@ -83,6 +84,18 @@ public class UtilisateurRestController {
 		}
 
 		this.utilisateurRepository.deleteById(id);
+	}
+	
+	@PostMapping("/connexion")
+	@JsonView(Views.ViewUtilisateur.class)
+	public Utilisateur connexion(@RequestBody ConnexionDTO connexionDTO) {
+		Optional<Utilisateur> optUtilisateur = this.utilisateurRepository.findByLoginAndPassword(connexionDTO.getLogin(), connexionDTO.getPassword());
+		
+		if(optUtilisateur.isEmpty()) {
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+		}
+		
+		return optUtilisateur.get();
 	}
 
 }

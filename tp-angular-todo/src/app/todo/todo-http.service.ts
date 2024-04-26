@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Todo } from '../model';
 import { Observable } from 'rxjs';
+import { environment } from '../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,7 @@ export class TodoHttpService {
   }
 
   load() {
-    let obs: Observable<Todo[]> = this.http.get<Todo[]>("http://localhost:8080/api/todo");
+    let obs: Observable<Todo[]> = this.http.get<Todo[]>(environment.apiUrl + "/todo");
     
     obs.subscribe(resp => {
       this.todos = resp;
@@ -24,7 +25,7 @@ export class TodoHttpService {
 
   loadByTitle(title: string ) {
     if(title) {
-      this.http.get<Todo[]>("http://localhost:8080/api/todo/by-title/"+title).subscribe(resp => {
+      this.http.get<Todo[]>(environment.apiUrl + "/todo/by-title/"+title).subscribe(resp => {
         this.todos = resp;
       });
     } else {
@@ -37,23 +38,23 @@ export class TodoHttpService {
   }
 
   findById(id?: number): Observable<Todo> {
-    return this.http.get<Todo>("http://localhost:8080/api/todo/"+id);
+    return this.http.get<Todo>(environment.apiUrl + "/todo/"+id);
   }
 
   create(todo: Todo): void {
-    this.http.post<Todo>("http://localhost:8080/api/todo", todo).subscribe(resp => {
+    this.http.post<Todo>(environment.apiUrl + "/todo", todo).subscribe(resp => {
       this.load();
     });
   }
 
   update(todo: Todo): void {
-    this.http.put<Todo>("http://localhost:8080/api/todo/"+todo.id, todo).subscribe(resp => {
+    this.http.put<Todo>(environment.apiUrl + "/todo/"+todo.id, todo).subscribe(resp => {
       this.load();
     });
   }
 
   delete(id?: number): void {
-    this.http.delete<void>("http://localhost:8080/api/todo/"+id).subscribe(resp => {
+    this.http.delete<void>(environment.apiUrl + "/todo/"+id).subscribe(resp => {
       this.load();
     });
   }

@@ -8,10 +8,13 @@ import { TodoComponent } from './todo/todo.component';
 import { TodoDetailComponent } from './todo-detail/todo-detail.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { TodoStatePipe } from './todo-state.pipe';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UtilisateurComponent } from './utilisateur/utilisateur.component';
 import { BooleanPipe } from './boolean.pipe';
 import { HttpClientModule } from '@angular/common/http';
+import { ListeComponent } from './liste/liste.component';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -22,13 +25,17 @@ import { HttpClientModule } from '@angular/common/http';
     PageNotFoundComponent,
     TodoStatePipe,
     UtilisateurComponent,
-    BooleanPipe
+    BooleanPipe,
+    ListeComponent,
+    NavBarComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule, 
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
