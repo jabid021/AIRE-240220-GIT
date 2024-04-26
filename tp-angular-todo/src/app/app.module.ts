@@ -11,7 +11,7 @@ import { TodoStatePipe } from './todo-state.pipe';
 import { FormsModule } from '@angular/forms';
 import { UtilisateurComponent } from './utilisateur/utilisateur.component';
 import { BooleanPipe } from './boolean.pipe';
-import { TodoService } from './todo/todo.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -27,7 +27,8 @@ import { TodoService } from './todo/todo.service';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule, 
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

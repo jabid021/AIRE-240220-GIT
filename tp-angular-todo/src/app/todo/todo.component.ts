@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Todo } from '../model';
 import { Router } from '@angular/router';
 import { TodoService } from './todo.service';
+import { TodoHttpService } from './todo-http.service';
 
 @Component({
   selector: 'app-todo',
@@ -13,15 +14,15 @@ export class TodoComponent {
 
   todoForm?: Todo;
 
-  constructor(private router: Router, private todoService: TodoService) {
+  constructor(private router: Router, private todoHttpService: TodoHttpService) {
   }
 
   save() {
     if(this.todoForm) {
       if(this.todoForm?.id) { // modification
-        this.todoService.update(this.todoForm);
+        this.todoHttpService.update(this.todoForm);
       } else { // création
-        this.todoService.create(this.todoForm);
+        this.todoHttpService.create(this.todoForm);
       }
     }
 
@@ -30,9 +31,9 @@ export class TodoComponent {
 
   search(): Array<Todo> {
     if(this.recherche) {
-      return this.todoService.findAll().filter(todo => todo.title?.includes(this.recherche));
+      return this.todoHttpService.findAll().filter(todo => todo.title?.includes(this.recherche));
     } else {
-      return this.todoService.findAll();
+      return this.todoHttpService.findAll();
     }
 
     // if(this.recherche) {
@@ -56,11 +57,13 @@ export class TodoComponent {
   }
 
   edit(id?: number) {
-    this.todoForm = {...this.todoService.findById(id)};
+    this.todoHttpService.findById(id).subscribe(response => {
+      this.todoForm = response;
+    });
   }
 
   remove(id?: number) {
-    this.todoService.delete(id);
+    this.todoHttpService.delete(id);
   }
 
   cancel() {
