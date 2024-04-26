@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { Utilisateur } from '../model';
 import { UtilisateurService } from './utilisateur.service';
+import { UtilisateurHttpService } from './utilisateur-http.service';
+
 
 @Component({
   selector: 'app-utilisateur',
@@ -10,11 +12,11 @@ import { UtilisateurService } from './utilisateur.service';
 export class UtilisateurComponent {
   utilisateurForm?: Utilisateur = undefined;
 
-  constructor(private utilisateurService: UtilisateurService) {
+  constructor(private utilisateurService: UtilisateurService, private utilisateurHttpService: UtilisateurHttpService) {
   }
 
   list() {
-    return this.utilisateurService.findAll();
+    return this.utilisateurHttpService.findAll();
   }
 
   edit(id?: number) {
