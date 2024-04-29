@@ -46,4 +46,8 @@ export class UtilisateurHttpService {
       this.load();
     });
   }
+
+  inscription(inscriptionUser: any): Observable<Utilisateur> {
+    return this.http.post<Utilisateur>(environment.apiUrl + "/utilisateur/inscription", inscriptionUser);
+ }
 }

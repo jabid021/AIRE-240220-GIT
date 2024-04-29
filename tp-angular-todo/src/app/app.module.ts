@@ -15,6 +15,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ListeComponent } from './liste/liste.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { LoginComponent } from './login/login.component';
+import { InscriptionComponent } from './inscription/inscription.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { LoginComponent } from './login/login.component';
     BooleanPipe,
     ListeComponent,
     NavBarComponent,
-    LoginComponent
+    LoginComponent,
+    InscriptionComponent
   ],
   imports: [
     BrowserModule,
