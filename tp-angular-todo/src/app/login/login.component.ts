@@ -21,6 +21,12 @@ export class LoginComponent {
       username: this.usernameCtrl,
       password: this.passwordCtrl
     });
+
+    // Autre méthode
+    // this.loginForm = this.formBuilder.group({
+    //   username: this.formBuilder.control("", Validators.required),
+    //   password: this.formBuilder.control("", [Validators.required, Validators.minLength(5)])
+    // });
   }
 
   connexion() {
