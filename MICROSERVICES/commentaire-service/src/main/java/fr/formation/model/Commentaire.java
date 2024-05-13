@@ -17,8 +17,14 @@ public class Commentaire {
 
     private String text;
 
-    @Column(nullable = false)
-    private int note;
+    @Column //(nullable = false)
+    private int noteQuality;
+
+    @Column //(nullable = false)
+    private int notePrice;
+
+    @Column //(nullable = false)
+    private int noteEase;
 
     @ManyToOne
     private Produit produit;
@@ -39,12 +45,28 @@ public class Commentaire {
         this.text = text;
     }
 
-    public int getNote() {
-        return note;
+    public int getNoteQuality() {
+        return noteQuality;
     }
 
-    public void setNote(int note) {
-        this.note = note;
+    public void setNoteQuality(int noteQuality) {
+        this.noteQuality = noteQuality;
+    }
+
+    public int getNotePrice() {
+        return notePrice;
+    }
+
+    public void setNotePrice(int notePrice) {
+        this.notePrice = notePrice;
+    }
+
+    public int getNoteEase() {
+        return noteEase;
+    }
+
+    public void setNoteEase(int noteEase) {
+        this.noteEase = noteEase;
     }
 
     public Produit getProduit() {

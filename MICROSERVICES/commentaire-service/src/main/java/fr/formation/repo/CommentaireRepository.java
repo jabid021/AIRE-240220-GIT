@@ -18,6 +18,6 @@ public interface CommentaireRepository extends JpaRepository<Commentaire, String
     @Query("select c from Commentaire c where c.produit.id = :produitId")
     public List<Commentaire> findAllByProduitIdQueryParams(@Param("produitId") String produitId);
 
-    @Query("select AVG(c.note) from Commentaire c where c.produit.id = ?1")
-    public Optional<Integer> getNoteMoyenneByProduitId(String produitId);
+    // @Query("select AVG(c.note) from Commentaire c where c.produit.id = ?1")
+    // public Optional<Integer> getNoteMoyenneByProduitId(String produitId);
 }
