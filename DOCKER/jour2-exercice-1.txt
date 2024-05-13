@@ -1,0 +1,38 @@
+# Exécute un nouveau container à partir de l'image node, dans sa version 22.1.0-bullseye-slim
+# > On lui donne un nom "node-angular"
+# > On entre en intéraction avec ce container (l'option -it)
+# > On mappe le port local 4200 vers le port 4200 du container (l'option -p)
+# > On mappe le répertoire "C:/..../angular" du disque local vers le répertoire "/app" du container (l'option -v)
+# > Enfin, on ajoute la commande "bash", qui remplace la commande de base
+# >> Ca, ça nous permet d'entrer directement sur le bash du container
+docker run --name node-angular -it -p 4200:4200 -v "C:\Users\blabla\AJC\angular":/app node:22.1.0-bullseye-slim bash
+
+# On vient mettre à jour les repo apt
+apt update
+
+# La mise à jour nous permet d'installer la commande git :
+apt install git -y
+
+# On se déplace dans le répertoire /app
+cd /app
+
+# On install, avec le gestionnaire de packages "npm", le package Angular CLI de manière globale (l'option -g)
+npm install -g @angular/cli
+
+# Avec Angular CLI, on crée un nouveau projet Angular, on l'appelle "demo"
+ng new demo
+
+# On navigue dans le répertoire du projet Angular créé
+cd demo
+
+# Dans ce répertoire, on peut exécuter la commande Angular CLI pour démarrer un serveur de dév
+# > Ici, on démarre ce serveur avec l'option "--host 0.0.0.0" pour que ce serveur écoute sur toutes les interfaces réseau
+ng serve --host 0.0.0.0
+
+# C'est pas une commande, mais ça permet d'arrêter le "ng serve"
+Ctrl + C pour quitter
+
+# La commande Angular CLI pour builder le projet Angular
+# > Générer le fichier principal index.html
+# > Ainsi que les fichiers javascript et CSS nécessaires à l'application Angular
+ng build
