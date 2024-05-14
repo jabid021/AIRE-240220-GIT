@@ -2,21 +2,22 @@ package fr.formation.api;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import fr.formation.model.Commentaire;
+import fr.formation.feignclient.CommentaireFeignClient;
 import fr.formation.model.Produit;
-import fr.formation.repo.CommentaireRepository;
 import fr.formation.repo.ProduitRepository;
 import fr.formation.request.CreateProduitRequest;
 import fr.formation.response.ProduitResponse;
@@ -29,7 +30,7 @@ public class ProduitApiController {
     private ProduitRepository repository;
 
     @Autowired
-    private CommentaireRepository commentaireRepository;
+    private CommentaireFeignClient commentaireFeignClient;
 
     @GetMapping
     public List<ProduitResponse> findAll() {
@@ -43,40 +44,33 @@ public class ProduitApiController {
 
             response.add(produitResponse);
 
-            // Calcul de la note moyenne - V1
-            List<Commentaire> commentaires = this.commentaireRepository.findAllByProduitId(produit.getId());
+            Integer note = this.commentaireFeignClient.getNoteByProduitId(produit.getId());
             
-            produitResponse.setNote(-1);
-
-            if (!commentaires.isEmpty()) {
-                int somme = 0;
-
-                for (Commentaire commentaire : commentaires) {
-                    somme += commentaire.getNote();
-                }
-
-                produitResponse.setNote(somme / commentaires.size());
+            if (note != null) {
+                produitResponse.setNote(note);
             }
-
-            // Calcul de la note moyenne - V2
-            int moyenne = (int)commentaires.stream()
-                // .mapToInt(commentaire -> commentaire.getNote())
-                .mapToInt(Commentaire::getNote)
-                .average()
-                .orElse(-1);
-            
-            produitResponse.setNote(moyenne);
-
-            // Calcul de la note moyenne - V3
-            moyenne = this.commentaireRepository.getNoteMoyenneByProduitId(produit.getId())
-                .orElse(-1);
-            
-            produitResponse.setNote(moyenne);
         }
         
         return response;
     }
     
+    @GetMapping("/{id}/is-notable")
+    public Boolean isNotableById(@PathVariable String id) {
+        Optional<Produit> optProduit = this.repository.findById(id);
+
+        return optProduit.isPresent() && optProduit.get().isNotable();
+    }
+
+    @GetMapping("/{id}/name")
+    public String getNameById(@PathVariable String id) {
+        Optional<Produit> optProduit = this.repository.findById(id);
+
+        if (optProduit.isPresent()) {
+            return optProduit.get().getName();
+        }
+
+        return "- product not found -";
+    }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)

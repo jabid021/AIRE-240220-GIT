@@ -5,7 +5,6 @@ import org.hibernate.annotations.UuidGenerator;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -17,17 +16,16 @@ public class Commentaire {
 
     private String text;
 
-    @Column //(nullable = false)
+    @Column(nullable = false)
     private int noteQuality;
 
-    @Column //(nullable = false)
+    @Column(nullable = false)
     private int notePrice;
 
-    @Column //(nullable = false)
+    @Column(nullable = false)
     private int noteEase;
 
-    @ManyToOne
-    private Produit produit;
+    private String produitId;
 
     public String getId() {
         return id;
@@ -69,11 +67,11 @@ public class Commentaire {
         this.noteEase = noteEase;
     }
 
-    public Produit getProduit() {
-        return produit;
+    public String getProduitId() {
+        return produitId;
     }
 
-    public void setProduit(Produit produit) {
-        this.produit = produit;
+    public void setProduitId(String produitId) {
+        this.produitId = produitId;
     }
 }
