@@ -71,8 +71,10 @@ public class CommentaireApiController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public String create(@RequestBody CreateCommentaireRequest request) {
+        // Boolean isNotable = this.restTemplate
+        //     .getForObject("http://localhost:8081/api/produit/" + request.getProduitId() + "/is-notable", Boolean.class);
         Boolean isNotable = this.restTemplate
-            .getForObject("http://localhost:8081/api/produit/" + request.getProduitId() + "/is-notable", Boolean.class);
+            .getForObject("lb://produit-service/api/produit/" + request.getProduitId() + "/is-notable", Boolean.class);
         
         if (isNotable == null || !isNotable) {
             // Pas la peine d'aller plus loin
@@ -93,8 +95,10 @@ public class CommentaireApiController {
 
         BeanUtils.copyProperties(commentaire, response);
 
+        // String name = this.restTemplate
+        //     .getForObject("http://localhost:8081/api/produit/" + commentaire.getProduitId() + "/name", String.class);
         String name = this.restTemplate
-            .getForObject("http://localhost:8081/api/produit/" + commentaire.getProduitId() + "/name", String.class);
+            .getForObject("lb://produit-service/api/produit/" + commentaire.getProduitId() + "/name", String.class);
 
         response.setProduitName(name);
 
