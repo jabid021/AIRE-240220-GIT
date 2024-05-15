@@ -16,18 +16,18 @@ public class ProduitServiceApplication {
     }
 
     // @Bean
-    Consumer<String> onMessageDemo() {
-        return evt -> {
-            System.out.println(evt);
-        };
-    }
+    // Consumer<String> onMessageDemo() {
+    //     return evt -> {
+    //         System.out.println(evt);
+    //     };
+    // }
 
-    @Bean
-    Function<String, String> onMessageDemoUpperCase() {
-        return evt -> {
-            System.out.println("UPPERCASE " + evt);
+    // @Bean
+    // Function<String, String> onMessageDemoUpperCase() {
+    //     return evt -> {
+    //         System.out.println("UPPERCASE " + evt);
 
-            return evt.toUpperCase();
-        };
-    }
+    //         return evt.toUpperCase();
+    //     };
+    // }
 }
