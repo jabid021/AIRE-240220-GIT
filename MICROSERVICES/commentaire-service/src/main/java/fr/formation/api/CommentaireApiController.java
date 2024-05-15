@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.client.circuitbreaker.CircuitBreakerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,6 +31,9 @@ public class CommentaireApiController {
 
     @Autowired
     private RestTemplate restTemplate;
+
+    @Autowired
+    private CircuitBreakerFactory circuitBreakerFactory;
 
     @GetMapping
     public List<CommentaireResponse> findAll() {
@@ -73,9 +77,16 @@ public class CommentaireApiController {
     public String create(@RequestBody CreateCommentaireRequest request) {
         // Boolean isNotable = this.restTemplate
         //     .getForObject("http://localhost:8081/api/produit/" + request.getProduitId() + "/is-notable", Boolean.class);
-        Boolean isNotable = this.restTemplate
-            .getForObject("lb://produit-service/api/produit/" + request.getProduitId() + "/is-notable", Boolean.class);
+        // Boolean isNotable = this.restTemplate
+        //     .getForObject("lb://produit-service/api/produit/" + request.getProduitId() + "/is-notable", Boolean.class);
         
+        Boolean isNotable = this.circuitBreakerFactory.create("produitService").run(
+            () -> this.restTemplate
+                        .getForObject("lb://produit-service/api/produit/" + request.getProduitId() + "/is-notable", Boolean.class)
+            ,
+            ex -> false
+        );
+
         if (isNotable == null || !isNotable) {
             // Pas la peine d'aller plus loin
             throw new ProduitNotFoundOrNotNotableException();
@@ -97,8 +108,14 @@ public class CommentaireApiController {
 
         // String name = this.restTemplate
         //     .getForObject("http://localhost:8081/api/produit/" + commentaire.getProduitId() + "/name", String.class);
-        String name = this.restTemplate
-            .getForObject("lb://produit-service/api/produit/" + commentaire.getProduitId() + "/name", String.class);
+        // String name = this.restTemplate
+        //     .getForObject("lb://produit-service/api/produit/" + commentaire.getProduitId() + "/name", String.class);
+
+        String name = this.circuitBreakerFactory.create("produitService").run(
+            () -> this.restTemplate.getForObject("lb://produit-service/api/produit/" + commentaire.getProduitId() + "/name", String.class)
+            ,
+            t -> "- no name -"
+        );
 
         response.setProduitName(name);
 

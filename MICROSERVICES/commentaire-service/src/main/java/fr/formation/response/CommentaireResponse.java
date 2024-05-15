@@ -3,7 +3,9 @@ package fr.formation.response;
 public class CommentaireResponse {
     private String id;
     private String text;
-    private int note;
+    private int noteQuality;
+    private int notePrice;
+    private int noteEase;
     private String produitId;
     private String produitName;
 
@@ -23,12 +25,28 @@ public class CommentaireResponse {
         this.text = text;
     }
 
-    public int getNote() {
-        return note;
+    public int getNoteQuality() {
+        return noteQuality;
     }
 
-    public void setNote(int note) {
-        this.note = note;
+    public void setNoteQuality(int noteQuality) {
+        this.noteQuality = noteQuality;
+    }
+
+    public int getNotePrice() {
+        return notePrice;
+    }
+
+    public void setNotePrice(int notePrice) {
+        this.notePrice = notePrice;
+    }
+
+    public int getNoteEase() {
+        return noteEase;
+    }
+
+    public void setNoteEase(int noteEase) {
+        this.noteEase = noteEase;
     }
 
     public String getProduitId() {
