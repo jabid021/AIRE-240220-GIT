@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.circuitbreaker.CircuitBreakerFactory;
+import org.springframework.cloud.stream.function.StreamBridge;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,7 +17,8 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
-import fr.formation.exception.ProduitNotFoundOrNotNotableException;
+import fr.formation.command.CreateCommentaireCommand;
+import fr.formation.enumerator.CommentaireEtat;
 import fr.formation.model.Commentaire;
 import fr.formation.repo.CommentaireRepository;
 import fr.formation.request.CreateCommentaireRequest;
@@ -35,9 +37,12 @@ public class CommentaireApiController {
     @Autowired
     private CircuitBreakerFactory circuitBreakerFactory;
 
+    @Autowired
+    private StreamBridge streamBridge;
+
     @GetMapping
     public List<CommentaireResponse> findAll() {
-        return this.repository.findAll().stream()
+        return this.repository.findAllByEtat(CommentaireEtat.OK).stream()
             // .map(commentaire -> this.map(commentaire))
             .map(this::map)
             .toList();
@@ -46,7 +51,7 @@ public class CommentaireApiController {
     @GetMapping("/note/by-produit-id/{produitId}")
     public int getNoteByProduitId(@PathVariable String produitId) {
         // Calcul de la note moyenne - V1
-        List<Commentaire> commentaires = this.repository.findAllByProduitId(produitId);
+        List<Commentaire> commentaires = this.repository.findAllByProduitIdAndEtat(produitId, CommentaireEtat.OK);
         int note = -1;
         
         if (!commentaires.isEmpty()) {
@@ -80,23 +85,31 @@ public class CommentaireApiController {
         // Boolean isNotable = this.restTemplate
         //     .getForObject("lb://produit-service/api/produit/" + request.getProduitId() + "/is-notable", Boolean.class);
         
-        Boolean isNotable = this.circuitBreakerFactory.create("produitService").run(
-            () -> this.restTemplate
-                        .getForObject("lb://produit-service/api/produit/" + request.getProduitId() + "/is-notable", Boolean.class)
-            ,
-            ex -> false
-        );
+        // Boolean isNotable = this.circuitBreakerFactory.create("produitService").run(
+        //     () -> this.restTemplate
+        //                 .getForObject("lb://produit-service/api/produit/" + request.getProduitId() + "/is-notable", Boolean.class)
+        //     ,
+        //     ex -> false
+        // );
 
-        if (isNotable == null || !isNotable) {
-            // Pas la peine d'aller plus loin
-            throw new ProduitNotFoundOrNotNotableException();
-        }
+        // if (isNotable == null || !isNotable) {
+        //     // Pas la peine d'aller plus loin
+        //     throw new ProduitNotFoundOrNotNotableException();
+        // }
 
         Commentaire commentaire = new Commentaire();
+        CreateCommentaireCommand command = new CreateCommentaireCommand();
 
         BeanUtils.copyProperties(request, commentaire);
 
+        commentaire.setEtat(CommentaireEtat.ATTENTE);
+
         this.repository.save(commentaire);
+
+        command.setCommentaireId(commentaire.getId());
+        command.setProduitId(commentaire.getProduitId());
+
+        this.streamBridge.send("commentaire.created", command);
 
         return commentaire.getId();
     }
