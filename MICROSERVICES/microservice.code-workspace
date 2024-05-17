@@ -8,6 +8,9 @@
 		},
 		{
 			"path": "discovery-server"
+		},
+		{
+			"path": "gateway"
 		}
 	],
 	"settings": {
