@@ -53,6 +53,8 @@ public class SolarReaderService {
 
                 winds.add(dto);
             }
+
+            log.debug("{} solar winds processed!", index);
         }
 
         catch (Exception ex) {
