@@ -43,12 +43,14 @@ public class ProduitApiController {
         // Récupérer une connexion JDBC
 
         // Syntaxe try-with-resources : C'est Java qui va appeler la méthode close() de la connection
-        try (Connection connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/small_data", "root", "root")) {
+        try (Connection connection = DriverManager.getConnection("jdbc:postgresql://127.0.0.1:5432/small_data", "postgres", "root")) {
             connection.setAutoCommit(false);
 
             // Récupérer un Statement pour exécuter la requête (un PreparedStatement est encore mieux !)
             try (PreparedStatement statement = connection.prepareStatement("INSERT INTO produit (name, price) VALUES (?, ?)")) {
-                for (int i = 0; i < 2_000; i++) {
+                int batchIndex = 0;
+                
+                for (int i = 0; i < 500_000; i++) {
                     Produit produit = new Produit();
         
                     produit.setName("Produit " + i);
@@ -58,6 +60,14 @@ public class ProduitApiController {
                     statement.setBigDecimal(2, produit.getPrice());
         
                     statement.addBatch();
+
+                    if (batchIndex == 10_000) {
+                        statement.executeBatch();
+                        connection.commit();
+                        batchIndex = -1;
+                    }
+
+                    batchIndex++;
                 }
 
                 statement.executeBatch();
