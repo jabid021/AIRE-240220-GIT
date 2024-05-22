@@ -27,7 +27,7 @@ public class SolarApiController {
     public void readAndSave() {
         List<SolarWindDto> winds = this.readerService.read("D:/Developpement/perso/data/solarwinds/dscovr/compiled/2017/201701.csv");
 
-        try (Connection connection = DriverManager.getConnection("jdbc:postgresql://127.0.0.1:5432/solarwind", "postgres", "root")) {
+        try (Connection connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/solarwind", "root", "root")) {
             connection.setAutoCommit(false);
 
             // Récupérer un Statement pour exécuter la requête (un PreparedStatement est encore mieux !)
@@ -43,7 +43,7 @@ public class SolarApiController {
 
                     statement.addBatch();
 
-                    if (batchIndex == 10_000) {
+                    if (batchIndex == 100_000) {
                         statement.executeBatch();
                         connection.commit();
                         batchIndex = -1;

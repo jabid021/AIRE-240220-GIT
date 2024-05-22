@@ -43,7 +43,7 @@ public class ProduitApiController {
         // Récupérer une connexion JDBC
 
         // Syntaxe try-with-resources : C'est Java qui va appeler la méthode close() de la connection
-        try (Connection connection = DriverManager.getConnection("jdbc:postgresql://127.0.0.1:5432/small_data", "postgres", "root")) {
+        try (Connection connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/small_data", "root", "root")) {
             connection.setAutoCommit(false);
 
             // Récupérer un Statement pour exécuter la requête (un PreparedStatement est encore mieux !)
