@@ -23,3 +23,23 @@ clickhouse-client
 ```sql
 SHOW DATABASES;
 ```
+
+### Créer une base
+
+```sql
+CREATE DATABASE solarwind;
+```
+
+### Créer une table
+
+```sql
+CREATE TABLE wind (
+    date VARCHAR(20),
+    speed FLOAT,
+    density FLOAT,
+    bt FLOAT,
+    bz FLOAT
+)
+ENGINE = MergeTree()
+ORDER BY date;
+```
