@@ -43,3 +43,37 @@ CREATE TABLE wind (
 ENGINE = MergeTree()
 ORDER BY date;
 ```
+
+
+# Hadoop
+
+## Fabriquer l'image Docker
+
+Exécuter dans le répertoire dans lequel se trouve le Dockerfile et les fichiers XML à copier
+
+```bash
+docker build -t hadoop .
+```
+
+## Exécuter le container
+
+### Namenode
+
+```bash
+docker run -it --network host hadoop
+bin/hdfs namenode -format
+bin/hdfs namenode
+```
+
+### Datanode
+
+```bash
+docker run -it --network host hadoop
+bin/hdfs datanode
+```
+
+### Sur notre machine locale
+
+```bash
+docker run --rm -it hadoop
+```
