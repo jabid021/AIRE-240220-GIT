@@ -75,5 +75,16 @@ bin/hdfs datanode
 ### Sur notre machine locale
 
 ```bash
-docker run --rm -it hadoop
+docker run --rm -it -v "D:/Formations/a.formation/SUPPORTS/BIG DATA":/data hadoop
+```
+
+## Quelques commandes pour manipuler le HDFS distant
+
+```bash
+hadoop fs -ls / # Permet de lister les fichiers et répertoires à la racine de HDFS
+hadoop fs -mkdir /sonprenom # Permet de créer un répertoire sur le HDFS
+hadoop fs -put /data/sonprenom.txt /sonprenom # Permet d'envoyer un fichier local vers le HDFS
+hadoop fs -cat /sonprenom/sonprenom.txt # Permet de lire le contenu d'un fichier sur le HDFS
+hadoop fs -rm /sonprenom/sonprenom.txt # Permet de supprimer un fichier sur le HDFS
+hadoop fs -rm -R /sonprenom # Permet de supprimer un répertoire sur le HDFS de manière récursive
 ```
