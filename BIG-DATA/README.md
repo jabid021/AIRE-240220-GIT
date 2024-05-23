@@ -88,3 +88,26 @@ hadoop fs -cat /sonprenom/sonprenom.txt # Permet de lire le contenu d'un fichier
 hadoop fs -rm /sonprenom/sonprenom.txt # Permet de supprimer un fichier sur le HDFS
 hadoop fs -rm -R /sonprenom # Permet de supprimer un répertoire sur le HDFS de manière récursive
 ```
+
+
+# Flume
+
+## Fabriquer l'image Docker
+
+Exécuter dans le répertoire dans lequel se trouve le Dockerfile et le fichier de config à copier
+
+```bash
+docker build -t flume .
+```
+
+## Exécuter le container
+
+```bash
+docker run --rm -it -v "D:/Formations/a.formation/SUPPORTS/BIG DATA/flume":/flume/conflocale -v "D:/pourflume":/flume/spool flume
+```
+
+## Quelques commandes pour manipuler Flume
+
+```bash
+flume-ng agent -n agent1 -f conflocale/spooldir.conf -Xmx512m
+```
