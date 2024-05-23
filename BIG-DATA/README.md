@@ -106,7 +106,7 @@ docker build -t flume .
 docker run --rm -it -v "D:/Formations/a.formation/SUPPORTS/BIG DATA/flume":/flume/conflocale -v "D:/pourflume":/flume/spool flume
 ```
 
-## Quelques commandes pour manipuler Flume
+## Lancer l'agent Flume "agent1" avec le fichier de configuration "spooldir.conf" et 512Mo de mémoire vive pour Flume
 
 ```bash
 flume-ng agent -n agent1 -f conflocale/spooldir.conf -Xmx512m
