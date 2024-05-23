@@ -136,3 +136,33 @@ docker run --rm -it -v "D:/VOTRE_REPERTOIRE_FLUME_AVEC_FICHIER_CONFIG":/flume/co
 ```bash
 flume-ng agent -n agent1 -f conflocale/spooldir.conf -Xmx512m
 ```
+
+
+# MapReduce en JAVA
+
+Adapter la version de JAVA dans laquelle on compile de code à la version de JAVA qui se trouve sur les Datanode (sur le Namenode)
+
+Dans le pom.xml :
+
+```xml
+<properties>
+    <maven.compiler.source>11</maven.compiler.source>
+    <maven.compiler.target>11</maven.compiler.target>
+</properties>
+```
+
+Intégrer 2 dépendances Hadoop
+
+```xml
+<dependency>
+    <groupId>org.apache.hadoop</groupId>
+    <artifactId>hadoop-common</artifactId>
+    <version>3.4.0</version>
+</dependency>
+
+<dependency>
+    <groupId>org.apache.hadoop</groupId>
+    <artifactId>hadoop-mapreduce-client-core</artifactId>
+    <version>3.4.0</version>
+</dependency>
+```
