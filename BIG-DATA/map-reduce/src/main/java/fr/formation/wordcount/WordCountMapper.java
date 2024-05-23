@@ -42,7 +42,7 @@ public class WordCountMapper extends MapReduceBase implements Mapper<LongWritabl
         StringTokenizer tokenizer = new StringTokenizer(line);
 
         while (tokenizer.hasMoreTokens()) {
-            String mot = tokenizer.nextToken();
+            String mot = tokenizer.nextToken().toLowerCase().replace(".", "").replace(",", "");
 
             output.collect(new Text(mot), new IntWritable(1));
         }
