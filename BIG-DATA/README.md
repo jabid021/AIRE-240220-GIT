@@ -28,6 +28,7 @@ SHOW DATABASES;
 
 ```sql
 CREATE DATABASE solarwind;
+USE solarwind;
 ```
 
 ### Créer une table
@@ -35,15 +36,27 @@ CREATE DATABASE solarwind;
 ```sql
 CREATE TABLE wind (
     date VARCHAR(20),
-    speed FLOAT,
-    density FLOAT,
-    bt FLOAT,
-    bz FLOAT
+    speed Float32,
+    density Float32,
+    bt Float32,
+    bz Float32
 )
 ENGINE = MergeTree()
 ORDER BY date;
 ```
 
+## En JAVA
+
+Ajouter la dépendance MAVEN : connecteur Clickhouse
+
+```xml
+<dependency>
+    <groupId>com.clickhouse</groupId>
+    <artifactId>clickhouse-jdbc</artifactId>
+    <version>0.6.0</version>
+    <classifier>all</classifier>
+</dependency>
+```
 
 # Hadoop
 
@@ -75,7 +88,7 @@ bin/hdfs datanode
 ### Sur notre machine locale
 
 ```bash
-docker run --rm -it -v "D:/Formations/a.formation/SUPPORTS/BIG DATA":/data hadoop
+docker run --rm -it -v "D:/VOTRE_REPERTOIRE_DONNEES":/data hadoop
 ```
 
 ## Quelques commandes pour manipuler le HDFS distant
@@ -87,6 +100,18 @@ hadoop fs -put /data/sonprenom.txt /sonprenom # Permet d'envoyer un fichier loca
 hadoop fs -cat /sonprenom/sonprenom.txt # Permet de lire le contenu d'un fichier sur le HDFS
 hadoop fs -rm /sonprenom/sonprenom.txt # Permet de supprimer un fichier sur le HDFS
 hadoop fs -rm -R /sonprenom # Permet de supprimer un répertoire sur le HDFS de manière récursive
+```
+
+## En JAVA
+
+Ajouter la dépendance MAVEN pour piloter le HDFS
+
+```xml
+<dependency>
+    <groupId>org.apache.hadoop</groupId>
+    <artifactId>hadoop-client</artifactId>
+    <version>3.4.0</version>
+</dependency>
 ```
 
 
@@ -103,7 +128,7 @@ docker build -t flume .
 ## Exécuter le container
 
 ```bash
-docker run --rm -it -v "D:/Formations/a.formation/SUPPORTS/BIG DATA/flume":/flume/conflocale -v "D:/pourflume":/flume/spool flume
+docker run --rm -it -v "D:/VOTRE_REPERTOIRE_FLUME_AVEC_FICHIER_CONFIG":/flume/conflocale -v "D:/VOTRE_REPERTOIRE_FICHIERS_A_DONNER_A_FLUME":/flume/spool flume
 ```
 
 ## Lancer l'agent Flume "agent1" avec le fichier de configuration "spooldir.conf" et 512Mo de mémoire vive pour Flume
