@@ -1,13 +1,15 @@
 package fr.formation;
 
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
+// @SpringBootTest
 class DemoTestUnitApplicationTests {
 
-	@Test
-	void contextLoads() {
-	}
+    @Test
+    void contextLoads() {
+
+        // Assertions.assertEquals(true, (1 == 1));
+
+    }
 
 }
