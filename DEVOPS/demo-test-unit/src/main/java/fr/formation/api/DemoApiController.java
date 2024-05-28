@@ -18,11 +18,21 @@ public class DemoApiController {
 
     @GetMapping
     public String helloDemo() {
+        String variableQueJutilisePas = "";
+
+        System.out.println("J'affiche la démo");
+
         return this.service.demo();
     }
 
     @GetMapping("/json")
     public List<DemoResponse> helloDemoJson() {
+        System.out.println("Je charge la liste des démo");
+
         return this.service.demoJson();
+    }
+
+    private void pasTerrible(String a, String b, String c, String d, String e, String f, String g, String h) {
+        
     }
 }
