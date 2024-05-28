@@ -57,8 +57,11 @@ class DemoApiControllerTest {
         DemoResponse r2 = new DemoResponse();
         DemoResponse r3 = new DemoResponse();
 
-        List<DemoResponse> responses = List.of(r1, r2, r3);
+        r1.setContent("R1");
 
+        List<DemoResponse> responses = List.of(r2, r1, r3);
+
+        Mockito.lenient().when(this.service.demo()).thenReturn("Hello demo !!");
         Mockito.when(this.service.demoJson()).thenReturn(responses);
 
         // when
@@ -67,6 +70,7 @@ class DemoApiControllerTest {
         // then
         result.andExpect(MockMvcResultMatchers.status().isOk());
         result.andExpect(MockMvcResultMatchers.jsonPath("$").isArray());
+        result.andExpect(MockMvcResultMatchers.jsonPath("$[1].content").value("R1"));
         result.andExpect(MockMvcResultMatchers.jsonPath("$", Matchers.hasSize(responses.size())));
 
         Mockito.verify(this.service).demoJson();
