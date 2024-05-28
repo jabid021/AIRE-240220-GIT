@@ -23,12 +23,6 @@ public class DemoApiController {
 
     @GetMapping("/json")
     public List<DemoResponse> helloDemoJson() {
-        DemoResponse r1 = new DemoResponse();
-        DemoResponse r2 = new DemoResponse();
-
-        r1.setContent("R1");
-        r2.setContent("R2");
-
-        return List.of(r1, r2);
+        return this.service.demoJson();
     }
 }
