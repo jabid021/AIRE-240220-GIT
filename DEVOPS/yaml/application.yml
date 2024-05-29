@@ -1,0 +1,8 @@
+spring:
+    application:
+        name: Configuration YAML
+    
+    datasource:
+        url: jdbc:postgresql://127.0.0.1:5432/nom_base
+        username: postgres
+        password: root
