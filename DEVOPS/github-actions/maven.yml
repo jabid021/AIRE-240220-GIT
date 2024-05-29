@@ -30,12 +30,10 @@ jobs:
           cache: maven
 
       - name: Scan SonarQube
-        run: >
-          mvn verify sonar:sonar
-          -Dsonar.projectKey=jeremy
-          -Dsonar.host.url="${{ secrets.SONAR_HOST_URL }}"
-          -Dsonar.token=${{ secrets.SONAR_TOKEN }}
-
+        run: mvn verify sonar:sonar -Dsonar.projectKey=jeremy
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
 
   # build:
   #   needs: test
