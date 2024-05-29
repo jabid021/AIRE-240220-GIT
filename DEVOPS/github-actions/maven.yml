@@ -35,6 +35,15 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
 
+      - name: Qualité SonarQube
+        uses: sonarsource/sonarqube-quality-gate-action@master
+        timeout-minutes: 5
+        with:
+          scanMetadataReportFile: target/sonar/report-task.txt
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+
   # build:
   #   needs: test
   #   runs-on: ubuntu-latest
