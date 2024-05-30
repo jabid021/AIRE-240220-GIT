@@ -166,3 +166,19 @@ Intégrer 2 dépendances Hadoop
     <version>3.4.0</version>
 </dependency>
 ```
+
+## Compiler l'application JAVA en jar
+
+```bash
+mvn clean package
+```
+
+## Faire exécuter le jar 
+
+Démarrer un container Hadoop, avec un mapping de volume sur le répertoire target du projet JAVA
+
+Aller dans le répertoire mappé sur le container
+
+```bash
+hadoop jar map-reduce.jar fr.formation.Application /phrase.txt /output_jeremy
+```
