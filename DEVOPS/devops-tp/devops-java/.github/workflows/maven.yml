@@ -1,0 +1,122 @@
+name: Java CI with Maven
+
+on:
+  push:
+    branches: [ "main" ]
+
+env:
+  TAG_NAME: ascadis/ajc-ci:java-devops-1.0.0-${{ github.run_number }}
+  CONTAINER_NAME: ajc-devops-jeremy
+
+jobs:
+  test:
+    name: Java test and Sonar
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Récupération du code
+      uses: actions/checkout@v4
+      
+    - name: Set up JDK 17
+      uses: actions/setup-java@v3
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+        cache: maven
+      
+    - name: Cache Maven packages
+      uses: actions/cache@v1
+      with:
+        path: ~/.m2
+        key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+        restore-keys: ${{ runner.os }}-m2
+      
+    - name: Build with Maven
+      run: > 
+        mvn
+        org.jacoco:jacoco-maven-plugin:prepare-agent
+        package
+        verify 
+        org.jacoco:jacoco-maven-plugin:report
+        sonar:sonar
+        -Pprod
+        -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml
+        -Dsonar.projectKey=devops-jeremy
+      env:
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+
+    - name: Qualité SonarQube
+      uses: sonarsource/sonarqube-quality-gate-action@master
+      timeout-minutes: 5
+      with:
+        scanMetadataReportFile: target/sonar/report-task.txt
+      env:
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+
+    - name: Partage du fichier JAR
+      uses: actions/upload-artifact@v3
+      with:
+        name: app-jar
+        path: target/ajc-java-devops.jar
+  
+  build:
+    name: Docker build
+    needs: test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: CheckoRécupération du code
+        uses: actions/checkout@v4
+      
+      - name: Récupération du fichier JAR
+        uses: actions/download-artifact@v3
+        with:
+          name: app-jar
+          path: target
+
+      - name: Installation QEMU
+        uses: docker/setup-qemu-action@v3
+
+      - name: Installation Docker BuildX
+        uses: docker/setup-buildx-action@v3
+
+      - name: Connexion au Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN_GITHUB }}
+
+      - name: Build de l'image & Push de l'image sur le Docker Hub
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: true
+          tags: ${{ env.TAG_NAME }}
+
+  deploy:
+    name: Déploiement sur serveur via SSH
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Préparation de la connexion SSH vers notre machine
+        run: |
+          install -m 600 -D /dev/null ~/.ssh/id_rsa
+          echo "${{ secrets.SSH_KEY }}" > ~/.ssh/id_rsa
+          ssh-keyscan -H ${{ secrets.SSH_HOST }} > ~/.ssh/known_hosts
+
+      - name: Commandes pour info à exécuter sur la machine distante
+        run: >
+          ssh ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }}
+          "
+            docker stop ${{ env.CONTAINER_NAME }} || true
+            docker rm ${{ env.CONTAINER_NAME }} || true
+            docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_TOKEN_GITHUB }}
+            docker run -d --network infra --name ${{ env.CONTAINER_NAME }} -e DB_URL='postgresql://ajc-postgres/devops_jeremy' ${{ env.TAG_NAME }}
+            exit
+          "
+        
+      - name: Nettoyage
+        run: rm -rf ~/.ssh
