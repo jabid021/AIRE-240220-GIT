@@ -1,0 +1,23 @@
+<h1>Liste des produits</h1>
+
+<a href="/product/new" class="btn btn-success">Créer un nouveau produit</a>
+
+<h1>Penser au module CommonModule</h1>
+
+<table class="table table-stripped">
+  <tr *ngFor="let product of (products$ | async)">
+    <td>{{ product.name }}</td>
+    <td>{{ product.price }}</td>
+  </tr>
+</table>
+
+<h2>Ou sinon</h2>
+
+<table class="table table-stripped">
+  @for (product of (products$ | async); track product.id) {
+    <tr>
+      <td>{{ product.name }}</td>
+      <td>{{ product.price }}</td>
+    </tr>
+  }
+</table>
