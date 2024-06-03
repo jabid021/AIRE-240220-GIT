@@ -1,0 +1,1 @@
+docker run -d --network infra -p 80:80 --name ajc-nginx -v /home/ajcuser/nginx.conf:/etc/nginx/conf.d/default.conf nginx
